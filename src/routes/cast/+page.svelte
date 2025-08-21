@@ -1,133 +1,270 @@
 <script lang="ts">
   import emergenceData from "$lib/content/films/emergence.json";
-  import MetaHead from "$lib/components/MetaHead.svelte";
-  import SubHeader from "$lib/components/SubHeader.svelte";
-  import Section from "$lib/components/Section.svelte";
-  import VideoCard from "$lib/components/VideoCard.svelte";
-  import SubFooter from "$lib/components/SubFooter.svelte";
-  import { Button } from "$lib/components/ui/button";
 </script>
 
-<MetaHead 
-  title="Cast Spotlights"
-  description="Personal stories from Amar, Jag, and Kayden - the cast of Emergence: Out of the Shadows documentary"
-  canonical="/cast"
-/>
+<svelte:head>
+  <title>Cast Spotlights - Emergence: Out of the Shadows</title>
+  <meta name="description" content="Personal stories from Amar, Jag, and Kayden - the cast of Emergence: Out of the Shadows documentary" />
+</svelte:head>
 
-<SubHeader 
-  pageTitle="Cast Spotlights" 
-  breadcrumbs={[{ label: "Cast Spotlights" }]}
-/>
+<main class="bg-gray-100">
+  <!-- Hero Section -->
+  <section class="bg-black text-white relative overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, #5b2d83 0%, #225c9e 50%, #0ea568 100%);"></div>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    
+    <div class="relative z-10 max-w-6xl mx-auto px-8 py-24 text-center">
+      <h1 class="text-5xl md:text-7xl font-mono font-bold mb-8 leading-tight">
+        CAST<br>SPOTLIGHTS
+      </h1>
+      <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed">
+        Personal stories from Amar, Jag, and Kayden - courageous individuals who shared their journeys of identity, acceptance, and love
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+        {#each emergenceData.castSpotlights as cast}
+          <div class="cast-hero-stat">
+            <div class="cast-name">{cast.name}</div>
+            <div class="cast-runtime">{cast.runtime}</div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
 
-<!-- Introduction -->
-<Section>
-  <div class="max-w-4xl">
-    <p class="text-lg text-gray-700 leading-relaxed mb-8">
-      Meet the courageous individuals who shared their personal journeys of identity, acceptance, and love. 
-      Each cast member offers a unique perspective on navigating sexuality and gender identity within 
-      traditional South Asian families and communities.
-    </p>
-  </div>
-</Section>
+  <!-- Cast Stories Grid -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {#each emergenceData.castSpotlights as cast, index}
+          <div class="cast-story-card">
+            <!-- Story Header -->
+            <div class="story-header">
+              <div class="story-number">{String(index + 1).padStart(2, '0')}</div>
+              <div class="story-meta">
+                <h2 class="story-name">{cast.name}</h2>
+                <div class="story-duration">{cast.runtime}</div>
+              </div>
+            </div>
+            
+            <!-- Story Content -->
+            <div class="story-content">
+              <p class="story-bio">{cast.bio}</p>
+              
+              <!-- Watch Link -->
+              <div class="story-actions">
+                <a href="https://youtube.com/watch?v={cast.youtubeId}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="story-watch-btn">
+                  Watch {cast.name}'s Story →
+                </a>
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
 
-<!-- Cast Spotlights -->
-<Section className="bg-gray-50">
-  <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-    {#each emergenceData.castSpotlights as spotlight}
-      <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-        <VideoCard
-          title="{spotlight.name}'s Story"
-          runtime={spotlight.runtime}
-          youtubeId={spotlight.youtubeId}
-          description={spotlight.bio}
-          className="border-0 shadow-none"
-        />
+  <!-- About Section -->
+  <section class="bg-black text-white py-20">
+    <div class="max-w-6xl mx-auto px-8">
+      <h2 class="section-heading text-white">About the Stories</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="about-panel">
+          <h3 class="panel-title">Individual Journeys</h3>
+          <p class="panel-text">
+            Each cast member brings their unique perspective to the documentary, sharing intimate details 
+            about their experiences with family, community, and self-acceptance. These personal narratives 
+            form the heart of the documentary's emotional impact.
+          </p>
+        </div>
         
-        <div class="p-6 pt-0">
-          <div class="flex justify-between items-center">
-            <h3 class="text-xl font-semibold text-gray-900">{spotlight.name}</h3>
-            <span class="text-sm text-gray-500">{spotlight.runtime}</span>
-          </div>
-          
-          {#if spotlight.bio}
-            <p class="text-gray-600 mt-3 leading-relaxed">
-              {spotlight.bio}
-            </p>
-          {/if}
-          
-          <div class="mt-4 pt-4 border-t border-gray-200">
-            <p class="text-xs text-gray-500">
-              Individual cast spotlight featuring personal interviews and reflections
-            </p>
-          </div>
+        <div class="about-panel">
+          <h3 class="panel-title">Shared Experiences</h3>
+          <p class="panel-text">
+            While each story is unique, the cast members share common themes of courage, resilience, 
+            and the complex navigation of identity within conservative cultural contexts. Their stories 
+            provide hope and representation for others facing similar challenges.
+          </p>
         </div>
       </div>
-    {/each}
-  </div>
-</Section>
+    </div>
+  </section>
 
-<!-- About the Cast -->
-<Section title="About the Stories">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <div class="bg-white rounded-lg border border-gray-200 p-6">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">Individual Journeys</h3>
-      <p class="text-gray-700 leading-relaxed">
-        Each cast member brings their unique perspective to the documentary, sharing intimate details 
-        about their experiences with family, community, and self-acceptance. These personal narratives 
-        form the heart of the documentary's emotional impact.
-      </p>
-    </div>
-    
-    <div class="bg-white rounded-lg border border-gray-200 p-6">
-      <h3 class="text-lg font-semibold text-gray-900 mb-4">Shared Experiences</h3>
-      <p class="text-gray-700 leading-relaxed">
-        While each story is unique, the cast members share common themes of courage, resilience, 
-        and the complex navigation of identity within conservative cultural contexts. Their stories 
-        provide hope and representation for others facing similar challenges.
-      </p>
-    </div>
-  </div>
-  
-  <!-- Important Note -->
-  <div class="mt-8 p-6 bg-amber-50 border border-amber-200 rounded-lg">
-    <div class="flex">
-      <div class="flex-shrink-0">
-        <svg class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-        </svg>
-      </div>
-      <div class="ml-3">
-        <h4 class="text-sm font-medium text-amber-800 mb-1">Privacy Notice</h4>
-        <p class="text-sm text-amber-700">
-          As per director requirements, Christine Michelle Lord's photo and biographical information 
-          are excluded from this cast page in accordance with the official website guidelines.
-        </p>
+  <!-- Privacy Notice -->
+  <section class="bg-amber-100 border-t-4 border-amber-500">
+    <div class="max-w-4xl mx-auto px-8 py-12">
+      <div class="flex items-start">
+        <div class="privacy-icon">⚠</div>
+        <div>
+          <h3 class="privacy-title">Privacy Notice</h3>
+          <p class="privacy-text">
+            As per director requirements, Christine Michelle Lord's photo and biographical information 
+            are excluded from this cast page in accordance with the official website guidelines.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</Section>
+  </section>
 
-<!-- Related Links -->
-<Section className="bg-emerald-50">
-  <div class="text-center max-w-2xl mx-auto">
-    <h3 class="text-xl font-semibold text-gray-900 mb-4">Explore More</h3>
-    <p class="text-gray-700 mb-6">
-      Learn more about the documentary and explore additional resources.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button>
-        <a href="/film" class="text-white no-underline">Watch the Full Film</a>
-      </Button>
-      <Button variant="outline">
-        <a href="/stills" class="no-underline">Photo Gallery</a>
-      </Button>
-      <Button variant="outline">
-        <a href={emergenceData.sources.officialSite} target="_blank" rel="noopener noreferrer" class="no-underline">
-          Official Website
+  <!-- Call to Action -->
+  <section class="bg-emerald-600 text-white py-20">
+    <div class="max-w-4xl mx-auto text-center px-8">
+      <h2 class="text-4xl font-bold mb-8">Experience Their Full Stories</h2>
+      <p class="text-xl mb-12">
+        Watch the complete documentary to see how these individual journeys weave together.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="bg-white text-emerald-600 px-8 py-4 font-bold hover:bg-gray-100 transition-colors">
+          Watch Full Documentary
         </a>
-      </Button>
+        <a href="https://emergencefilm.net/" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-4 font-bold transition-colors">
+          Official Website →
+        </a>
+      </div>
     </div>
-  </div>
-</Section>
+  </section>
+</main>
 
-<SubFooter />
+<style>
+  .cast-hero-stat {
+    text-align: center;
+  }
+
+  .cast-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #10b981;
+    font-family: monospace;
+  }
+
+  .cast-runtime {
+    font-size: 0.875rem;
+    color: #d1d5db;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .cast-story-card {
+    background: white;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .cast-story-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .story-header {
+    padding: 2rem;
+    background: #f8fafc;
+    border-bottom: 2px solid #10b981;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .story-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #10b981;
+    font-family: monospace;
+    line-height: 1;
+  }
+
+  .story-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .story-duration {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .story-content {
+    padding: 2rem;
+  }
+
+  .story-bio {
+    font-size: 1.125rem;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .story-watch-btn {
+    background: #10b981;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+  }
+
+  .story-watch-btn:hover {
+    background: #059669;
+  }
+
+  .section-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .about-panel {
+    background: #1f2937;
+    padding: 2rem;
+    border-left: 4px solid #10b981;
+  }
+
+  .panel-title {
+    color: #10b981;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .panel-text {
+    color: #d1d5db;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .privacy-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: #d97706;
+  }
+
+  .privacy-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #92400e;
+    margin-bottom: 0.5rem;
+  }
+
+  .privacy-text {
+    color: #a16207;
+    line-height: 1.6;
+  }
+</style>

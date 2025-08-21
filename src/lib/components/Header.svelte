@@ -13,7 +13,6 @@
   import { isMobile, scrollThreshold } from "$lib/stores.svelte";
   import { slide } from "svelte/transition";
   import { toast } from "svelte-sonner";
-  import { PUBLIC_COMPANY_NAME } from "$env/static/public";
 
   let initScroll = $state(0);
   let isLandingPage = $derived($page.route.id === "/");
@@ -55,7 +54,7 @@
       id="header-logo-area"
       onclick={() => goto("/")}
     >
-      {PUBLIC_COMPANY_NAME}
+      SACDA - Emergence Documentary Exhibit
     </button>
 
     <button
