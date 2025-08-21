@@ -2,7 +2,6 @@
   import Instagram from "$lib/icons/Instagram.svelte";
   import PhoneCall from "$lib/icons/PhoneCall.svelte";
   import { Button, buttonVariants } from "$lib/components/ui/button";
-  import { gsap } from "gsap";
   import { onMount } from "svelte";
   import * as Dialog from "$lib/components/ui/dialog";
   import { Title } from "$lib/components/ui/card";
