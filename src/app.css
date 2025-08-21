@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css"; 
 
+@source '../node_modules/@south-asian-canadian-digital-archive/sacda-exhibits-common/dist/components.css';
+
+
 /* Flat 2D Design - No rounded corners, minimal shadows */
 /* Following SACDA exhibit design patterns */
 

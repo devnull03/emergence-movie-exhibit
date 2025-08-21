@@ -8,8 +8,11 @@
   import { Toaster } from "$lib/components/ui/sonner";
   import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
 
-  import Header from "$lib/components/Header.svelte";
-  import Footer from "$lib/components/Footer.svelte";
+  import {
+    Header,
+    Footer,
+  } from "@south-asian-canadian-digital-archive/sacda-exhibits-common";
+  import SubHeader from "$lib/components/SubHeader.svelte";
 
   interface Props {
     children?: import("svelte").Snippet;
