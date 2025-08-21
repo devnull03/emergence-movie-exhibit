@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { PUBLIC_DOMAIN } from "$env/static/public";
+
   const menuItems: { label: string; route: string }[] = [];
 </script>
 
