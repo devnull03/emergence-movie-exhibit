@@ -11,10 +11,8 @@
   import { Toaster } from "$lib/components/ui/sonner";
   import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
 
-  import {
-    Header,
-    Footer,
-  } from "@south-asian-canadian-digital-archive/sacda-exhibits-common";
+  import Header from "$lib/components/Header.svelte";
+  import Footer from "$lib/components/Footer.svelte";
 
   interface Props {
     children?: import("svelte").Snippet;
@@ -83,9 +81,9 @@
 <Toaster />
 
 <!-- {#key load} -->
-<div in:fade={{ duration: 400 }} class="flex h-screen flex-col justify-between">
+<div in:fade={{ duration: 400 }} class="flex min-h-screen flex-col">
   <Header />
-  <main class="">
+  <main class="flex-1">
     {@render children?.()}
   </main>
   <Footer />

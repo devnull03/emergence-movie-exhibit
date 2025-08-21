@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css"; 
 
-@source '../node_modules/@south-asian-canadian-digital-archive/sacda-exhibits-common/dist/components.css';
-
 
 @custom-variant dark (&:is(.dark *));
  
@@ -17,7 +15,7 @@
  --card-foreground: hsl(240 10% 3.9%);
  --border: hsl(240 5.9% 90%);
  --input: hsl(240 5.9% 90%);
- --primary: hsl(240 5.9% 10%);
+ --primary: #0ea568; /* emerald-600 */
  --primary-foreground: hsl(0 0% 98%);
  --secondary: hsl(240 4.8% 95.9%);
  --secondary-foreground: hsl(240 5.9% 10%);
@@ -110,8 +108,29 @@
  * {
   @apply border-border;
  }
- 
+
  body {
   @apply bg-background text-foreground;
  }
+}
+
+/* Emergence Documentary Custom Colors */
+.text-emerald-600 { color: #059669; }
+.text-emerald-700 { color: #047857; }
+.text-emerald-800 { color: #065f46; }
+.bg-emerald-50 { background-color: #ecfdf5; }
+.bg-emerald-100 { background-color: #d1fae5; }
+.bg-emerald-600 { background-color: #059669; }
+.bg-emerald-700 { background-color: #047857; }
+.hover\\:bg-emerald-700:hover { background-color: #047857; }
+.hover\\:bg-emerald-100:hover { background-color: #d1fae5; }
+.border-emerald-200 { border-color: #a7f3d0; }
+.border-emerald-600 { border-color: #059669; }
+
+/* Focus states */
+.focus\\:ring-emerald-500:focus {
+  --tw-ring-color: #10b981;
+}
+.focus\\:border-emerald-500:focus {
+  border-color: #10b981;
 }
