@@ -1,460 +1,567 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
+  import { gsap } from "gsap";
+  import { ScrollTrigger, ScrollSmoother } from "gsap/all";
   import emergenceData from "$lib/content/films/emergence.json";
+  import Section from "$lib/components/Section.svelte";
+  import { Button } from "$lib/components/ui/button";
+  import SubFooter from "$lib/components/SubFooter.svelte";
 
-  let innerHeight: number;
-  let innerWidth: number;
-  let background_container: HTMLDivElement;
-  let scrolling_container: HTMLDivElement;
-
-  // Section background mapping - using poster colors
-  const section_backgrounds = {
-    hero: "linear-gradient(135deg, #0ea568 0%, #5b2d83 50%, #225c9e 100%)",
-    synopsis: "#f8fafc",
-    trailer: "#0b0b0c",
-    watch: "#f8fafc", 
-    spotlights: "#0b0b0c",
-    awards: "#f8fafc",
-    guide: "#0b0b0c",
-    sources: "#f8fafc"
-  };
-
-  let current_section = "hero";
-
-  const scroll_handler = (e: UIEvent) => {
-    let current_section_id = find_inview_section();
-    if (Object.keys(section_backgrounds).includes(current_section_id)) {
-      if (current_section_id !== current_section) {
-        current_section = current_section_id;
-      }
-    }
-  };
-
-  const find_inview_section = () => {
-    if (!innerWidth || !innerHeight) return "hero";
-    let elements = document.elementsFromPoint(innerWidth / 2, innerHeight / 2);
-    let section = elements.find((el) => el.id && Object.keys(section_backgrounds).includes(el.id));
-    return section?.id || "hero";
-  };
+  let heroSection: HTMLElement;
+  let heroTitle: HTMLElement;
+  let backgroundVideo: HTMLVideoElement;
+  let smoother: globalThis.ScrollSmoother | undefined = $state();
 
   onMount(() => {
-    // Smooth scroll to sections
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href && href !== '#') {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
-      });
+    // Register GSAP plugins
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    // Create ScrollSmoother
+    smoother = ScrollSmoother.create({
+      smooth: 2,
+      effects: true,
+      smoothTouch: true,
+      normalizeScroll: true,
     });
+
+    // Wait for elements to be available
+    setTimeout(() => {
+      if (heroTitle) {
+        // Create GSAP timeline for hero title animation
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: heroSection,
+              start: "top top",
+              end: "bottom center",
+              scrub: 1.5,
+              pin: false,
+            },
+          })
+          .to(heroTitle, {
+            scale: 0.8,
+            y: -100,
+            opacity: 0.7,
+            ease: "none",
+          });
+      }
+
+      // Handle video optimization
+      if (backgroundVideo) {
+        const videoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                backgroundVideo.play();
+              } else {
+                backgroundVideo.pause();
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        videoObserver.observe(backgroundVideo);
+      }
+    }, 100);
+  });
+
+  onDestroy(() => {
+    smoother?.kill();
+    ScrollTrigger.killAll();
   });
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth on:scroll={scroll_handler} />
-
 <svelte:head>
   <title>Emergence: Out of the Shadows - SACDA Digital Exhibit</title>
-  <meta name="description" content="An intimate documentary following three South Asian LGBTQ+ individuals as they navigate identity, family, and belonging. Winner of 7 awards across 51 international film festivals." />
-  <meta property="og:title" content="Emergence: Out of the Shadows - Digital Exhibit" />
-  <meta property="og:description" content="Discover the powerful stories of Kayden, Jag, and Amar in this acclaimed documentary." />
+  <meta
+    name="description"
+    content="An intimate documentary following three South Asian LGBTQ+ individuals as they navigate identity, family, and belonging. Winner of 7 awards across 51 international film festivals."
+  />
+  <meta
+    property="og:title"
+    content="Emergence: Out of the Shadows - Digital Exhibit"
+  />
+  <meta
+    property="og:description"
+    content="Discover the powerful stories of Kayden, Jag, and Amar in this acclaimed documentary."
+  />
 </svelte:head>
 
-<main class="relative bg-gray-100">
-  <!-- Sticky Background -->
-  <div class="fixed top-0 left-0 w-full h-full -z-10">
-    <div class="w-full h-full transition-all duration-700 ease-out" 
-         style="background: {section_backgrounds[current_section]}"
-         bind:this={background_container}>
+<div id="smooth-content">
+  <!-- Hero Section with Background Video -->
+  <section
+    bind:this={heroSection}
+    data-speed="0.5"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  >
+    <!-- Background Video -->
+    <video
+      bind:this={backgroundVideo}
+      class="absolute inset-0 w-full h-full object-cover z-0"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="/videos/emergence-background.webm" type="video/webm" />
+      <source src="/videos/emergence-background.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Dark overlay for better text readability -->
+    <div class="absolute inset-0 bg-black/60 z-1"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center text-white px-6 hero-title-container">
+      <h1
+        bind:this={heroTitle}
+        class="text-6xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight"
+      >
+        EMERGENCE
+      </h1>
+      <p class="text-xl md:text-2xl lg:text-3xl font-light opacity-90 mb-8">
+        Out of the Shadows
+      </p>
+      <p
+        class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed"
+      >
+        {emergenceData.synopsis}
+      </p>
+      <Button
+        class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-lg font-bold"
+        onclick={() =>
+          document
+            .getElementById("story")
+            ?.scrollIntoView({ behavior: "smooth" })}
+      >
+        Discover Their Stories →
+      </Button>
     </div>
-  </div>
+  </section>
 
-  <!-- Scrolling Content -->
-  <div class="relative z-10" bind:this={scrolling_container}>
-
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center text-white">
-      <div class="text-center max-w-4xl mx-auto px-8">
-        <div class="bg-black bg-opacity-50 p-12 backdrop-blur-sm">
-          <h1 class="text-6xl md:text-8xl font-bold mb-4 leading-tight font-mono">
-            EMERGENCE
-          </h1>
-          <p class="text-2xl md:text-3xl mb-8 font-light">
-            Out of the Shadows
-          </p>
-          <p class="text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-            An intimate documentary following three South Asian LGBTQ+ individuals as they navigate identity, family, and belonging
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#trailer" 
-               class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 font-bold transition-all duration-300 transform hover:scale-105">
-              Watch Trailer
-            </a>
-            <a href="#synopsis"
-               class="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold transition-all duration-300">
-              Explore Story
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Synopsis Section -->
-    <section id="synopsis" class="section-content">
-      <div class="content-box">
-        <h2 class="section-title">The Story</h2>
-        <p class="text-lg leading-relaxed mb-8">
+  <!-- Story Section -->
+  <div id="story" data-speed="0.8" class="parallax-section">
+    <Section title="The Story" className="bg-white">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-xl leading-relaxed mb-8 text-gray-700">
           {emergenceData.synopsis}
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <div class="stat-box">
-            <div class="stat-number">51</div>
-            <div class="stat-label">Festival Selections</div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-emerald-600">
+              Available Versions
+            </h3>
+            <ul class="space-y-3">
+              {#each emergenceData.versions as version}
+                <li class="flex items-start">
+                  <span class="text-emerald-500 mr-3 text-xl">•</span>
+                  <div>
+                    <span class="text-lg text-gray-700 font-semibold"
+                      >{version.title}</span
+                    >
+                    <div class="text-sm text-gray-600">
+                      Runtime: {version.runtime}
+                    </div>
+                  </div>
+                </li>
+              {/each}
+            </ul>
           </div>
-          <div class="stat-box">
-            <div class="stat-number">7</div>
-            <div class="stat-label">Award Wins</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Languages</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">81</div>
-            <div class="stat-label">Minutes (Full)</div>
+
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-emerald-600">
+              Festival Recognition
+            </h3>
+            <div class="space-y-4">
+              <div class="flex justify-between border-b pb-2">
+                <span class="text-gray-600">Total Festivals:</span>
+                <span class="font-semibold"
+                  >{emergenceData.awardsSummary.countsByResult
+                    .totalOfficialSelections}</span
+                >
+              </div>
+              <div class="flex justify-between border-b pb-2">
+                <span class="text-gray-600">Awards Won:</span>
+                <span class="font-semibold"
+                  >{emergenceData.awardsSummary.countsByResult
+                    .awardWinner}</span
+                >
+              </div>
+              <div class="flex justify-between border-b pb-2">
+                <span class="text-gray-600">Finalist:</span>
+                <span class="font-semibold"
+                  >{emergenceData.awardsSummary.countsByResult.finalist}</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
+  </div>
 
-    <!-- Trailer Section -->
-    <section id="trailer" class="section-content bg-black text-white">
-      <div class="content-box">
-        <h2 class="section-title text-white">Watch Trailer</h2>
-        <div class="aspect-video bg-gray-800 flex items-center justify-center">
-          <iframe 
-            class="w-full h-full" 
-            src="https://www.youtube.com/embed/{emergenceData.trailer.youtubeId}" 
-            title="Emergence: Out of the Shadows Trailer"
-            frameborder="0" 
+  <!-- Trailer Section -->
+  <div id="trailer" data-speed="0.9" class="parallax-section">
+    <Section title="Watch Trailer" className="bg-black text-white">
+      <div class="max-w-4xl mx-auto">
+        <div class="aspect-video rounded-lg overflow-hidden mb-8">
+          <iframe
+            src="https://www.youtube.com/embed/{emergenceData.trailer
+              .youtubeId}"
+            title="Emergence: Out of the Shadows - Official Trailer"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-            loading="lazy">
-          </iframe>
+          ></iframe>
+        </div>
+
+        <div class="text-center">
+          <p class="text-lg text-gray-300 mb-6">
+            Experience the powerful trailer that has captivated audiences at
+            film festivals worldwide
+          </p>
+          <Button
+            variant="outline"
+            class="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg font-bold"
+            onclick={() =>
+              window.open(
+                `https://www.youtube.com/watch?v=${emergenceData.trailer.youtubeId}`,
+                "_blank"
+              )}
+          >
+            Watch on YouTube →
+          </Button>
         </div>
       </div>
-    </section>
+    </Section>
+  </div>
 
-    <!-- Watch the Film Section -->
-    <section id="watch" class="section-content">
-      <div class="content-box">
-        <h2 class="section-title">Watch the Film</h2>
-        <p class="text-lg mb-12">Available in multiple versions and languages</p>
+  <!-- Watch Section -->
+  <div id="watch" data-speed="0.7" class="parallax-section">
+    <Section title="Watch the Film" className="bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <p class="text-xl text-gray-700 mb-8">
+            Ready to watch the full documentary? Choose your preferred version
+            below.
+          </p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {#each emergenceData.versions as version}
-            <div class="film-card">
-              <h3 class="text-xl font-bold mb-4">{version.title}</h3>
-              <div class="mb-4">
-                <span class="badge">Runtime: {version.runtime}</span>
-                <span class="badge ml-2">Language: {version.lang}</span>
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-transparent hover:border-emerald-500 transition-colors"
+            >
+              <div class="text-4xl mb-4">🎬</div>
+              <h3 class="text-xl font-bold mb-2">{version.title}</h3>
+              <p class="text-gray-600 mb-4">Language: {version.lang}</p>
+              <div class="text-2xl font-bold text-emerald-600 mb-4">
+                {version.runtime}
               </div>
-              <a href="https://youtube.com/watch?v={version.id}" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="cta-button">
-                Watch on YouTube →
-              </a>
+              <Button
+                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold"
+                onclick={() =>
+                  window.open(
+                    `https://www.youtube.com/watch?v=${version.id}`,
+                    "_blank"
+                  )}
+              >
+                Watch Now →
+              </Button>
             </div>
           {/each}
         </div>
-      </div>
-    </section>
 
-    <!-- Cast Spotlights Section -->
-    <section id="spotlights" class="section-content bg-black text-white">
-      <div class="content-box">
-        <h2 class="section-title text-white">Cast Spotlights</h2>
-        <p class="text-lg mb-12 text-gray-300">Personal stories from our three protagonists</p>
+        <!-- Educational Resources -->
+        <div class="mt-16 bg-emerald-600 rounded-lg p-8 text-white text-center">
+          <h3 class="text-2xl font-bold mb-4">For Educators</h3>
+          <p class="text-emerald-100 mb-6 text-lg">
+            Download our comprehensive teacher's discussion guide for classroom
+            use
+          </p>
+          <Button
+            variant="outline"
+            class="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 text-lg font-bold"
+            onclick={() =>
+              window.open(emergenceData.teacherGuide.href, "_blank")}
+          >
+            {emergenceData.teacherGuide.title} →
+          </Button>
+        </div>
+      </div>
+    </Section>
+  </div>
+
+  <!-- Cast Spotlights Section -->
+  <div id="cast" data-speed="0.6" class="parallax-section">
+    <Section title="Cast Spotlights" className="bg-black text-white">
+      <div class="max-w-6xl mx-auto">
+        <p class="text-lg text-center mb-12 text-gray-300">
+          Personal stories from our three protagonists
+        </p>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {#each emergenceData.castSpotlights as cast}
-            <div class="cast-card">
-              <h3 class="text-2xl font-bold mb-4">{cast.name}</h3>
-              <p class="text-gray-300 mb-6 leading-relaxed">{cast.bio}</p>
-              <div class="mb-4">
-                <span class="badge">Runtime: {cast.runtime}</span>
+            <div
+              class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800"
+            >
+              <div class="aspect-video overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/{cast.youtubeId}"
+                  title="{cast.name} - Character Spotlight"
+                  class="w-full h-full"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
               </div>
-              <a href="https://youtube.com/watch?v={cast.youtubeId}" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="cta-button-white">
-                Watch Story →
-              </a>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-emerald-400">
+                  {cast.name}
+                </h3>
+                <p class="text-gray-300 mb-4">{cast.bio}</p>
+                <div class="text-sm text-gray-400">Runtime: {cast.runtime}</div>
+              </div>
             </div>
           {/each}
         </div>
       </div>
-    </section>
+    </Section>
+  </div>
 
-    <!-- Awards Section -->
-    <section id="awards" class="section-content">
-      <div class="content-box">
-        <h2 class="section-title">Recognition & Awards</h2>
+  <!-- Awards Section -->
+  <div id="awards" data-speed="0.8" class="parallax-section">
+    <Section title="Recognition & Awards" className="bg-white">
+      <div class="max-w-6xl mx-auto">
+        <!-- Award Statistics -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          <div class="award-stat">
-            <div class="award-number">{emergenceData.awardsSummary.countsByResult.totalOfficialSelections}</div>
-            <div class="award-label">Festival Selections</div>
+          <div
+            class="text-center p-6 border border-emerald-200 rounded-lg bg-emerald-50"
+          >
+            <div class="text-4xl font-bold text-emerald-600 mb-2">
+              {emergenceData.awardsSummary.countsByResult
+                .totalOfficialSelections}
+            </div>
+            <div class="text-sm text-gray-600 uppercase tracking-wide">
+              Festival Selections
+            </div>
           </div>
-          <div class="award-stat">
-            <div class="award-number">{emergenceData.awardsSummary.countsByResult.awardWinner}</div>
-            <div class="award-label">Award Wins</div>
+          <div
+            class="text-center p-6 border border-emerald-200 rounded-lg bg-emerald-50"
+          >
+            <div class="text-4xl font-bold text-emerald-600 mb-2">
+              {emergenceData.awardsSummary.countsByResult.awardWinner}
+            </div>
+            <div class="text-sm text-gray-600 uppercase tracking-wide">
+              Award Wins
+            </div>
           </div>
-          <div class="award-stat">
-            <div class="award-number">{emergenceData.awardsSummary.countsByResult.finalist}</div>
-            <div class="award-label">Finalists</div>
+          <div
+            class="text-center p-6 border border-emerald-200 rounded-lg bg-emerald-50"
+          >
+            <div class="text-4xl font-bold text-emerald-600 mb-2">
+              {emergenceData.awardsSummary.countsByResult.finalist}
+            </div>
+            <div class="text-sm text-gray-600 uppercase tracking-wide">
+              Finalist
+            </div>
           </div>
-          <div class="award-stat">
-            <div class="award-number">{emergenceData.awardsSummary.countsByFestivalType.lgbtq}</div>
-            <div class="award-label">LGBTQ+ Festivals</div>
+          <div
+            class="text-center p-6 border border-emerald-200 rounded-lg bg-emerald-50"
+          >
+            <div class="text-4xl font-bold text-emerald-600 mb-2">
+              {emergenceData.awardsSummary.countsByResult.semiFinalist}
+            </div>
+            <div class="text-sm text-gray-600 uppercase tracking-wide">
+              Semi-Finalist
+            </div>
           </div>
         </div>
 
         <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-8">Award Highlights</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h3 class="text-2xl font-bold mb-8 text-center text-emerald-600">
+            Major Awards
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each emergenceData.awardsHighlights.slice(0, 6) as award}
-              <div class="award-card">
-                <div class="award-result">{award.result}</div>
-                <div class="award-title">{award.title}</div>
-                <div class="award-festival">{award.festival}</div>
+              <div
+                class="bg-gray-50 rounded-lg p-6 border-l-4 border-emerald-500"
+              >
+                <h4 class="font-bold text-emerald-600 mb-2">{award.result}</h4>
+                <p class="text-gray-800 font-semibold mb-1">{award.festival}</p>
+                <p class="text-gray-600 text-sm">{award.title}</p>
               </div>
             {/each}
           </div>
         </div>
-
-        <div class="text-center">
-          <h3 class="text-xl font-bold mb-4">Major Qualifying Festivals</h3>
-          <div class="flex flex-wrap justify-center gap-4">
-            <span class="qualifier-badge">Academy Award Qualifying</span>
-            <span class="qualifier-badge">BAFTA Qualifying</span>
-            <span class="qualifier-badge">Canadian Screen Award Qualifying</span>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <!-- Teacher's Guide Section -->
-    <section id="guide" class="section-content bg-black text-white">
-      <div class="content-box">
-        <h2 class="section-title text-white">Educational Resources</h2>
-        <div class="text-center max-w-md mx-auto">
-          <h3 class="text-2xl font-bold mb-4">Teacher's Discussion Guide</h3>
-          <p class="text-gray-300 mb-6">Comprehensive educational materials for classroom discussion</p>
-          <a href="{emergenceData.teacherGuide.href}" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             class="cta-button-white">
-            Download Guide →
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sources and Rights Section -->
-    <section id="sources" class="section-content">
-      <div class="content-box">
-        <h2 class="section-title">Sources & Rights</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <h3 class="text-xl font-bold mb-4">Official Links</h3>
-            <ul class="space-y-3">
-              <li><a href="https://emergencefilm.net/" target="_blank" class="text-emerald-600 hover:text-emerald-700">Official Film Website →</a></li>
-              <li><a href="https://sacda.ca" target="_blank" class="text-emerald-600 hover:text-emerald-700">SACDA Archive →</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Usage Rights</h3>
-            <p class="text-gray-700 leading-relaxed mb-4">
-              For screening, distribution, or related inquiries, contact info@shervancouver.com. 
-              Third parties must obtain prior written permission to use documentary materials. 
-              Unauthorized use is strictly prohibited.
-            </p>
-            <a href="mailto:info@shervancouver.com" class="text-emerald-600 hover:text-emerald-700">
-              Contact for Rights →
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    </Section>
   </div>
-</main>
+
+  <!-- Contact & Rights Section -->
+  <div id="contact" data-speed="0.9" class="parallax-section">
+    <Section title="Contact & Rights" className="bg-gray-900 text-white">
+      <div class="max-w-6xl mx-auto">
+        <!-- Usage Notice -->
+        <div class="bg-amber-500 text-black rounded-lg p-6 mb-12">
+          <h3 class="text-lg font-bold mb-2 flex items-center">
+            <span class="mr-2">⚠</span> IMPORTANT USAGE NOTICE
+          </h3>
+          <p class="font-semibold">
+            {emergenceData.rights.notice}
+          </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-emerald-400">
+              Primary Contact
+            </h3>
+            <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-4">📧</span>
+                <div>
+                  <div class="text-xl font-bold">
+                    Film Rights & Distribution
+                  </div>
+                  <div class="text-gray-400">
+                    For all screening and licensing inquiries
+                  </div>
+                </div>
+              </div>
+              <div class="text-center py-4">
+                <a
+                  href="mailto:{emergenceData.rights.contactEmail}"
+                  class="text-2xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+                >
+                  {emergenceData.rights.contactEmail}
+                </a>
+              </div>
+              <div class="flex gap-4 justify-center mt-6">
+                <Button
+                  class="bg-emerald-600 hover:bg-emerald-700"
+                  onclick={() =>
+                    window.open(
+                      `mailto:${emergenceData.rights.contactEmail}`,
+                      "_blank"
+                    )}
+                >
+                  Send General Inquiry
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-emerald-400">
+              Contact Information
+            </h3>
+            <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0">
+                    <span class="text-3xl">📧</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-lg font-bold text-white">
+                      Film Rights & Distribution
+                    </div>
+                    <div class="text-emerald-400 text-sm mb-2">
+                      For all screening and licensing inquiries
+                    </div>
+                    <a
+                      href="mailto:{emergenceData.rights.contactEmail}"
+                      class="text-emerald-400 hover:text-emerald-300 transition-colors"
+                    >
+                      {emergenceData.rights.contactEmail}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Usage Categories -->
+        <div>
+          <h3 class="text-2xl font-bold mb-8 text-center text-emerald-400">
+            Usage Categories
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-gray-800 rounded-lg p-6 border border-gray-700 text-center"
+            >
+              <div class="text-4xl mb-4">🎓</div>
+              <h4 class="text-xl font-bold text-white mb-4">Educational Use</h4>
+              <ul class="text-gray-300 text-left space-y-2">
+                <li>• Classroom screenings</li>
+                <li>• Academic workshops</li>
+                <li>• Student research</li>
+                <li>• Discussion groups</li>
+              </ul>
+            </div>
+            <div
+              class="bg-gray-800 rounded-lg p-6 border border-gray-700 text-center"
+            >
+              <div class="text-4xl mb-4">📺</div>
+              <h4 class="text-xl font-bold text-white mb-4">Press & Media</h4>
+              <ul class="text-gray-300 text-left space-y-2">
+                <li>• Press coverage</li>
+                <li>• Interview requests</li>
+                <li>• Promotional materials</li>
+                <li>• Festival submissions</li>
+              </ul>
+            </div>
+            <div
+              class="bg-gray-800 rounded-lg p-6 border border-gray-700 text-center"
+            >
+              <div class="text-4xl mb-4">👥</div>
+              <h4 class="text-xl font-bold text-white mb-4">Community</h4>
+              <ul class="text-gray-300 text-left space-y-2">
+                <li>• Non-profit events</li>
+                <li>• Community centers</li>
+                <li>• Awareness campaigns</li>
+                <li>• Support groups</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  </div>
+
+  <!-- SubFooter Component -->
+</div>
 
 <style>
-  .section-content {
-    min-height: 100vh;
-    padding: 5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  #smooth-content {
+    overflow: visible;
+    width: 100%;
   }
 
-  .content-box {
-    max-width: 72rem;
-    margin: 0 auto;
-    /* Flat design - no rounded corners, minimal shadows */
-    clip-path: polygon(
-      0% 0%, 
-      98% 0%, 
-      100% 2%, 
-      100% 98%, 
-      98% 100%, 
-      2% 100%, 
-      0% 98%, 
-      0% 2%
-    );
-    background: rgba(255, 255, 255, 0.95);
-    padding: 3rem;
+  .hero-title-container {
+    transform-origin: center center;
+    will-change: transform;
   }
 
-  .section-content.bg-black .content-box {
-    background: rgba(0, 0, 0, 0.95);
+  /* Optimized video performance */
+  video {
+    will-change: transform;
+    transform: translate3d(0, 0, 0); /* Force hardware acceleration */
   }
 
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #374151;
-    font-family: monospace;
+  /* Parallax sections */
+  .parallax-section {
+    will-change: transform;
   }
 
-  .stat-box {
-    text-align: center;
-    padding: 1.5rem;
-    border: 1px solid #10b981;
-    background-color: #ecfdf5;
-  }
-
-  .stat-number {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #10b981;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .film-card, .cast-card {
-    padding: 1.5rem;
-    border: 1px solid #d1d5db;
-    background: white;
-  }
-
-  .cast-card {
-    background: #1f2937;
-    border-color: #4b5563;
-    color: white;
-  }
-
-  .badge {
-    display: inline-block;
-    background: #e5e7eb;
-    color: #1f2937;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-  }
-
-  .cast-card .badge {
-    background: #4b5563;
-    color: #e5e7eb;
-  }
-
-  .cta-button {
-    display: inline-block;
-    background: #10b981;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-
-  .cta-button:hover {
-    background: #059669;
-  }
-
-  .cta-button-white {
-    display: inline-block;
-    background: white;
-    color: black;
-    padding: 0.75rem 1.5rem;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-
-  .cta-button-white:hover {
-    background: #f3f4f6;
-  }
-
-  .award-stat {
-    text-align: center;
-  }
-
-  .award-number {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #10b981;
-  }
-
-  .award-label {
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .award-card {
-    padding: 1rem;
-    border: 1px solid #a7f3d0;
-    background: #ecfdf5;
-  }
-
-  .award-result {
-    color: #10b981;
-    font-weight: bold;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .award-title {
-    font-weight: bold;
-    color: #1f2937;
-    margin-top: 0.25rem;
-  }
-
-  .award-festival {
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-
-  .qualifier-badge {
-    background: #10b981;
-    color: white;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: bold;
+  /* Smooth transitions for GSAP animations */
+  .hero-title-container h1 {
+    will-change: transform;
   }
 </style>

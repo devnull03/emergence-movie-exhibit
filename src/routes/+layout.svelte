@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
   import { dev } from "$app/environment";
+  import { page } from "$app/stores";
 
   import { injectAnalytics } from "@vercel/analytics/sveltekit";
   import { Toaster } from "$lib/components/ui/sonner";
@@ -12,7 +13,9 @@
     Header,
     Footer,
   } from "@south-asian-canadian-digital-archive/sacda-exhibits-common";
+
   import SubHeader from "$lib/components/SubHeader.svelte";
+  import SubFooter from "$lib/components/SubFooter.svelte";
 
   interface Props {
     children?: import("svelte").Snippet;
@@ -30,6 +33,9 @@
     placename: "",
     region: "",
   };
+
+  // Show SubHeader on all pages except home
+  const showSubHeader = $derived($page.url.pathname !== "/");
 
   injectAnalytics({ mode: dev ? "development" : "production" });
   injectSpeedInsights();
@@ -62,12 +68,18 @@
 
   <meta name="description" content={siteData.description} />
   <meta name="keywords" content={siteData.keywords.join(", ")} />
-  <meta property="og:title" content="Emergence: Out of the Shadows - SACDA Exhibit" />
+  <meta
+    property="og:title"
+    content="Emergence: Out of the Shadows - SACDA Exhibit"
+  />
   <meta property="og:description" content={siteData.description} />
   <meta property="og:image" content="/favicon-96x96.png" />
   <meta property="og:url" content="https://emergence.sacda.ca" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Emergence: Out of the Shadows - SACDA Exhibit" />
+  <meta
+    name="twitter:title"
+    content="Emergence: Out of the Shadows - SACDA Exhibit"
+  />
   <meta name="twitter:description" content={siteData.description} />
   <meta name="twitter:image" content="/favicon-96x96.png" />
 
@@ -80,15 +92,25 @@
 
 <Toaster />
 
-<!-- {#key load} -->
-<div in:fade={{ duration: 400 }} class="flex min-h-screen flex-col">
+<!-- SACDA Header positioned outside ScrollSmoother -->
+<!-- ScrollSmoother wrapper -->
+<div id="smooth-wrapper" class="relative">
+  <!-- {#key load} -->
   <Header />
-  <main class="flex-1">
-    {@render children?.()}
-  </main>
+  <SubHeader />
+
+  <div in:fade={{ duration: 400 }}>
+    <main>
+      {@render children?.()}
+    </main>
+  </div>
+  <!-- {/key} -->
+
+  <SubFooter />
   <Footer />
 </div>
-<!-- {/key} -->
+
+<!-- SACDA Footer positioned outside ScrollSmoother -->
 
 {#if scrollY !== 0}
   <button
