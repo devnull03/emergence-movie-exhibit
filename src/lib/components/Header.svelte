@@ -2,7 +2,6 @@
   import Instagram from "$lib/icons/Instagram.svelte";
   import PhoneCall from "$lib/icons/PhoneCall.svelte";
   import { Button, buttonVariants } from "$lib/components/ui/button";
-  import { gsap } from "gsap";
   import { onMount } from "svelte";
   import * as Dialog from "$lib/components/ui/dialog";
   import { Title } from "$lib/components/ui/card";
@@ -13,7 +12,6 @@
   import { isMobile, scrollThreshold } from "$lib/stores.svelte";
   import { slide } from "svelte/transition";
   import { toast } from "svelte-sonner";
-  import { PUBLIC_COMPANY_NAME } from "$env/static/public";
 
   let initScroll = $state(0);
   let isLandingPage = $derived($page.route.id === "/");
@@ -55,7 +53,7 @@
       id="header-logo-area"
       onclick={() => goto("/")}
     >
-      {PUBLIC_COMPANY_NAME}
+      SACDA - Emergence Documentary Exhibit
     </button>
 
     <button

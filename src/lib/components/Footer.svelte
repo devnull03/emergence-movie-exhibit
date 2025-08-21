@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PUBLIC_COMPANY_NAME, PUBLIC_DOMAIN } from "$env/static/public";
+  import { PUBLIC_DOMAIN } from "$env/static/public";
 
   const menuItems: { label: string; route: string }[] = [];
 </script>
@@ -12,8 +12,8 @@
   >
     <div class=""></div>
     <div class="flex gap-2 lg:gap-8">
-      <a href="">Instagram</a>
-      <a href="">TikTok</a>
+      <a href="https://instagram.com/sacda_ufv">Instagram</a>
+      <a href="https://tiktok.com/@sacda_ufv">TikTok</a>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
   <div class="w-full text-center font-[Cantarell] text-sm text-[#FFFFFF99]">
     <p>{PUBLIC_DOMAIN}</p>
     <p>
-      Copyright © 2024 - 2028 {PUBLIC_COMPANY_NAME}. All rights reserved.
+      Copyright © 2024 - 2028 South Asian Canadian Digital Archive. All rights reserved.
     </p>
   </div>
 </footer>
