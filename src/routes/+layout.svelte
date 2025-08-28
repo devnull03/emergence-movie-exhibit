@@ -2,6 +2,8 @@
   import "../app.css";
   import { onMount, onDestroy } from "svelte";
   import { fade } from "svelte/transition";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/all";
 
   import {
     Header,
@@ -39,7 +41,7 @@
 
   onMount(() => {
     selectionShare = shareThis({
-      selector: "#main-container",
+      selector: "#smooth-wrapper",
       popoverClass: "custom-share-popover",
       sharers: [twitterSharer, facebookSharer, redditSharer, emailSharer],
     });
@@ -47,7 +49,17 @@
     selectionShare.init();
 
     firstLoad = false;
-    // load = true;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      trigger: "#subheader",
+      pin: true,
+      start: "top",
+      end: "max", // This will pin the element permanently
+      anticipatePin: 5,
+      pinType: "fixed",
+    });
   });
 
   onDestroy(() => {
@@ -57,12 +69,6 @@
 
 <svelte:head>
   <title>SACDA - Emergence Documentary Exhibit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-  <!-- <link
-		href="https://fonts.googleapis.com/css2?family=Alatsi&family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-		rel="stylesheet"
-	/> -->
 
   <script
     src="https://kit.fontawesome.com/30f055fc02.js"
@@ -96,31 +102,43 @@
   <meta name="author" content="South Asian Canadian Digital Archive" />
   <meta name="geo.placename" content={siteData.placename} />
   <meta name="geo.region" content={siteData.region} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin="anonymous"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
 <svelte:window bind:scrollY />
 
 <Cursor />
 
-<!-- SACDA Header positioned outside ScrollSmoother -->
-<!-- ScrollSmoother wrapper -->
-<div id="smooth-wrapper" class="relative">
-  <!-- {#key load} -->
+<div id="header-wrapper" class="relative z-100">
   <Header />
-  <SubHeader />
+    <SubHeader />
+</div>
 
-  <div in:fade={{ duration: 400 }}>
-    <main>
-      {@render children?.()}
-    </main>
+<div id="smooth-wrapper" class="pt-56">
+  <div id="smooth-content" class="h-[200vh] overflow-visible w-full">
+    {@render children?.()}
+
+    <div class="h-98">
+      <!-- padding for footer -->
+      &nbsp;
+    </div>
   </div>
-  <!-- {/key} -->
+</div>
 
+<div class="fixed bottom-0 z-[-1]">
   <SubFooter />
   <Footer />
 </div>
-
-<!-- SACDA Footer positioned outside ScrollSmoother -->
 
 {#if scrollY !== 0}
   <button

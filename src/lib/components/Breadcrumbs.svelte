@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import * as Breadcrumb from "$lib/components/ui/breadcrumb";
 
   interface BreadcrumbItem {
     label: string;
@@ -44,24 +45,23 @@
   );
 </script>
 
-<nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-sm">
-  {#each finalBreadcrumbs as breadcrumb, index}
-    <div class="flex items-center">
-      {#if index > 0}
-        <span class="mx-2 text-muted-foreground">/</span>
+<Breadcrumb.Root>
+  <Breadcrumb.List>
+    {#each finalBreadcrumbs as breadcrumb, index}
+      <Breadcrumb.Item>
+        {#if breadcrumb.href}
+          <Breadcrumb.Link href={breadcrumb.href}>
+            {breadcrumb.label}
+          </Breadcrumb.Link>
+        {:else}
+          <Breadcrumb.Page>
+            {breadcrumb.label}
+          </Breadcrumb.Page>
+        {/if}
+      </Breadcrumb.Item>
+      {#if index < finalBreadcrumbs.length - 1}
+        <Breadcrumb.Separator />
       {/if}
-      {#if breadcrumb.href}
-        <a
-          href={breadcrumb.href}
-          class="text-muted-foreground hover:text-foreground transition-colors hover:underline underline-offset-2"
-        >
-          {breadcrumb.label}
-        </a>
-      {:else}
-        <span class="text-foreground font-medium">
-          {breadcrumb.label}
-        </span>
-      {/if}
-    </div>
-  {/each}
-</nav>
+    {/each}
+  </Breadcrumb.List>
+</Breadcrumb.Root>

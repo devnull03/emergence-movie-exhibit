@@ -140,7 +140,7 @@
   /* Custom share-this popover styles */
   .custom-share-popover {
     @apply max-w-32 pointer-events-none;
-    filter: drop-shadow(0 4px 12px rgba(5, 102, 141, 0.25));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
     animation: share-this-intro 0.3s;
   }
 
@@ -153,15 +153,15 @@
     margin: 0.25em -0.5em;
     border-width: 0.5em 0.5em 0;
     border-style: solid;
-    border-color: #05668D transparent;
+    border-color: var(--primary) transparent;
     /* primary-blue */
   }
 
   .custom-share-popover>ul {
-    @apply pointer-events-auto list-none p-0 whitespace-nowrap bg-primary-blue text-white rounded-lg absolute left-1/2 border-2;
+    @apply pointer-events-auto list-none p-0 whitespace-nowrap bg-primary text-white rounded-lg absolute left-1/2 border-2;
     margin: -0.75em 0 0;
     transform: translate(-50%, -100%);
-    border-color: #028090;
+    border-color: var(--primary);
     /* secondary-teal */
   }
 
@@ -177,7 +177,7 @@
   .custom-share-popover>ul>li>a:focus,
   .custom-share-popover>ul>li>a:hover {
     @apply text-white rounded;
-    background: #028090;
+    background: var(--primary);
     /* secondary-teal */
   }
 
