@@ -9,7 +9,7 @@
   import { Input } from "$lib/components/ui/input";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { isMobile, scrollThreshold } from "$lib/stores.svelte";
+  import { isMobile, scrollThreshold } from "$lib/stores";
   import { slide } from "svelte/transition";
   import { toast } from "svelte-sonner";
 
