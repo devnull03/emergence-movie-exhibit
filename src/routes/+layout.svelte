@@ -56,7 +56,7 @@
       trigger: "#subheader",
       pin: true,
       start: "top",
-      end: "max", // This will pin the element permanently
+      end: "max",
       anticipatePin: 5,
       pinType: "fixed",
     });
@@ -125,10 +125,10 @@
 </div>
 
 <div id="smooth-wrapper" class="pt-56">
-  <div id="smooth-content" class="h-[200vh] overflow-visible w-full">
+  <div id="smooth-content" class="overflow-visible w-full">
     {@render children?.()}
 
-    <div class="h-98">
+    <div class="h-[615px]">
       <!-- padding for footer -->
       &nbsp;
     </div>
