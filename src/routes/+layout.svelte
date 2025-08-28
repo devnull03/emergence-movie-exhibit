@@ -1,13 +1,7 @@
 <script lang="ts">
   import "../app.css";
-  import { onMount } from "svelte";
-  import { fade, fly } from "svelte/transition";
-  import { dev } from "$app/environment";
-  import { page } from "$app/stores";
-
-  import { injectAnalytics } from "@vercel/analytics/sveltekit";
-  import { Toaster } from "$lib/components/ui/sonner";
-  import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+  import { onMount, onDestroy } from "svelte";
+  import { fade } from "svelte/transition";
 
   import {
     Header,
@@ -16,6 +10,13 @@
 
   import SubHeader from "$lib/components/SubHeader.svelte";
   import SubFooter from "$lib/components/SubFooter.svelte";
+  import Cursor from "$lib/components/Cursor.svelte";
+
+  import shareThis, { type ShareThisInstance } from "share-this";
+  import * as twitterSharer from "share-this/dist/sharers/twitter";
+  import * as redditSharer from "share-this/dist/sharers/reddit";
+  import * as facebookSharer from "share-this/dist/sharers/facebook";
+  import * as emailSharer from "share-this/dist/sharers/email";
 
   interface Props {
     children?: import("svelte").Snippet;
@@ -34,14 +35,23 @@
     region: "",
   };
 
-  // Show SubHeader on all pages except home
-  const showSubHeader = $derived($page.url.pathname !== "/");
-
-  injectAnalytics({ mode: dev ? "development" : "production" });
-  injectSpeedInsights();
+  let selectionShare: ShareThisInstance | undefined = $state();
 
   onMount(() => {
+    selectionShare = shareThis({
+      selector: "#main-container",
+      popoverClass: "custom-share-popover",
+      sharers: [twitterSharer, facebookSharer, redditSharer, emailSharer],
+    });
+
+    selectionShare.init();
+
     firstLoad = false;
+    // load = true;
+  });
+
+  onDestroy(() => {
+    selectionShare?.destroy();
   });
 </script>
 
@@ -90,7 +100,7 @@
 
 <svelte:window bind:scrollY />
 
-<Toaster />
+<Cursor />
 
 <!-- SACDA Header positioned outside ScrollSmoother -->
 <!-- ScrollSmoother wrapper -->

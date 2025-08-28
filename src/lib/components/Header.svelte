@@ -1,17 +1,9 @@
 <script lang="ts">
-  import Instagram from "$lib/icons/Instagram.svelte";
-  import PhoneCall from "$lib/icons/PhoneCall.svelte";
-  import { Button, buttonVariants } from "$lib/components/ui/button";
   import { onMount } from "svelte";
-  import * as Dialog from "$lib/components/ui/dialog";
-  import { Title } from "$lib/components/ui/card";
-  import { Slider } from "$lib/components/ui/slider";
-  import { Input } from "$lib/components/ui/input";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import { isMobile, scrollThreshold } from "$lib/stores";
   import { slide } from "svelte/transition";
-  import { toast } from "svelte-sonner";
 
   let initScroll = $state(0);
   let isLandingPage = $derived($page.route.id === "/");
