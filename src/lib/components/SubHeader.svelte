@@ -1,42 +1,99 @@
 <script lang="ts">
-  import { page } from "$app/state";
+  import { onMount, onDestroy } from "svelte";
+  import { browser } from "$app/environment";
+  import { gsap } from "gsap";
   import emergenceData from "$lib/content/films/emergence.json";
 
-  interface Props {
-    pageTitle?: string;
-    showRightsNotice?: boolean;
+  let lastScrollY = $state(0);
+  let isHidden = $state(false);
+  let tween: gsap.core.Tween | undefined;
+
+  const navigationItems = [
+    { label: "Home", href: "/" },
+    { label: "Awards", href: "#awards" },
+    { label: "Cast & Crew", href: "#cast" },
+    { label: "Sources", href: "#sources" },
+  ];
+
+  function handleScroll() {
+    if (!browser) return;
+
+    const currentScrollY = window.scrollY;
+
+    const headerHeight = 100;
+    const delayVh = window.innerHeight * 0.4;
+    const hideThreshold = headerHeight + delayVh;
+
+    if (currentScrollY <= hideThreshold) {
+      if (isHidden) {
+        showHeader();
+      }
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    const scrollingDown = currentScrollY > lastScrollY;
+    const scrollingUp = currentScrollY < lastScrollY;
+
+    if (Math.abs(currentScrollY - lastScrollY) > 5) {
+      if (scrollingDown && !isHidden) {
+        hideHeader();
+      } else if (scrollingUp && isHidden) {
+        showHeader();
+      }
+    }
+
+    lastScrollY = currentScrollY;
   }
 
-  let { pageTitle = "" }: Props = $props();
+  function hideHeader() {
+    if (isHidden) return;
 
-  // Generate navigation items based on current route
-  const navigationItems = $derived.by(() => {
-    const pathname = page.url.pathname;
-    const items = [
-      { label: "Home", href: "/" },
-      { label: "Awards", href: "/awards" },
-      { label: "Cast & Crew", href: "/cast" },
-      { label: "Sources", href: "/sources" },
-    ];
+    if (tween) tween.kill();
 
-    return items.map((item) => ({
-      ...item,
-      isActive: pathname === item.href,
-    }));
+    isHidden = true;
+    tween = gsap.to("#subheader", {
+      y: "-100%",
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  }
+
+  function showHeader() {
+    if (!isHidden) return;
+
+    if (tween) tween.kill();
+
+    isHidden = false;
+    tween = gsap.to("#subheader", {
+      y: "0%",
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  }
+
+  onMount(() => {
+    if (browser) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+  });
+
+  onDestroy(() => {
+    if (browser) {
+      window.removeEventListener("scroll", handleScroll);
+    }
+    if (tween) tween.kill();
   });
 </script>
 
 <div id="subheader" class="sticky top-0 w-full z-40 -mt-2">
-  <div
-    class="flex items-center justify-between w-full px-8 py-2"
-  >
-    <!-- Movie Title Left -->
+  <div class="flex items-center justify-between w-full px-8 py-2">
     <div
       class="text-white font-[Bebas_Neue] text-lg md:text-2xl tracking-wide uppercase font-semibold select-none"
     >
       {emergenceData.title}
     </div>
-    <!-- Navigation Right (Plain HTML) -->
+
     <nav class="flex items-center space-x-2">
       {#each navigationItems as item}
         <div class="flex flex-col items-center overflow-hidden">
