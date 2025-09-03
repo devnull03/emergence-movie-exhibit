@@ -86,7 +86,7 @@
   });
 </script>
 
-<div id="subheader" class="sticky top-0 w-full z-40 -mt-2">
+<div id="subheader" class="sticky top-0 w-full z-40 -mt-2 pt-4">
   <div class="flex items-center justify-between w-full px-8 py-2">
     <div
       class="text-white font-[Bebas_Neue] text-lg md:text-2xl tracking-wide uppercase font-semibold select-none"
@@ -94,12 +94,12 @@
       {emergenceData.title}
     </div>
 
-    <nav class="flex items-center space-x-2">
+    <nav class="flex items-center gap-4">
       {#each navigationItems as item}
         <div class="flex flex-col items-center overflow-hidden">
           <a
             href={item.href}
-            class="group px-3 py-2 text-sm md:text-base font-[Poppins] text-white uppercase transition-all duration-200 w-full"
+            class="group text-sm md:text-lg tracking-tight font-[Poppins] text-white uppercase transition-all duration-200 w-full"
           >
             <span class="block">{item.label}</span>
             <span

@@ -59,7 +59,6 @@
     // setTimeout(() => {
     //   ScrollTrigger.refresh();
     // }, 100);
-
   });
 
   onDestroy(() => {
@@ -87,7 +86,6 @@
 <main>
   <div id="smooth-wrapper">
     <div id="smooth-content">
-      <!-- Hero Section with Video Background -->
       <!-- svelte-ignore a11y_click_events_have_key_events -->
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
       <section
@@ -108,9 +106,9 @@
           Your browser does not support the video tag.
         </video>
 
-        <!-- Dark Overlay -->
+        <!-- Dark Overlay  box-border shadow-[inset_0_0_10px_10px_black] -->
         <div
-          class="absolute inset-0 bg-black/50 flex justify-center items-center"
+          class="absolute inset-0 flex justify-center items-center"
         ></div>
 
         <div class="relative z-10 text-center px-4 w-[80vw] overflow-x-hidden">
@@ -147,7 +145,6 @@
           [Placeholder: Watch Now]
         </div>
       </section>
-
     </div>
   </div>
 </main>
