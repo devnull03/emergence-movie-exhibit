@@ -1,38 +1,68 @@
-# sv
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+# Emergence Movie Exhibit
 
-## Creating a project
+This is the official web exhibit for the documentary film **Emergence: South Asian Canadian Stories**. The project showcases the film, its cast, awards, and related content, built with SvelteKit and Tailwind CSS.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## About the Project
 
-```bash
-# create a new project in the current directory
-npx sv create
+**Emergence** is a documentary exploring the stories of South Asian Canadians, their cultural heritage, and contributions. This web exhibit provides:
 
-# create a new project in my-app
-npx sv create my-app
-```
+- Film details and synopsis
+- Cast and crew profiles
+- Awards and recognitions
+- Trailer and media assets
+- Interactive navigation and accessible design
 
-## Developing
+## Tech Stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- SvelteKit (Svelte 5 runes syntax)
+- Tailwind CSS (v4, with design tokens)
+- TypeScript
+- Custom SVG icons (no external icon libraries)
+- Figma design tokens integration
 
-```bash
-npm run dev
+## Getting Started
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Install dependencies (use `pnpm`):
 
 ```bash
-npm run build
+pnpm install
 ```
 
-You can preview the production build with `npm run preview`.
+Start the development server:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```bash
+pnpm run dev
+```
+
+Build for production:
+
+```bash
+pnpm run build
+```
+
+Preview production build:
+
+```bash
+pnpm run preview
+```
+
+> **Note:** Always use `pnpm` for package management.
+
+## Project Structure
+
+- `src/routes/` — SvelteKit file-based routing (pages: awards, cast, etc.)
+- `src/lib/components/` — Custom and UI components
+- `src/lib/assets/` — Images, video, and media
+- `src/content/films/emergence.json` — Film metadata
+- `static/` — Public assets (hero poster, etc.)
+
+## Contributing
+
+Please follow code style and architecture guidelines in `.github/copilot-instructions.md` and `src/app.css` for theming. Use Svelte 5 runes syntax and Tailwind CSS utilities. All icons must be inline SVG from Figma assets.
+
+## License
+
+See LICENSE file for details.
+
+...existing code...
