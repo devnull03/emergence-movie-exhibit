@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import * as NavigationMenu from "$lib/components/ui/navigation-menu";
   import emergenceData from "$lib/content/films/emergence.json";
 
   interface Props {
@@ -27,26 +26,31 @@
   });
 </script>
 
-<div
-  id="subheader"
-  class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-border/20 -mt-2 z-40"
->
-  <div class="md:max-w-6xl w-full mx-auto px-4 py-1.5">
-    <NavigationMenu.Root>
-      <NavigationMenu.List class="flex items-center space-x-1">
-        {#each navigationItems as item}
-          <NavigationMenu.Item>
-            <NavigationMenu.Link
-              href={item.href}
-              class="px-2.5 py-1.5 text-xs font-medium transition-all duration-200 {item.isActive
-                ? 'text-foreground border-b border-primary'
-                : 'text-muted-foreground hover:text-foreground hover:bg-accent/30 rounded-md'}"
-            >
-              {item.label}
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-        {/each}
-      </NavigationMenu.List>
-    </NavigationMenu.Root>
+<div id="subheader" class="sticky top-0 w-full z-40 -mt-2">
+  <div
+    class="flex items-center justify-between w-full px-8 py-2"
+  >
+    <!-- Movie Title Left -->
+    <div
+      class="text-white font-[Bebas_Neue] text-lg md:text-2xl tracking-wide uppercase font-semibold select-none"
+    >
+      {emergenceData.title}
+    </div>
+    <!-- Navigation Right (Plain HTML) -->
+    <nav class="flex items-center space-x-2">
+      {#each navigationItems as item}
+        <div class="flex flex-col items-center overflow-hidden">
+          <a
+            href={item.href}
+            class="group px-3 py-2 text-sm md:text-base font-[Poppins] text-white uppercase transition-all duration-200 w-full"
+          >
+            <span class="block">{item.label}</span>
+            <span
+              class="block h-0.5 bg-white rounded transition-all duration-200 ease-in-out w-0 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+      {/each}
+    </nav>
   </div>
 </div>

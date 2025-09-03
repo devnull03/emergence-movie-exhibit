@@ -40,6 +40,8 @@
   let selectionShare: ShareThisInstance | undefined = $state();
 
   onMount(() => {
+    // gsap.registerPlugin(ScrollTrigger);
+
     selectionShare = shareThis({
       selector: "#smooth-wrapper",
       popoverClass: "custom-share-popover",
@@ -48,8 +50,16 @@
 
     selectionShare.init();
 
-    firstLoad = false;
+    // ScrollTrigger.create({
+    //   trigger: "#subheader",
+    //   pin: true,
+    //   start: "top",
+    //   end: "max",
+    //   pinType: "fixed",
+    //   pinSpacing: false,
+    // });
 
+    firstLoad = false;
   });
 
   onDestroy(() => {
@@ -109,19 +119,19 @@
 
 <Cursor />
 
-<!-- <div id="smooth-wrapper" class="pt-56">
-  <div id="smooth-content" class="overflow-visible w-full"> -->
+<div class="h-full w-full">
+  <Header />
+
+  <SubHeader />
+
+  <div class="-mt-14 mb-[400px]">
     {@render children?.()}
+  </div>
 
-    <!-- <div class="h-[615px]">
-      &nbsp;
-    </div> -->
-  <!-- </div>
-</div> -->
-
-<div class="fixed bottom-0 z-[-1] w-full">
-  <SubFooter />
-  <Footer />
+  <div class="fixed bottom-0 z-[-1] w-full">
+    <SubFooter />
+    <Footer />
+  </div>
 </div>
 
 {#if scrollY !== 0}

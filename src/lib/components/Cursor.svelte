@@ -272,7 +272,7 @@
 
 {#if mounted}
   <div
-    class="hidden sm:block fixed top-0 left-0 rounded-full pointer-events-none z-[9999] mix-blend-difference bg-white/[0.02] will-change-transform"
+    class="hidden sm:block fixed top-0 left-0 rounded-full pointer-events-none z-[99999] mix-blend-difference bg-white/[0.02] will-change-transform"
     style="transform: translate3d(calc({distortionPosition.current
       .x}px - 50%), calc({distortionPosition.current.y}px - 50%), 0); 
            width: {distortionPosition.current
