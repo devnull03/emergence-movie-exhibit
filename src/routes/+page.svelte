@@ -41,34 +41,6 @@
 
     const isMobile = window.innerWidth < 768;
 
-    let logoTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: () => window.innerHeight * 0.25,
-        scrub: 0.6,
-      },
-    });
-
-    logoTl.fromTo(
-      ".logo",
-      {
-        top: isMobile ? "50%" : "40vh",
-        right: isMobile ? "50%" : "auto",
-        xPercent: isMobile ? -50 : 0,
-        yPercent: -50,
-        scale: isMobile ? 0.8 : 1,
-      },
-      {
-        top: isMobile ? "2rem" : "-14.5vh",
-        right: isMobile ? "1rem" : "auto",
-        xPercent: 0,
-        yPercent: 0,
-        scale: isMobile ? 0.15 : 0.15,
-        duration: 0.1,
-      }
-    );
-
     const sections = gsap.utils.toArray("section");
 
     sections.forEach((panel, index) => {
@@ -133,20 +105,6 @@
   <SubHeader />
 </div>
 
-<button
-  type="button"
-  class="logo h-[20vw] w-auto fixed z-150 border-none bg-transparent p-0 cursor-pointer"
-  data-cursor-state="indicate-scroll-down"
-  onclick={scrollToMain}
-  aria-label="Scroll to main content"
->
-  <img
-    src="/src/lib/assets/logo.png"
-    alt="Emergence: Out of the Shadows"
-    class="relative top-0 left-0"
-  />
-</button>
-
 <main>
   <div id="smooth-wrapper">
     <div id="smooth-content">
@@ -175,6 +133,14 @@
         <div
           class="absolute inset-0 bg-black/50 flex justify-center items-center"
         ></div>
+
+        <div class="relative z-10 text-center px-4">
+          <img
+            src="/src/lib/assets/logo.png"
+            alt="Emergence: Out of the Shadows"
+            class=""
+          />
+        </div>
       </section>
 
       <!-- Content Sections -->
