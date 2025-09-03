@@ -50,16 +50,6 @@
 
     firstLoad = false;
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.create({
-      trigger: "#subheader",
-      pin: true,
-      start: "top",
-      end: "max",
-      anticipatePin: 5,
-      pinType: "fixed",
-    });
   });
 
   onDestroy(() => {
@@ -119,23 +109,17 @@
 
 <Cursor />
 
-<div id="header-wrapper" class="relative z-100">
-  <Header />
-    <SubHeader />
-</div>
-
-<div id="smooth-wrapper" class="pt-56">
-  <div id="smooth-content" class="overflow-visible w-full">
+<!-- <div id="smooth-wrapper" class="pt-56">
+  <div id="smooth-content" class="overflow-visible w-full"> -->
     {@render children?.()}
 
-    <div class="h-[615px]">
-      <!-- padding for footer -->
+    <!-- <div class="h-[615px]">
       &nbsp;
-    </div>
-  </div>
-</div>
+    </div> -->
+  <!-- </div>
+</div> -->
 
-<div class="fixed bottom-0 z-[-1]">
+<div class="fixed bottom-0 z-[-1] w-full">
   <SubFooter />
   <Footer />
 </div>
