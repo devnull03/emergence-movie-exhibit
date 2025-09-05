@@ -96,27 +96,33 @@
       >
         <!-- Background Video -->
         <video
-          class="absolute inset-0 w-full h-full object-cover"
+          class="absolute inset-0 w-full h-full object-cover pointer-events-none"
           autoplay
           muted
           loop
           playsinline
+          disablePictureInPicture={true}
+          controls={false}
         >
           <source src="/src/lib/assets/trailer.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
         <!-- Dark Overlay  box-border shadow-[inset_0_0_10px_10px_black] -->
-        <div
-          class="absolute inset-0 flex justify-center items-center"
-        ></div>
+        <div class="absolute inset-0 blur-sm bg-black/20"></div>
 
         <div class="relative z-10 text-center px-4 w-[80vw] overflow-x-hidden">
-          <img
-            src="/src/lib/assets/logo.png"
-            alt="Emergence: Out of the Shadows"
-            class=""
-          />
+          <video
+            class="w-full max-w-2xl mx-auto"
+            autoplay
+            muted
+            loop
+            playsinline
+            disablePictureInPicture={true}
+          >
+            <source src="/src/lib/assets/trailer.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 
