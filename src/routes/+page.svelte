@@ -3,6 +3,7 @@
   import { gsap } from "gsap";
   import { ScrollTrigger, ScrollSmoother, ScrollToPlugin } from "gsap/all";
   import emergenceData from "$lib/content/films/emergence.json";
+  import CastSection from "$lib/components/sections/CastSection.svelte";
 
   let smoother: globalThis.ScrollSmoother | undefined = $state();
 
@@ -129,11 +130,9 @@
       <!-- Content Sections -->
       <section
         id="main-content-start"
-        class="w-full min-h-screen flex items-center justify-center bg-black"
+        class="w-full h-screen text-white flex flex-col bg-black"
       >
-        <div class="text-white text-3xl font-bold">
-          [Placeholder: Cast Spotlights]
-        </div>
+        <CastSection />
       </section>
 
       <section
