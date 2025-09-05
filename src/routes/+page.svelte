@@ -4,6 +4,7 @@
   import { ScrollTrigger, ScrollSmoother, ScrollToPlugin } from "gsap/all";
   import emergenceData from "$lib/content/emergence.json";
   import CastSection from "$lib/components/sections/CastSection.svelte";
+  import About from "$lib/components/sections/About.svelte";
 
   let smoother: globalThis.ScrollSmoother | undefined = $state();
 
@@ -130,6 +131,12 @@
       <!-- Content Sections -->
       <section
         id="main-content-start"
+        class="w-full h-screen"
+      >
+        <About />
+      </section>
+
+      <section
         class="w-full h-screen text-white flex flex-col bg-black"
       >
         <CastSection />

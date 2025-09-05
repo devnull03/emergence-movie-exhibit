@@ -98,7 +98,7 @@
 
           <!-- Single overlay for both cases -->
           <div
-            class="absolute inset-0 bg-black/40 backdrop-blur flex items-end justify-end *:text-right p-2 transition-opacity duration-300 group-hover:opacity-0"
+            class="absolute inset-0 bg-black/40 backdrop-blur backdrop-sepia-65 flex items-end justify-end *:text-right p-2 transition-opacity duration-300 group-hover:opacity-0"
           >
             <p
               class="text-2xl font-bold text-gray-100 drop-shadow-lg font-[Bebas_Neue] uppercase leading-none"
