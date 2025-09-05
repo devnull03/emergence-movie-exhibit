@@ -13,7 +13,7 @@
 >
   <h1
     class="font-bold uppercase tracking-widest leading-tight font-[Bebas_Neue] {color} rotate-180"
-    style="font-size: min(12vw, calc(100vh / {title.length}));"
+    style="font-size: clamp(3rem, 8vw, 6rem);"
   >
     {title}
   </h1>

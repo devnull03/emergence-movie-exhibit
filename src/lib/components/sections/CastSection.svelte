@@ -21,7 +21,7 @@
 </script>
 
 <section
-  class="w-full h-screen bg-white text-black! flex flex-col items-center justify-evenly"
+  class="w-full h-screen text-black! flex flex-col items-center justify-center gap-4"
 >
   <SectionTitle title="Cast & Crew" color="text-black" />
 
@@ -62,6 +62,17 @@
     </div>
   </div>
 
+  <!-- Production Company Section -->
+  <div class="text-center">
+    <p class="text-sm text-gray-600">
+      <span class="font-medium">Production Company –</span>
+      <span class="font-semibold text-black">Sher Films</span>
+      <span class="text-gray-500"
+        >(A Division of the Sher Vancouver LGBTQ Friends Society)</span
+      >
+    </p>
+  </div>
+
   <!-- Cast Grid Section -->
   <div class="max-w-6xl mx-auto h-[40%] flex flex-col justify-center">
     <div class="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
@@ -84,7 +95,7 @@
               <User class="w-8 h-8 text-gray-400" />
             </div>
           {/if}
-          
+
           <!-- Single overlay for both cases -->
           <div
             class="absolute inset-0 bg-black/40 backdrop-blur flex items-end justify-end *:text-right p-2 transition-opacity duration-300 group-hover:opacity-0"

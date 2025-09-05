@@ -136,6 +136,9 @@
     @apply bg-background text-foreground;
   }
 
+  section {
+    @apply bg-[#fff5f5];
+  }
 
   /* Custom share-this popover styles */
   .custom-share-popover {
