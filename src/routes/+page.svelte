@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger, ScrollSmoother, ScrollToPlugin } from "gsap/all";
-  import emergenceData from "$lib/content/films/emergence.json";
+  import emergenceData from "$lib/content/emergence.json";
   import CastSection from "$lib/components/sections/CastSection.svelte";
 
   let smoother: globalThis.ScrollSmoother | undefined = $state();

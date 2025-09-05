@@ -1,5 +1,5 @@
 <script lang="ts">
-  import emergenceData from "$lib/content/films/emergence.json";
+  import emergenceData from "$lib/content/emergence.json";
 
   const quickLinks = [
     { label: "Film", href: "/film" },

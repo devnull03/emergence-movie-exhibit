@@ -1,0 +1,65 @@
+{
+	"people": [
+		{
+			"name": "Alex Sangha",
+			"bio": "Alex is his nickname and Amar is his birth name and the name he uses in the documentary. Amar is a late forties gay Punjabi Sikh man from suburban Vancouver. He speaks about his coming out journey and the reactions of his parents, including the disapproval he got from certain segments of the broader Punjabi Sikh community, when he came out publicly as a gay Sikh. Amar is the Founder of a non-profit for queer South Asians and friends called Sher Vancouver. He is a distinguished social worker and counsellor.",
+			"photo": "/crew/photo-of-producer-alex-sangha.webp",
+			"position": "Producer and Cast Member",
+			"photo_credits": "Avi Dhillon"
+		},
+		{
+			"name": "Jaspal Kaur Sangha",
+			"bio": "Jaspal is the caring and compassionate mother of Alex. She explains the struggle she experienced trying to come to terms with her son's sexuality. Jaspal worked as a nurses aide for many years, and raised three boys largely as a single parent. She is currently retired and has three beautiful grandchildren. She was born in Punjab, India where she worked as a Punjabi Language Teacher. Jaspal shares her authentic self and her courage to share her true feelings around her son being gay and how she tried to reconcile it with her Sikh faith.",
+			"photo": "/crew/smiling-face-shot-of-jaspal.webp",
+			"position": "Alex's Mother"
+		},
+		{
+			"name": "Kayden Bhangu",
+			"bio": "Kayden is a mid-twenties Punjabi Sikh gay man from Punjab, India. The film explores his survival, resilience, resourcefulness, and ability to overcome barriers despite the trauma of family rejection and the impact this had on his psychological health. Kayden tells a poignant story of self-discovery while embracing his newfound family and life.",
+			"photo": "/crew/kayden.webp",
+			"position": "Featured Cast Member"
+		},
+		{
+			"name": "Jag Nagra",
+			"bio": "Jag is a queer Punjabi artist. She and her wife, Agata, have been together for 8 years and together they have two beautiful children. In the film, she discusses the challenges she faced coming out to her parents, and how her life changed when she met Agata.",
+			"photo": "/crew/jag.webp",
+			"position": "Featured Cast Member"
+		},
+		{
+			"name": "Avtar Singh Nagra",
+			"bio": "Avtar is Jag's kind-hearted father. He was born in the district of Jalandhar in Punjab, India and immigrated to Canada in 1972. He met his wife, Rajwant, on his wedding day in 1980. They are devout Sikhs and since finding out that both of their children are gay, they have spent the last number of years being advocates for the LGBTQ+ community and have helped break down barriers in the South Asian community starting with their own circle of extended family.",
+			"photo": "/crew/avtar.webp",
+			"position": "Jag's Father"
+		},
+		{
+			"name": "Rajwant Kaur Nagra",
+			"bio": "Rajwant is Jag's wonderful mother. She provides the voice of the traditional Punjabi Sikh mother. She loves both her children, Jag and Harv, who are both gay. Her struggle to come to terms with their sexuality is powerful and moving. She is concerned about how her children, especially Jag, will find love and happiness and security in the world. She believes that we must love all people as human beings and not judge each other.",
+			"photo": "/crew/rajwant.webp",
+			"position": "Jag's Mother"
+		},
+		{
+			"name": "Harv Nagra",
+			"bio": "Harv is Jag's brother. He makes an appearance in the documentary. Harv lives in London, England. In the film Harv discusses his reactions to his sister's coming out, and how this impacted him personally and his hopes and aspirations for his parents. Harv also speaks with his parents in the film and shares his thoughts on how he appreciated their support for Jag.",
+			"photo": "/crew/harv.webp",
+			"position": "Jag's Brother"
+		},
+		{
+			"name": "Vinay Giridhar",
+			"bio": "Vinay Giridhar is a visual artist turned documentary film director who is an alumnus of Vancouver Film School's Classical Animation program. His award-winning debut documentary, Emergence: Out of the Shadows, has been showcased at nearly 50 established film festivals around the world including Canadian Screen Award, Academy Award, and BAFTA qualifying festivals. The film has completed nearly 40 community screenings locally in Metro Vancouver in high schools, colleges, and universities. Originally from Kerala, India, Vinay currently calls Surrey, BC home.",
+			"photo": "/crew/vinay-film-festival.jpg",
+			"position": "Director and Editor"
+		},
+		{
+			"name": "Christine Michelle Lord",
+			"bio": "Christine Michelle Lord is an independent filmmaker based in British Columbia, Canada. Her film company, Sealord Films Canada, was established in 2018 and focuses on short documentaries and promo film encompassing the entertainment and LGBTQ+ communities. She began her creative process in the early 90's as a photojournalist and has since evolved into film. Christine's films have been screened in festivals locally and worldwide.",
+			"photo": "/crew/christine.webp",
+			"position": "Director of Photography"
+		},
+		{
+			"name": "Bhavesh Chauhan",
+			"bio": "Bhavesh Chauhan is an independent filmmaker, music video director and cinematographer. His career in filmmaking has spanned almost 15 years with humble beginnings making shorts with his friends in high school. Many of his films have gone on to screen and win awards at numerous film festivals around the world. Some recent productions that feature his work include shorts \"Solidarity Lives,\" \"Prisoner,\" \"Lovely Mummers,\" and \"A Calling,\" a web series pilot with TELUS StoryHive \"Lux-Me,\" a Crazy8s short \"Mom vs. Machine, and a feature film \"Jewel Fools\" which screened at the Calgary International Film Festival.",
+			"photo": "/crew/BHAVESH.webp",
+			"position": "Additional Cinematography"
+		}
+	]
+}
