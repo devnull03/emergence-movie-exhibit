@@ -2,11 +2,11 @@
   import { onMount, onDestroy } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger, ScrollSmoother, ScrollToPlugin } from "gsap/all";
-  import emergenceData from "$lib/content/emergence.json";
   import CastSection from "$lib/components/sections/CastSection.svelte";
   import About from "$lib/components/sections/About.svelte";
+  import trailer from "$lib/assets/trailer.mp4";
 
-  let smoother: globalThis.ScrollSmoother | undefined = $state();
+  // let smoother: globalThis.ScrollSmoother | undefined = $state();
 
   const scrollToMain = () => {
     gsap.to(window, {
@@ -106,7 +106,7 @@
           disablePictureInPicture={true}
           controls={false}
         >
-          <source src="/src/lib/assets/trailer.mp4" type="video/mp4" />
+          <source src={trailer} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -122,7 +122,7 @@
             playsinline
             disablePictureInPicture={true}
           >
-            <source src="/src/lib/assets/trailer.mp4" type="video/mp4" />
+            <source src={trailer} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
