@@ -8,7 +8,7 @@
 
 :root {
   --radius: 0; /* Flat design - no rounded corners */
-  --background: oklch(1 0 0);
+  --background: oklch(0.92 0.01 85.87);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -137,7 +137,11 @@
   }
 
   section {
-    @apply bg-[#fff5f5];
+    @apply bg-background;
+  }
+
+  *::selection {
+    @apply text-white bg-emerald-900;
   }
 
   /* Custom share-this popover styles */

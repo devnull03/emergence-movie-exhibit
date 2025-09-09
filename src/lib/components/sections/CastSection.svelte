@@ -2,6 +2,7 @@
   import castData from "$lib/content/cast.json";
   import { User } from "@lucide/svelte";
   import SectionTitle from "../SectionTitle.svelte";
+  import Section from "../Section.svelte";
 
   interface CastMember {
     name: string;
@@ -20,10 +21,10 @@
   }
 </script>
 
-<section
-  class="w-full h-screen text-black! flex flex-col items-center justify-center gap-4"
+<Section
+  class="w-full h-screen text-background! flex flex-col items-center justify-center gap-4 bg-gray-900"
 >
-  <SectionTitle title="Cast & Crew" color="text-black" />
+  <SectionTitle title="Cast & Crew" color="text-background" />
 
   <!-- Main Showcase Section -->
   <div class="h-[40%] flex items-center justify-center px-6">
@@ -63,15 +64,15 @@
   </div>
 
   <!-- Production Company Section -->
-  <div class="text-center">
-    <p class="text-sm text-gray-600">
-      <span class="font-medium">Production Company –</span>
-      <span class="font-semibold text-black">Sher Films</span>
-      <span class="text-gray-500"
-        >(A Division of the Sher Vancouver LGBTQ Friends Society)</span
-      >
-    </p>
-  </div>
+  <!-- <div class="text-center"> -->
+  <p class="text-sm text-background text-center">
+    <span class="font-medium">Production Company –</span>
+    <span class="font-semibold text-white">Sher Films</span>
+    <span class=""
+      >(A Division of the Sher Vancouver LGBTQ Friends Society)</span
+    >
+  </p>
+  <!-- </div> -->
 
   <!-- Cast Grid Section -->
   <div class="max-w-6xl mx-auto h-[40%] flex flex-col justify-center">
@@ -110,4 +111,4 @@
       {/each}
     </div>
   </div>
-</section>
+</Section>
