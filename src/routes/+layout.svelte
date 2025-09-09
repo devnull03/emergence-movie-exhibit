@@ -1,7 +1,7 @@
 <script lang="ts">
   import "../app.css";
   import { onMount, onDestroy } from "svelte";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/all";
 
@@ -134,10 +134,32 @@
   </div>
 </div>
 
+<!-- Floating Play Button -->
+<button
+  class="group fixed right-6 z-[1000] rounded-full bg-red-600 object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-red-700"
+  class:bottom-6={scrollY === 0}
+  class:bottom-22={scrollY !== 0}
+  aria-label="Watch Now"
+  onclick={() => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: "#watch-now",
+        autoKill: false,
+      },
+      ease: "power2.inOut",
+    });
+  }}
+>
+  <span
+    class="fa fa-play px-5 py-4 text-white transition-all duration-500 group-hover:scale-110"
+  ></span>
+</button>
+
 {#if scrollY !== 0}
   <button
-    transition:fade
-    class="group fixed bottom-6 right-6 z-999 rounded-full bg-[#C7A865] object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1"
+    transition:fly={{ y: 10, duration: 500 }}
+    class="group fixed bottom-6 right-6 z-999 rounded-full bg-[#f49d2d] object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1"
     aria-label="yuh"
     onclick={() => {
       window.scrollTo({ top: 0, behavior: "smooth" });

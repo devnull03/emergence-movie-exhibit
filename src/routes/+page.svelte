@@ -6,6 +6,7 @@
   import About from "$lib/components/sections/About.svelte";
   import trailer from "$lib/assets/trailer.mp4";
   import { asset } from "$app/paths";
+  import Stills from "$lib/components/sections/Stills.svelte";
 
   // let smoother: globalThis.ScrollSmoother | undefined = $state();
 
@@ -136,11 +137,13 @@
     <About />
   </section>
 
+  <!-- <section class="w-full h-screen">
+    <Stills />
+  </section> -->
+
   <section class="w-full h-screen">
     <CastSection />
   </section>
-
-  <section class="w-full h-screen"></section>
 
   <section
     class="w-full min-h-screen flex items-center justify-center bg-gray-100"
@@ -151,6 +154,7 @@
   </section>
 
   <section
+    id="watch-now"
     class="w-full min-h-screen flex items-center justify-center bg-gray-900 text-white"
   >
     <div class="text-white text-3xl font-bold">[Placeholder: Watch Now]</div>

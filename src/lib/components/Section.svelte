@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
 
   interface Props {
-    children: Snippet;
+    children?: Snippet;
     class?: string;
     hasRoundedTop?: boolean;
   }
@@ -43,5 +43,5 @@
   class={className}
   class:rounded-t-2xl={hasRoundedTop && !isAtTop}
 >
-  {@render children()}
+  {@render children?.()}
 </div>
