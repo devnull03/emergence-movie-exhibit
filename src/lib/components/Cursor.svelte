@@ -6,13 +6,21 @@
   import { CursorState } from "$lib/interfaces/sys.interface";
   import { currentCursorState } from "$lib/stores";
 
+  // Props interface for cursor configuration
+  interface Props {
+    size?: number;
+  }
+
+  // Destructure props with default values
+  let { size = 64 }: Props = $props();
+
   let mounted = $state(false);
 
   let cursorSvg: SVGElement | undefined = $state();
   let currentPath: SVGPathElement;
 
   // Spring for dot scale animations
-  const dotScale = new Spring(1, {
+  const dotScale = new Spring(2, {
     stiffness: 0.3,
     damping: 0.6,
   });
@@ -129,8 +137,8 @@
       {
         x: event.clientX,
         y: event.clientY,
-        width: distortionPosition.current.width,
-        height: distortionPosition.current.height,
+        width: size * 1.25,
+        height: size * 1.25,
       },
       { preserveMomentum: 1000 }
     );
@@ -251,7 +259,12 @@
     const initialY = window.innerHeight / 2;
 
     dotPosition.set({ x: initialX, y: initialY });
-    distortionPosition.set({ x: initialX, y: initialY, width: 80, height: 80 });
+    distortionPosition.set({
+      x: initialX,
+      y: initialY,
+      width: size * 1.25,
+      height: size * 1.25,
+    });
 
     mounted = true;
 
@@ -285,8 +298,8 @@
     style="transform: translate3d(calc({dotPosition.current
       .x}px - 50%), calc({dotPosition.current
       .y}px - 50%), 0) scale({dotScale.current});"
-    width="48"
-    height="48"
+    width={size}
+    height={size}
     viewBox="0 0 48 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

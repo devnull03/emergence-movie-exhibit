@@ -5,6 +5,7 @@
   import CastSection from "$lib/components/sections/CastSection.svelte";
   import About from "$lib/components/sections/About.svelte";
   import trailer from "$lib/assets/trailer.mp4";
+  import { asset } from "$app/paths";
 
   // let smoother: globalThis.ScrollSmoother | undefined = $state();
 
@@ -123,22 +124,21 @@
             disablePictureInPicture={true}
           >
             <source src={trailer} type="video/mp4" />
-            Your browser does not support the video tag.
+            <img
+              src={asset("/poster.webp")}
+              title="Your browser does not support the video tag."
+              alt=""
+            />
           </video>
         </div>
       </section>
 
       <!-- Content Sections -->
-      <section
-        id="main-content-start"
-        class="w-full h-screen"
-      >
+      <section id="main-content-start" class="w-full h-screen">
         <About />
       </section>
 
-      <section
-        class="w-full h-screen text-white flex flex-col bg-black"
-      >
+      <section class="w-full h-screen text-white flex flex-col bg-black">
         <CastSection />
       </section>
 
