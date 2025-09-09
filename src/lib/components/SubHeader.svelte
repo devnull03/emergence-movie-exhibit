@@ -86,19 +86,19 @@
   });
 </script>
 
-<div id="subheader" class="sticky top-0 w-full z-40 -mt-2">
+<div id="subheader" class="sticky top-0 w-full z-40 -mt-2 text-white mix-blend-difference">
   <div class="flex items-center justify-between w-full px-8 py-2">
     <!-- Left Section: Film Credit -->
     <div class="flex-1 flex justify-start">
       <div
-        class="text-white font-[Bebas_Neue] text-sm md:text-lg tracking-wide uppercase font-semibold select-none flex items-center gap-2"
+        class="font-[Bebas_Neue] text-sm md:text-lg tracking-wide uppercase font-semibold select-none flex items-center gap-2"
       >
         A FILM BY VINAY GIRIDHAR
       </div>
     </div>
 
     <!-- Middle Section: Logo -->
-    <div class="flex-1 flex justify-center">
+    <div class="flex-1 flex justify-center mix-blend-normal">
       <img src={logo} alt="Logo" class="h-8 md:h-12 w-auto object-contain" />
     </div>
 
@@ -109,7 +109,7 @@
           <div class="flex flex-col items-center overflow-hidden">
             <a
               href={item.href}
-              class="group text-xs md:text-sm tracking-tight font-[Poppins] text-white uppercase transition-all duration-200 w-full"
+              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full"
             >
               <span class="block">{item.label}</span>
               <span
