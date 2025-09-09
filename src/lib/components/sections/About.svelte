@@ -50,17 +50,17 @@
 
   <div class="max-w-4xl mx-auto text-center space-y-8">
     <!-- Logline -->
-    <div class="pl-6">
-      <h3 class="mb-2">Logline</h3>
-      <div>
+    <div class="">
+      <!-- <h3 class="mb-2">Logline</h3> -->
+      <div class="text-lg leading-tight">
         {currentLogline}
       </div>
     </div>
 
     <!-- Long Synopsis -->
-    <div class="pl-6">
-      <h3 class="mb-2">Synopsis</h3>
-      <div>
+    <div class="">
+      <h3 class="mb-2 italic text-xl">Synopsis</h3>
+      <div class="text-sm leading-relaxed">
         {currentLongSynopsis}
       </div>
     </div>
@@ -68,7 +68,7 @@
     <!-- Language selector buttons -->
     <div class="flex flex-wrap justify-center gap-3 mt-8">
       {#each availableLanguages as [langCode, langData]}
-        <button class="px-4 py-2" onclick={() => selectLanguage(langCode)}>
+        <button class="px-4 py-2 underline italic text-xs underline-offset-2 cursor-pointer" onclick={() => selectLanguage(langCode)}>
           {langData.name}
         </button>
       {/each}
