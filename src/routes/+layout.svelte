@@ -136,7 +136,7 @@
 
 <!-- Floating Play Button -->
 <button
-  class="group fixed right-6 z-[1000] rounded-full bg-red-600 object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-red-700"
+  class="group fixed right-6 z-[1000] rounded-full bg-red-500 object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-red-700"
   class:bottom-6={scrollY === 0}
   class:bottom-22={scrollY !== 0}
   aria-label="Watch Now"

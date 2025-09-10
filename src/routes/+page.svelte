@@ -1,12 +1,26 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { gsap } from "gsap";
-  import { ScrollTrigger, ScrollSmoother, ScrollToPlugin } from "gsap/all";
+  import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
   import CastSection from "$lib/components/sections/CastSection.svelte";
   import About from "$lib/components/sections/About.svelte";
   import trailer from "$lib/assets/trailer.mp4";
   import { asset } from "$app/paths";
-  import Stills from "$lib/components/sections/Stills.svelte";
+
+  // Parallax scroll state
+  let y = $state(0);
+
+  const stills = [
+    { src: asset("/stills/Alex Still Photo (1).jpg"), speed: 1.01 },
+    {
+      src: asset("/stills/Avtar and Rajwant Still Photo (1) (1).jpg"),
+      speed: 1.2,
+    },
+    { src: asset("/poster.webp"), speed: 1.25 },
+    { src: asset("/stills/Jaspal Still Photo (1).jpg"), speed: 1 },
+    { src: asset("/stills/Kayden Still Photo (1).jpg"), speed: 1.2 },
+    { src: asset("/stills/Rajwant and Jag Still Photo (1).jpg"), speed: 1.2 },
+  ];
 
   // let smoother: globalThis.ScrollSmoother | undefined = $state();
 
@@ -22,52 +36,21 @@
   };
 
   onMount(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-    // Create ScrollSmoother for smoother scrolling
-    // smoother = ScrollSmoother.create({
-    //   smooth: 1.2,
-    //   effects: true,
-    //   smoothTouch: 0.1,
-    //   normalizeScroll: true,
-    // });
-
-    // const isMobile = window.innerWidth < 768;
-    // const sections = gsap.utils.toArray("section");
-
-    // sections.forEach((panel, index) => {
-    //   const isLastSection = index === sections.length - 1;
-
-    //   if (isLastSection) {
-    //     // Last section needs special handling for footer spacing
-    //     ScrollTrigger.create({
-    //       trigger: panel as Element,
-    //       start: "top top",
-    //       end: isMobile ? "+=300px" : "+=615px",
-    //       // pin: true,
-    //       // pinSpacing: true,
-    //     });
-    //   } else {
-    //     // All other sections use consistent pinning
-    //     ScrollTrigger.create({
-    //       trigger: panel as Element,
-    //       start: "top top",
-    //       end: "bottom top",
-    //       // pin: true,
-    //       // pinSpacing: false,
-    //     });
-    //   }
-    // });
-
-    // // Refresh ScrollTrigger after a short delay to ensure proper calculation
-    // setTimeout(() => {
-    //   ScrollTrigger.refresh();
-    // }, 100);
-  });
-
-  onDestroy(() => {
-    // smoother?.kill();
-    // ScrollTrigger.killAll();
+    // apply parallax effect to any element with a data-speed attribute
+    gsap.to("[data-speed]", {
+      y: (i, el) =>
+        (1 - parseFloat(el.getAttribute("data-speed"))) *
+        ScrollTrigger.maxScroll(window),
+      ease: "none",
+      scrollTrigger: {
+        start: 0,
+        end: "max",
+        invalidateOnRefresh: true,
+        scrub: 0,
+      },
+    });
   });
 </script>
 
@@ -86,6 +69,8 @@
     content="Discover the powerful stories of Kayden, Jag, and Amar in this acclaimed documentary."
   />
 </svelte:head>
+
+<svelte:window bind:scrollY={y} />
 
 <main class="*:rounded-t-2xl">
   <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -137,9 +122,18 @@
     <About />
   </section>
 
-  <!-- <section class="w-full h-screen">
-    <Stills />
-  </section> -->
+    <section class="w-full grid grid-cols-3 relative! bg-transparent! -mb-54">
+      {#each stills as still, i}
+        <img
+          src={still.src}
+          alt="Film Still"
+          class="object-cover z-50 h-full"
+          class:row-span-2={i === 2}
+          class:col-start-3={i === 5}
+          data-speed={still.speed}
+        />
+      {/each}
+    </section>
 
   <section class="w-full h-screen">
     <CastSection />
