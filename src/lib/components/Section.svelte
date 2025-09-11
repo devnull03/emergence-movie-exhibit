@@ -40,7 +40,7 @@
 
 <div
   bind:this={sectionElement}
-  class={className}
+  class="pl-[9vw] lg:pl-0 {className}"
   class:rounded-t-2xl={hasRoundedTop && !isAtTop}
 >
   {@render children?.()}
