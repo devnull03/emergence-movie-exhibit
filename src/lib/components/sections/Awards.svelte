@@ -29,6 +29,7 @@
     src: string;
     x: number;
     initialY: number;
+    y: number; // dynamic y offset
     opacity: number;
     scale: number;
   }> = $state([]);
@@ -46,6 +47,7 @@
       src: getRandomStill(),
       x: x - 100, // Center the image on cursor
       initialY: y - 100, // Store the initial Y position
+      y: 0, // Start with no scroll offset
       opacity: 0,
       scale: 0.5, // Start smaller for more dramatic effect
     };
@@ -114,12 +116,23 @@
   }
 
   let lastScrollProgress = 0;
+  let lastScrollY = 0;
   export function updateScrollProgress(progress: number) {
     // Only create an image if scroll progress has changed enough (e.g., by 0.01)
     if (Math.abs(progress - lastScrollProgress) > 0.01) {
       createScrollImages();
       lastScrollProgress = progress;
     }
+    // Calculate scroll delta in px (simulate 1000px scroll range)
+    const currentY = progress * 1000;
+    const deltaY = lastScrollY - currentY; // invert direction
+    if (deltaY !== 0) {
+      floatingImages = floatingImages.map((img) => ({
+        ...img,
+        y: img.y + deltaY * 8,
+      }));
+    }
+    lastScrollY = currentY;
   }
 
   let lastCursorX = 0;
@@ -238,11 +251,11 @@
         <img
           src={image.src}
           alt="Movie still"
-          class="absolute w-32 h-20 md:w-48 md:h-32 object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out"
+          class="absolute aspect-video w-[50vw] md:w-[22vw] object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out"
           style="
-              left: {image.x}px; 
-              top: {image.initialY}px; 
-              opacity: {image.opacity}; 
+              left: {image.x}px;
+              top: {image.initialY + image.y}px;
+              opacity: {image.opacity};
               transform: scale({image.scale});
               z-index: 1000;
             "
