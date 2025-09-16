@@ -114,8 +114,13 @@
   }
 
   // Update scroll position for scroll-based image creation
+  let lastScrollProgress = 0;
   export function updateScrollProgress(progress: number) {
-    createScrollImages();
+    // Only create an image if scroll progress has changed enough (e.g., by 0.01)
+    if (Math.abs(progress - lastScrollProgress) > 0.01) {
+      createScrollImages();
+      lastScrollProgress = progress;
+    }
   }
 
   // Track cursor position
@@ -145,32 +150,56 @@
   <div class="flex h-full flex-col md:flex-row max-w-5xl mx-auto">
     <!-- Left Column: Awards Display -->
     <div
-      class="w-full md:w-1/2 flex flex-col justify-center items-start px-8 md:px-16 py-8 z-10"
+      class="w-full md:w-1/2 flex flex-col justify-center items-start py-[6vh] z-10 min-h-full"
     >
       {#if awards[currentAwardIndex]}
         {@const award = awards[currentAwardIndex]}
-        <div class="space-y-4 md:space-y-6 max-w-lg">
+        <div
+          class="grid w-full"
+          style="
+            max-width:100%;
+            grid-template-rows:
+              3.2rem /* badge */
+              4.5rem /* title */
+              3.2rem /* festival */
+              2.2rem /* date */
+              3.2rem /* progress */
+            ;
+            row-gap: 1rem;
+            min-height: 16.3rem;
+          "
+        >
           <!-- Award Result Badge -->
-          <div class="inline-block">
+          <div class="flex items-center h-full">
             <span
               class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold"
+              style="min-height:2.5rem;display:inline-flex;align-items:center;"
             >
               {award.result}
             </span>
           </div>
 
           <!-- Award Title -->
-          <h3 class="text-2xl md:text-3xl font-bold leading-tight">
+          <h3
+            class="text-2xl md:text-3xl font-bold leading-tight flex items-center h-full"
+            style="min-height:3.5rem;"
+          >
             {award.title}
           </h3>
 
           <!-- Festival Name -->
-          <p class="text-lg md:text-xl text-muted-foreground">
+          <p
+            class="text-lg md:text-xl text-muted-foreground flex items-center h-full"
+            style="min-height:2.5rem;"
+          >
             {award.festival}
           </p>
 
           <!-- Date -->
-          <p class="text-sm text-muted-foreground">
+          <p
+            class="text-sm text-muted-foreground flex items-center h-full"
+            style="min-height:1.5rem;"
+          >
             {new Date(award.date).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
@@ -179,13 +208,18 @@
           </p>
 
           <!-- Progress Indicator -->
-          <div class="flex items-center space-x-2 mt-6 md:mt-8">
-            <span class="text-sm text-muted-foreground">
+          <div
+            class="flex items-center gap-2 w-full h-full"
+            style="min-width:16rem;max-width:100%;min-height:2.5rem;"
+          >
+            <span class="text-sm text-muted-foreground whitespace-nowrap">
               {currentAwardIndex + 1} of {awards.length}
             </span>
-            <div class="flex-1 h-1 bg-muted rounded">
+            <div
+              class="relative grow h-1 bg-muted rounded min-w-[8rem] max-w-[16rem]"
+            >
               <div
-                class="h-full bg-primary rounded transition-all duration-300"
+                class="h-full bg-primary rounded transition-all duration-300 absolute left-0 top-0"
                 style="width: {((currentAwardIndex + 1) / awards.length) *
                   100}%"
               ></div>
