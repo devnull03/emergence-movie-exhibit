@@ -46,7 +46,7 @@
 <Section
   class="w-full h-screen flex flex-col items-center justify-center gap-8 px-8 font-[Poppins] tracking-tight leading-relaxed bg-background"
 >
-  <SectionTitle title="Synopsis" color="text-black" />
+  <SectionTitle title="Synopsis" color="text-gray-900" />
 
   <div class="max-w-4xl mx-auto text-center space-y-8">
     <!-- Logline -->

@@ -6,6 +6,6 @@
 <Section
   class="w-full h-screen text-background! flex flex-col items-center justify-center gap-4 bg-gray-900"
 >
-  <SectionTitle title="Awards & Recognition" color="text-background" />
+  <SectionTitle title="watch now" color="text-background" />
 </Section>
 

@@ -6,23 +6,12 @@
   import About from "$lib/components/sections/About.svelte";
   import trailer from "$lib/assets/trailer.mp4";
   import { asset } from "$app/paths";
+  import Awards from "$lib/components/sections/Awards.svelte";
+  import WatchNow from "$lib/components/sections/WatchNow.svelte";
+  import emergence from "$lib/content/emergence.json";
 
-  // Parallax scroll state
-  let y = $state(0);
-
-  const stills = [
-    { src: asset("/stills/Alex Still Photo (1).jpg"), speed: 1.01 },
-    {
-      src: asset("/stills/Avtar and Rajwant Still Photo (1) (1).jpg"),
-      speed: 1.2,
-    },
-    { src: asset("/poster.webp"), speed: 1.25 },
-    { src: asset("/stills/Jaspal Still Photo (1).jpg"), speed: 1 },
-    { src: asset("/stills/Kayden Still Photo (1).jpg"), speed: 1.2 },
-    { src: asset("/stills/Rajwant and Jag Still Photo (1).jpg"), speed: 1.2 },
-  ];
-
-  // let smoother: globalThis.ScrollSmoother | undefined = $state();
+  let awardsSection: HTMLElement;
+  let awardsComponent: Awards;
 
   const scrollToMain = () => {
     gsap.to(window, {
@@ -51,6 +40,43 @@
         scrub: 0,
       },
     });
+
+    // Awards section pinning
+    if (awardsSection) {
+      const awards = emergence.awardsHighlights;
+
+      const pinTrigger = ScrollTrigger.create({
+        trigger: awardsSection,
+        start: "top top",
+        end: () => `+=${awards.length * 100}vh`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 1,
+        // markers: true,
+        onUpdate: (self) => {
+          const progress = Math.min(self.progress, 0.99);
+          const newIndex = Math.floor(progress * awards.length);
+          console.log(
+            "Main page ScrollTrigger - progress:",
+            self.progress,
+            "newIndex:",
+            newIndex
+          );
+
+          // Update award index
+          if (awardsComponent && awardsComponent.updateAwardIndex) {
+            awardsComponent.updateAwardIndex(newIndex);
+          }
+
+          // Update scroll progress for image parallax
+          if (awardsComponent && awardsComponent.updateScrollProgress) {
+            awardsComponent.updateScrollProgress(self.progress);
+          }
+        },
+      });
+
+      console.log("Awards ScrollTrigger created:", pinTrigger);
+    }
   });
 </script>
 
@@ -69,8 +95,6 @@
     content="Discover the powerful stories of Kayden, Jag, and Amar in this acclaimed documentary."
   />
 </svelte:head>
-
-<svelte:window bind:scrollY={y} />
 
 <main class="*:rounded-t-2xl">
   <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -122,36 +146,19 @@
     <About />
   </section>
 
-    <section class="w-full grid grid-cols-3 relative! bg-transparent! -mb-54">
-      {#each stills as still, i}
-        <img
-          src={still.src}
-          alt="Film Still"
-          class="object-cover z-50 h-full"
-          class:row-span-2={i === 2}
-          class:col-start-3={i === 5}
-          data-speed={still.speed}
-        />
-      {/each}
-    </section>
-
   <section class="w-full h-screen">
     <CastSection />
   </section>
 
-  <section
-    class="w-full min-h-screen flex items-center justify-center bg-gray-100"
-  >
-    <div class="text-gray-900 text-3xl font-bold">
-      [Placeholder: Awards & Recognition]
-    </div>
+  <section bind:this={awardsSection} class="w-full">
+    <Awards bind:this={awardsComponent} />
   </section>
 
   <section
     id="watch-now"
     class="w-full min-h-screen flex items-center justify-center bg-gray-900 text-white"
   >
-    <div class="text-white text-3xl font-bold">[Placeholder: Watch Now]</div>
+    <WatchNow />
   </section>
 </main>
 

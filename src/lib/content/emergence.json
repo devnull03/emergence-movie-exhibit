@@ -1,66 +1,68 @@
 {
   "title": "Emergence: Out of the Shadows",
   "synopsis": "For Kayden, Jag, and Amar, awakening to and expressing their sexuality within conservative South Asian families was a lonely and terrifying experience... Tender, thoughtful, and teary, Emergence: Out of the Shadows asserts a potent and transformative voice in support of marginalized queer youth and their families.",
-  "trailer": { "youtubeId": "VNjT3g1bf_Q" },
-  "teacherGuide": { 
-    "title": "Teacher's Discussion Guide", 
-    "href": "https://emergencefilm.net/download-discussion-guide/" 
+  "trailer": {
+    "youtubeId": "VNjT3g1bf_Q"
+  },
+  "teacherGuide": {
+    "title": "Teacher's Discussion Guide",
+    "href": "https://emergencefilm.net/download-discussion-guide/"
   },
   "versions": [
-    { 
-      "title": "Broadcast Television Version (58 min)", 
-      "lang": "EN", 
-      "runtime": "58:00", 
-      "platform": "youtube", 
-      "id": "Qpz4kRya5Y0" 
+    {
+      "title": "Broadcast Television Version (58 min)",
+      "lang": "EN",
+      "runtime": "58:00",
+      "platform": "youtube",
+      "id": "Qpz4kRya5Y0"
     },
-    { 
-      "title": "Full Documentary — English Subtitles (81 min)", 
-      "lang": "EN", 
-      "runtime": "81:00", 
-      "platform": "youtube", 
-      "id": "LxWII2Cztlg" 
+    {
+      "title": "Full Documentary — English Subtitles (81 min)",
+      "lang": "EN",
+      "runtime": "81:00",
+      "platform": "youtube",
+      "id": "LxWII2Cztlg"
     },
-    { 
-      "title": "Full Documentary — French Subtitles (81 min)", 
-      "lang": "FR", 
-      "runtime": "81:00", 
-      "platform": "youtube", 
-      "id": "CLwEypQa5n0" 
+    {
+      "title": "Full Documentary — French Subtitles (81 min)",
+      "lang": "FR",
+      "runtime": "81:00",
+      "platform": "youtube",
+      "id": "CLwEypQa5n0"
     },
-    { 
-      "title": "Full Documentary — Hindi Subtitles (81 min)", 
-      "lang": "HI", 
-      "runtime": "81:00", 
-      "platform": "youtube", 
-      "id": "kw2_OV4gMvc" 
+    {
+      "title": "Full Documentary — Hindi Subtitles (81 min)",
+      "lang": "HI",
+      "runtime": "81:00",
+      "platform": "youtube",
+      "id": "kw2_OV4gMvc"
     },
-    { 
-      "title": "Full Documentary — Punjabi Subtitles (81 min)", 
-      "lang": "PA", 
-      "runtime": "81:00", 
-      "platform": "youtube", 
-      "id": "dG3NVW-iMyM" 
+    {
+      "title": "Full Documentary — Punjabi Subtitles (81 min)",
+      "lang": "PA",
+      "runtime": "81:00",
+      "platform": "youtube",
+      "id": "dG3NVW-iMyM"
     }
   ],
   "castSpotlights": [
-    { 
-      "name": "Amar", 
-      "runtime": "25:01", 
-      "youtubeId": "e7FEMIXuoGw", 
-      "bio": "Amar's journey of self-discovery and coming out within a traditional South Asian family." 
+    {
+      "name": "Amar",
+      "runtime": "25:01",
+      "youtubeId": "e7FEMIXuoGw",
+      "bio": "Amar's journey of self-discovery and coming out within a traditional South Asian family."
     },
-    { 
-      "name": "Jag", 
-      "runtime": "29:46", 
-      "youtubeId": "sphBx4biw6g", 
-      "bio": "Jag's experience navigating identity and acceptance in a conservative community." 
+    {
+      "name": "Jag",
+      "runtime": "29:46",
+      "youtubeId": "sphBx4biw6g",
+      "bio": "Jag's experience navigating identity and acceptance in a conservative community."
     },
-    { 
-      "name": "Kayden", 
-      "runtime": "28:04", 
-      "youtubeId": "7CGVn6f0r-c", 
-      "bio": "Kayden's story of transformation and courage in embracing authentic identity." 
+    {
+      "name": "Kayden",
+      "runtime": "28:04",
+      "youtubeId": "7CGVn6f0r-c",
+      "bio": "Kayden's story of transformation and courage in embracing authentic identity."
     }
   ],
   "awardsSummary": {
@@ -88,8 +90,12 @@
       "totalOfficialSelections": 51
     },
     "qualifyingFestivals": {
-      "academyAward": ["Out On Film, Atlanta"],
-      "bafta": ["Frameline, San Francisco"],
+      "academyAward": [
+        "Out On Film, Atlanta"
+      ],
+      "bafta": [
+        "Frameline, San Francisco"
+      ],
       "canadianScreenAward": [
         "Vancouver Asian Film Festival",
         "Vancouver International South Asian Film Festival",
@@ -113,526 +119,754 @@
     ]
   },
   "awardsHighlights": [
-    { 
-      "result": "Special Mention", 
-      "title": "Best Feature Documentary", 
-      "festival": "Chicago South Asian Film Festival", 
-      "date": "2021-10-04" 
+    {
+      "result": "World Premiere",
+      "title": "Cinema Diverse: The Palm Springs LGBTQ Film Festival",
+      "festival": "Cinema Diverse: The Palm Springs LGBTQ Film Festival",
+      "date": "2021-09-19"
     },
-    { 
-      "result": "Festival Favorite (Audience)", 
-      "title": "Cinema Diverse", 
-      "festival": "Palm Springs LGBTQ+ Film Festival", 
-      "date": "2021-10-15", 
-      "note": "Audience award 4/5+" 
+    {
+      "result": "Academy Award Qualifying",
+      "title": "Out On Film Atlanta's LGBTQ Film Festival",
+      "festival": "Out On Film Atlanta's LGBTQ Film Festival",
+      "date": "2021-09-23"
     },
-    { 
-      "result": "Award Winner", 
-      "title": "Best Documentary", 
-      "festival": "Vancouver International South Asian Film Festival", 
-      "date": "2021-11-14" 
+    {
+      "result": "Special Mention",
+      "title": "Best Feature Documentary",
+      "festival": "Chicago South Asian Film Festival",
+      "date": "2021-09-25"
     },
-    { 
-      "result": "Closing Film", 
-      "title": "Festival Closing Film", 
-      "festival": "Vancouver International South Asian Film Festival", 
-      "date": "2021-11-14" 
+    {
+      "result": "Official Selection",
+      "title": "qFLIX Philadelphia: The LGBTQ+ Film Festival",
+      "festival": "qFLIX Philadelphia: The LGBTQ+ Film Festival",
+      "date": "2021-09-26"
     },
-    { 
-      "result": "Finalist", 
-      "title": "Best Canadian Feature, Best Director, Best Cinematography", 
-      "festival": "Vancouver Asian Film Festival", 
-      "date": "2021-11-14" 
+    {
+      "result": "Official Selection",
+      "title": "Tasveer South Asian Film Festival",
+      "festival": "Tasveer South Asian Film Festival",
+      "date": "2021-10-01"
     },
-    { 
-      "result": "Closing Film", 
-      "title": "Festival Closing Film", 
-      "festival": "South Asian Film Festival of Montreal", 
-      "date": "2021-11-28" 
+    {
+      "result": "Canadian Premiere",
+      "title": "KDocsFF",
+      "festival": "KDocsFF",
+      "date": "2021-10-11"
     },
-    { 
-      "result": "Audience Choice Winner", 
-      "title": "Muskoka Queer Film Festival", 
-      "festival": "Muskoka QFF", 
-      "date": "2022-03-18" 
+    {
+      "result": "Official Selection",
+      "title": "Reel Pride International Film Festival",
+      "festival": "Reel Pride International Film Festival",
+      "date": "2021-10-12"
     },
-    { 
-      "result": "Best Film Award - Championing Change", 
-      "title": "UK Asian Film Festival", 
-      "festival": "UK Asian FF", 
-      "date": "2022-05-15" 
+    {
+      "result": "Canadian Screen Award Qualifying",
+      "title": "Reelworld Film Festival",
+      "festival": "Reelworld Film Festival",
+      "date": "2021-10-20"
     },
-    { 
-      "result": "Award Winner", 
-      "title": "Christopher Marlowe Award for Best Documentary Feature Film", 
-      "festival": "San Antonio QFest – LGBT International Film Festival", 
-      "date": "2022-10-10" 
+    {
+      "result": "Official Selection",
+      "title": "Desperado LGBTQ Film Festival",
+      "festival": "Desperado LGBTQ Film Festival",
+      "date": "2021-10-22"
     },
-    { 
-      "result": "Winner", 
-      "title": "Special Jury Documentary Category", 
-      "festival": "International Film Festival of Shimla", 
-      "date": "2022-09-16" 
+    {
+      "result": "Official Selection",
+      "title": "New West Film Fest",
+      "festival": "New West Film Fest",
+      "date": "2021-10-22"
     },
-    { 
-      "result": "Finalist", 
-      "title": "Best Feature Documentary", 
-      "festival": "OMovies Film Festival", 
-      "date": "2022-12-12" 
+    {
+      "result": "Official Selection",
+      "title": "Caleidoscope Indian Film Festival of Boston",
+      "festival": "Caleidoscope Indian Film Festival of Boston",
+      "date": "2021-10-22"
     },
-    { 
-      "result": "Opening Film", 
-      "title": "Opening Film", 
-      "festival": "Women's International Film and Arts Festival (NYC)", 
-      "date": "2023-03-22" 
+    {
+      "result": "UK Premiere",
+      "title": "Central Scotland Documentary Festival",
+      "festival": "Central Scotland Documentary Festival",
+      "date": "2021-10-28"
     },
-    { 
-      "result": "Finalist", 
-      "title": "Women Deliver Arts and Film Festival", 
-      "festival": "Women Deliver", 
-      "date": "2023-07-20" 
+    {
+      "result": "Finalist",
+      "title": "Best Canadian Feature, Best Director, Best Cinematography",
+      "festival": "Vancouver Asian Film Festival",
+      "date": "2021-11-04"
     },
-    { 
-      "result": "Winner", 
-      "title": "Best Feature Film (19+)", 
-      "festival": "Langley City Film Festival", 
-      "date": "2023-10-21" 
+    {
+      "result": "Official Selection",
+      "title": "Caminhos Film Festival",
+      "festival": "Caminhos Film Festival",
+      "date": "2021-11-05"
+    },
+    {
+      "result": "Award Winner",
+      "title": "Best Documentary",
+      "festival": "Vancouver International South Asian Film Festival",
+      "date": "2021-11-11"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Image + Nation",
+      "festival": "Image + Nation",
+      "date": "2021-11-18"
+    },
+    {
+      "result": "Closing Film",
+      "title": "Festival Closing Film",
+      "festival": "South Asian Film Festival of Montreal",
+      "date": "2021-11-19"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Reel Desires – Chennai International Queer Film Festival",
+      "festival": "Reel Desires – Chennai International Queer Film Festival",
+      "date": "2021-12-01"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Jaipur International Film Festival",
+      "festival": "Jaipur International Film Festival",
+      "date": "2022-01-07"
+    },
+    {
+      "result": "Official Selection",
+      "title": "DC South Asian Film Festival",
+      "festival": "DC South Asian Film Festival",
+      "date": "2022-01-16"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Reelout Queer Film Festival",
+      "festival": "Reelout Queer Film Festival",
+      "date": "2022-01-28"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Sofia Menar Film Festival",
+      "festival": "Sofia Menar Film Festival",
+      "date": "2021-01-29"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Spokane International Film Festival",
+      "festival": "Spokane International Film Festival",
+      "date": "2022-02-04"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Chennai International Documentary and Short Film Festival",
+      "festival": "Chennai International Documentary and Short Film Festival",
+      "date": "2022-02-16"
+    },
+    {
+      "result": "Audience Choice Winner",
+      "title": "Muskoka Queer Film Festival",
+      "festival": "Muskoka QFF",
+      "date": "2022-03-18"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Universe Multicultural Film Festival",
+      "festival": "Universe Multicultural Film Festival",
+      "date": "2022-04-08"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Film South Asia",
+      "festival": "Film South Asia",
+      "date": "2022-04-21"
+    },
+    {
+      "result": "Best Film Award - Championing Change",
+      "title": "UK Asian Film Festival",
+      "festival": "UK Asian FF",
+      "date": "2022-05-04"
+    },
+    {
+      "result": "Canadian Screen Award Qualifying",
+      "title": "NorthwestFest International Documentary Festival",
+      "festival": "NorthwestFest International Documentary Festival",
+      "date": "2022-05-05"
+    },
+    {
+      "result": "Official Selection",
+      "title": "New York Indian Film Festival",
+      "festival": "New York Indian Film Festival",
+      "date": "2022-05-07"
+    },
+    {
+      "result": "Official Selection",
+      "title": "NC South and East Asian International Film Festival",
+      "festival": "NC South and East Asian International Film Festival",
+      "date": "2022-05-21"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Dallas Fort Worth South Asian Film Festival",
+      "festival": "Dallas Fort Worth South Asian Film Festival",
+      "date": "2022-05-20"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Mumbai International Film Festival (MIFF)",
+      "festival": "Mumbai International Film Festival (MIFF)",
+      "date": "2022-05-29"
+    },
+    {
+      "result": "Official Selection",
+      "title": "KASHISH Mumbai International Queer Film Festival",
+      "festival": "KASHISH Mumbai International Queer Film Festival",
+      "date": "2022-06-01"
+    },
+    {
+      "result": "BAFTA Qualifying",
+      "title": "Frameline",
+      "festival": "Frameline",
+      "date": "2022-06-16"
+    },
+    {
+      "result": "Canadian Screen Award Qualifying",
+      "title": "Vancouver Queer Film Festival",
+      "festival": "Vancouver Queer Film Festival",
+      "date": "2022-08-11"
+    },
+    {
+      "result": "Australian Premiere",
+      "title": "Indian Film Festival of Melbourne",
+      "festival": "Indian Film Festival of Melbourne",
+      "date": "2022-08-12"
+    },
+    {
+      "result": "Winner",
+      "title": "Special Jury Documentary Category",
+      "festival": "International Film Festival of Shimla",
+      "date": "2022-08-26"
+    },
+    {
+      "result": "Official Selection",
+      "title": "SF Queer Film Fest",
+      "festival": "SF Queer Film Fest",
+      "date": "2022-08-26"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Social Justice Film Festival",
+      "festival": "Social Justice Film Festival",
+      "date": "2022-09-22"
+    },
+    {
+      "result": "Official Selection",
+      "title": "India Film Festival of Alberta",
+      "festival": "India Film Festival of Alberta",
+      "date": "2022-09-01"
+    },
+    {
+      "result": "Award Winner",
+      "title": "Christopher Marlowe Award for Best Documentary Feature Film",
+      "festival": "San Antonio QFest – LGBT International Film Festival",
+      "date": "2022-10-08"
+    },
+    {
+      "result": "Finalist",
+      "title": "Enlightenment Award",
+      "festival": "DOCUTAH International Film Festival",
+      "date": "2022-11-03"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Sikhlens: Sikh Arts and Film Festival",
+      "festival": "Sikhlens: Sikh Arts and Film Festival",
+      "date": "2022-11-17"
+    },
+    {
+      "result": "Finalist",
+      "title": "Best Feature Documentary",
+      "festival": "OMovies Film Festival",
+      "date": "2022-12-12"
+    },
+    {
+      "result": "Official Selection",
+      "title": "Pride Film Fest",
+      "festival": "Pride Film Fest",
+      "date": "2023-01-02"
+    },
+    {
+      "result": "Opening Film",
+      "title": "Opening Film",
+      "festival": "Women's International Film and Arts Festival (NYC)",
+      "date": "2023-03-22"
+    },
+    {
+      "result": "Finalist",
+      "title": "Women Deliver Arts and Film Festival",
+      "festival": "Women Deliver",
+      "date": "2023-07-17"
+    },
+    {
+      "result": "Winner",
+      "title": "Best Feature Film (19+)",
+      "festival": "Langley City Film Festival",
+      "date": "2023-10-21"
+    },
+    {
+      "result": "Official Selection",
+      "title": "OUT Film Festival",
+      "festival": "OUT Film Festival",
+      "date": "2023-11-16"
+    },
+    {
+      "result": "Festival Favorite (Audience)",
+      "title": "Cinema Diverse",
+      "festival": "Palm Springs LGBTQ+ Film Festival",
+      "date": "2021-10-15",
+      "note": "Audience award 4/5+"
+    },
+    {
+      "result": "Closing Film",
+      "title": "Festival Closing Film",
+      "festival": "Vancouver International South Asian Film Festival",
+      "date": "2021-11-14"
     }
   ],
   "officialSelections": [
-    { 
-      "category": "QUEER", 
-      "festival": "Cinema Diverse: The Palm Springs LGBTQ Film Festival", 
-      "premiere": "World Premiere", 
-      "dates": "2021-09-19", 
-      "city": "Palm Springs", 
-      "region": "California", 
-      "country": "USA", 
-      "outcome": "Festival Favorite (Audience)" 
+    {
+      "category": "QUEER",
+      "festival": "Cinema Diverse: The Palm Springs LGBTQ Film Festival",
+      "premiere": "World Premiere",
+      "dates": "2021-09-19",
+      "city": "Palm Springs",
+      "region": "California",
+      "country": "USA",
+      "outcome": "Festival Favorite (Audience)"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Out On Film Atlanta's LGBTQ Film Festival", 
-      "qualifier": "Academy Award Qualifying", 
-      "dates": "2021-09-23 to 2021-10-03", 
-      "city": "Avondale Estates", 
-      "region": "Georgia", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "Out On Film Atlanta's LGBTQ Film Festival",
+      "qualifier": "Academy Award Qualifying",
+      "dates": "2021-09-23 to 2021-10-03",
+      "city": "Avondale Estates",
+      "region": "Georgia",
+      "country": "USA"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Chicago South Asian Film Festival", 
-      "dates": "2021-09-25 to 2021-10-02", 
-      "city": "Chicago", 
-      "region": "Illinois", 
-      "country": "USA", 
-      "outcome": "Special Mention" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Chicago South Asian Film Festival",
+      "dates": "2021-09-25 to 2021-10-02",
+      "city": "Chicago",
+      "region": "Illinois",
+      "country": "USA",
+      "outcome": "Special Mention"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "qFLIX Philadelphia: The LGBTQ+ Film Festival", 
-      "dates": "2021-09-26 to 2021-10-03", 
-      "city": "Philadelphia", 
-      "region": "Pennsylvania", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "qFLIX Philadelphia: The LGBTQ+ Film Festival",
+      "dates": "2021-09-26 to 2021-10-03",
+      "city": "Philadelphia",
+      "region": "Pennsylvania",
+      "country": "USA"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Tasveer South Asian Film Festival", 
-      "dates": "2021-10-01 to 2021-10-24", 
-      "city": "Seattle", 
-      "region": "Washington", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Tasveer South Asian Film Festival",
+      "dates": "2021-10-01 to 2021-10-24",
+      "city": "Seattle",
+      "region": "Washington",
+      "country": "USA"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "KDocsFF", 
-      "premiere": "Canadian Premiere", 
-      "format": "Virtual", 
-      "dates": "2021-10-11", 
-      "city": "Surrey", 
-      "region": "BC", 
-      "country": "Canada", 
-      "note": "Special Screening for National Coming Out Day" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "KDocsFF",
+      "premiere": "Canadian Premiere",
+      "format": "Virtual",
+      "dates": "2021-10-11",
+      "city": "Surrey",
+      "region": "BC",
+      "country": "Canada",
+      "note": "Special Screening for National Coming Out Day"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Reel Pride International Film Festival", 
-      "format": "Virtual", 
-      "dates": "2021-10-12 to 2021-10-17", 
-      "city": "Winnipeg", 
-      "region": "Manitoba", 
-      "country": "Canada" 
+    {
+      "category": "QUEER",
+      "festival": "Reel Pride International Film Festival",
+      "format": "Virtual",
+      "dates": "2021-10-12 to 2021-10-17",
+      "city": "Winnipeg",
+      "region": "Manitoba",
+      "country": "Canada"
     },
-    { 
-      "category": "BIPOC", 
-      "festival": "Reelworld Film Festival", 
-      "qualifier": "Canadian Screen Award Qualifying", 
-      "format": "Virtual", 
-      "dates": "2021-10-20 to 2021-10-25", 
-      "city": "Toronto", 
-      "region": "Ontario", 
-      "country": "Canada" 
+    {
+      "category": "BIPOC",
+      "festival": "Reelworld Film Festival",
+      "qualifier": "Canadian Screen Award Qualifying",
+      "format": "Virtual",
+      "dates": "2021-10-20 to 2021-10-25",
+      "city": "Toronto",
+      "region": "Ontario",
+      "country": "Canada"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Desperado LGBTQ Film Festival", 
-      "dates": "2021-10-22 to 2021-10-24", 
-      "city": "Phoenix", 
-      "region": "Arizona", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "Desperado LGBTQ Film Festival",
+      "dates": "2021-10-22 to 2021-10-24",
+      "city": "Phoenix",
+      "region": "Arizona",
+      "country": "USA"
     },
-    { 
-      "category": "OTHER", 
-      "festival": "New West Film Fest", 
-      "dates": "2021-10-22 to 2021-10-24", 
-      "city": "New Westminster", 
-      "region": "BC", 
-      "country": "Canada" 
+    {
+      "category": "OTHER",
+      "festival": "New West Film Fest",
+      "dates": "2021-10-22 to 2021-10-24",
+      "city": "New Westminster",
+      "region": "BC",
+      "country": "Canada"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Caleidoscope Indian Film Festival of Boston", 
-      "dates": "2021-10-22 to 2021-10-24", 
-      "city": "Cambridge", 
-      "region": "Massachusetts", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Caleidoscope Indian Film Festival of Boston",
+      "dates": "2021-10-22 to 2021-10-24",
+      "city": "Cambridge",
+      "region": "Massachusetts",
+      "country": "USA"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "Central Scotland Documentary Festival", 
-      "premiere": "UK Premiere", 
-      "dates": "2021-10-28 to 2021-11-01", 
-      "city": "Stirling", 
-      "region": "", 
-      "country": "Scotland" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "Central Scotland Documentary Festival",
+      "premiere": "UK Premiere",
+      "dates": "2021-10-28 to 2021-11-01",
+      "city": "Stirling",
+      "region": "",
+      "country": "Scotland"
     },
-    { 
-      "category": "ASIAN", 
-      "festival": "Vancouver Asian Film Festival", 
-      "qualifier": "Canadian Screen Award Qualifying", 
-      "dates": "2021-11-04 to 2021-11-14", 
-      "city": "Vancouver", 
-      "region": "BC", 
-      "country": "Canada", 
-      "outcome": "Finalist (Multiple Categories)" 
+    {
+      "category": "ASIAN",
+      "festival": "Vancouver Asian Film Festival",
+      "qualifier": "Canadian Screen Award Qualifying",
+      "dates": "2021-11-04 to 2021-11-14",
+      "city": "Vancouver",
+      "region": "BC",
+      "country": "Canada",
+      "outcome": "Finalist (Multiple Categories)"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "Caminhos Film Festival", 
-      "dates": "2021-11-05 to 2021-11-20", 
-      "city": "Coimbra", 
-      "region": "", 
-      "country": "Portugal" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "Caminhos Film Festival",
+      "dates": "2021-11-05 to 2021-11-20",
+      "city": "Coimbra",
+      "region": "",
+      "country": "Portugal"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Vancouver International South Asian Film Festival", 
-      "qualifier": "Canadian Screen Award Qualifying", 
-      "dates": "2021-11-11 to 2021-11-14", 
-      "city": "Surrey", 
-      "region": "BC", 
-      "country": "Canada", 
-      "outcome": "Closing Film; Award Winner (Best Documentary)" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Vancouver International South Asian Film Festival",
+      "qualifier": "Canadian Screen Award Qualifying",
+      "dates": "2021-11-11 to 2021-11-14",
+      "city": "Surrey",
+      "region": "BC",
+      "country": "Canada",
+      "outcome": "Closing Film; Award Winner (Best Documentary)"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Image + Nation", 
-      "dates": "2021-11-18 to 2021-11-28", 
-      "city": "Montreal", 
-      "region": "Quebec", 
-      "country": "Canada" 
+    {
+      "category": "QUEER",
+      "festival": "Image + Nation",
+      "dates": "2021-11-18 to 2021-11-28",
+      "city": "Montreal",
+      "region": "Quebec",
+      "country": "Canada"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "South Asian Film Festival of Montreal", 
-      "dates": "2021-11-19 to 2021-11-28", 
-      "city": "Montreal", 
-      "region": "Quebec", 
-      "country": "Canada", 
-      "outcome": "Closing Film" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "South Asian Film Festival of Montreal",
+      "dates": "2021-11-19 to 2021-11-28",
+      "city": "Montreal",
+      "region": "Quebec",
+      "country": "Canada",
+      "outcome": "Closing Film"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Reel Desires – Chennai International Queer Film Festival", 
-      "format": "Online", 
-      "dates": "2021-12", 
-      "city": "Chennai", 
-      "region": "Tamil Nadu", 
-      "country": "India" 
+    {
+      "category": "QUEER",
+      "festival": "Reel Desires – Chennai International Queer Film Festival",
+      "format": "Online",
+      "dates": "2021-12",
+      "city": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "India"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "Jaipur International Film Festival", 
-      "format": "Hybrid", 
-      "dates": "2022-01-07 to 2022-01-11", 
-      "city": "Jaipur", 
-      "region": "Rajasthan", 
-      "country": "India" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "Jaipur International Film Festival",
+      "format": "Hybrid",
+      "dates": "2022-01-07 to 2022-01-11",
+      "city": "Jaipur",
+      "region": "Rajasthan",
+      "country": "India"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "DC South Asian Film Festival", 
-      "format": "Virtual", 
-      "dates": "2022-01-16 to 2022-01-30", 
-      "city": "Washington", 
-      "region": "DC", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "DC South Asian Film Festival",
+      "format": "Virtual",
+      "dates": "2022-01-16 to 2022-01-30",
+      "city": "Washington",
+      "region": "DC",
+      "country": "USA"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Reelout Queer Film Festival", 
-      "dates": "2022-01-28 to 2022-02-06", 
-      "city": "Kingston", 
-      "region": "Ontario", 
-      "country": "Canada" 
+    {
+      "category": "QUEER",
+      "festival": "Reelout Queer Film Festival",
+      "dates": "2022-01-28 to 2022-02-06",
+      "city": "Kingston",
+      "region": "Ontario",
+      "country": "Canada"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "Sofia Menar Film Festival", 
-      "dates": "2021-01-29", 
-      "city": "Sofia", 
-      "region": "", 
-      "country": "Bulgaria" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "Sofia Menar Film Festival",
+      "dates": "2021-01-29",
+      "city": "Sofia",
+      "region": "",
+      "country": "Bulgaria"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "Spokane International Film Festival", 
-      "dates": "2022-02-04 to 2022-02-11", 
-      "city": "Spokane", 
-      "region": "Washington", 
-      "country": "USA" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "Spokane International Film Festival",
+      "dates": "2022-02-04 to 2022-02-11",
+      "city": "Spokane",
+      "region": "Washington",
+      "country": "USA"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "Chennai International Documentary and Short Film Festival", 
-      "dates": "2022-02-16", 
-      "city": "Chennai", 
-      "region": "Tamil Nadu", 
-      "country": "India" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "Chennai International Documentary and Short Film Festival",
+      "dates": "2022-02-16",
+      "city": "Chennai",
+      "region": "Tamil Nadu",
+      "country": "India"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Muskoka Queer Film Festival", 
-      "dates": "2022-03-18", 
-      "city": "Bracebridge", 
-      "region": "Ontario", 
-      "country": "Canada", 
-      "outcome": "Audience Choice Winner" 
+    {
+      "category": "QUEER",
+      "festival": "Muskoka Queer Film Festival",
+      "dates": "2022-03-18",
+      "city": "Bracebridge",
+      "region": "Ontario",
+      "country": "Canada",
+      "outcome": "Audience Choice Winner"
     },
-    { 
-      "category": "OTHER", 
-      "festival": "Universe Multicultural Film Festival", 
-      "dates": "2022-04-08", 
-      "city": "Palos Verdes Peninsula", 
-      "region": "California", 
-      "country": "USA" 
+    {
+      "category": "OTHER",
+      "festival": "Universe Multicultural Film Festival",
+      "dates": "2022-04-08",
+      "city": "Palos Verdes Peninsula",
+      "region": "California",
+      "country": "USA"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "Film South Asia", 
-      "dates": "2022-04-21", 
-      "city": "Kathmandu", 
-      "region": "", 
-      "country": "Nepal" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "Film South Asia",
+      "dates": "2022-04-21",
+      "city": "Kathmandu",
+      "region": "",
+      "country": "Nepal"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "UK Asian Film Festival", 
-      "dates": "2022-05-04 to 2022-05-15", 
-      "city": "London", 
-      "region": "", 
-      "country": "UK", 
-      "outcome": "Best Film Award - Championing Change; BFI Player & Emerging Curators Finalist" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "UK Asian Film Festival",
+      "dates": "2022-05-04 to 2022-05-15",
+      "city": "London",
+      "region": "",
+      "country": "UK",
+      "outcome": "Best Film Award - Championing Change; BFI Player & Emerging Curators Finalist"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "NorthwestFest International Documentary Festival", 
-      "qualifier": "Canadian Screen Award Qualifying", 
-      "dates": "2022-05-05 to 2022-05-15", 
-      "city": "Edmonton", 
-      "region": "Alberta", 
-      "country": "Canada" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "NorthwestFest International Documentary Festival",
+      "qualifier": "Canadian Screen Award Qualifying",
+      "dates": "2022-05-05 to 2022-05-15",
+      "city": "Edmonton",
+      "region": "Alberta",
+      "country": "Canada"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "New York Indian Film Festival", 
-      "dates": "2022-05-07 to 2022-05-13", 
-      "city": "New York City", 
-      "region": "New York", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "New York Indian Film Festival",
+      "dates": "2022-05-07 to 2022-05-13",
+      "city": "New York City",
+      "region": "New York",
+      "country": "USA"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "NC South and East Asian International Film Festival", 
-      "dates": "2022-05-21", 
-      "city": "Raleigh", 
-      "region": "North Carolina", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "NC South and East Asian International Film Festival",
+      "dates": "2022-05-21",
+      "city": "Raleigh",
+      "region": "North Carolina",
+      "country": "USA"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Dallas Fort Worth South Asian Film Festival", 
-      "dates": "2022-05-20 to 2022-05-22", 
-      "city": "Dallas", 
-      "region": "Texas", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Dallas Fort Worth South Asian Film Festival",
+      "dates": "2022-05-20 to 2022-05-22",
+      "city": "Dallas",
+      "region": "Texas",
+      "country": "USA"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "Mumbai International Film Festival (MIFF)", 
-      "dates": "2022-05-29 to 2022-06-04", 
-      "city": "Mumbai", 
-      "region": "Maharashtra", 
-      "country": "India" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "Mumbai International Film Festival (MIFF)",
+      "dates": "2022-05-29 to 2022-06-04",
+      "city": "Mumbai",
+      "region": "Maharashtra",
+      "country": "India"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "KASHISH Mumbai International Queer Film Festival", 
-      "dates": "2022-06-01", 
-      "city": "Mumbai", 
-      "region": "Maharashtra", 
-      "country": "India" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "KASHISH Mumbai International Queer Film Festival",
+      "dates": "2022-06-01",
+      "city": "Mumbai",
+      "region": "Maharashtra",
+      "country": "India"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Frameline", 
-      "qualifier": "BAFTA Qualifying", 
-      "dates": "2022-06-16 to 2022-06-26", 
-      "city": "San Francisco", 
-      "region": "California", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "Frameline",
+      "qualifier": "BAFTA Qualifying",
+      "dates": "2022-06-16 to 2022-06-26",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "USA"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Vancouver Queer Film Festival", 
-      "qualifier": "Canadian Screen Award Qualifying", 
-      "format": "Hybrid", 
-      "dates": "2022-08-11 to 2022-08-21", 
-      "city": "Vancouver", 
-      "region": "BC", 
-      "country": "Canada" 
+    {
+      "category": "QUEER",
+      "festival": "Vancouver Queer Film Festival",
+      "qualifier": "Canadian Screen Award Qualifying",
+      "format": "Hybrid",
+      "dates": "2022-08-11 to 2022-08-21",
+      "city": "Vancouver",
+      "region": "BC",
+      "country": "Canada"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Indian Film Festival of Melbourne", 
-      "premiere": "Australian Premiere", 
-      "format": "Virtual", 
-      "dates": "2022-08-12 to 2022-08-22", 
-      "city": "Melbourne", 
-      "region": "Victoria", 
-      "country": "Australia" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Indian Film Festival of Melbourne",
+      "premiere": "Australian Premiere",
+      "format": "Virtual",
+      "dates": "2022-08-12 to 2022-08-22",
+      "city": "Melbourne",
+      "region": "Victoria",
+      "country": "Australia"
     },
-    { 
-      "category": "INTERNATIONAL", 
-      "festival": "International Film Festival of Shimla", 
-      "dates": "2022-08-26 to 2022-08-28", 
-      "city": "Shimla", 
-      "region": "Himachal Pradesh", 
-      "country": "India", 
-      "outcome": "Winner (Special Jury Documentary)" 
+    {
+      "category": "INTERNATIONAL",
+      "festival": "International Film Festival of Shimla",
+      "dates": "2022-08-26 to 2022-08-28",
+      "city": "Shimla",
+      "region": "Himachal Pradesh",
+      "country": "India",
+      "outcome": "Winner (Special Jury Documentary)"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "SF Queer Film Fest", 
-      "dates": "2022-08-26 to 2022-08-28", 
-      "city": "San Francisco", 
-      "region": "California", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "SF Queer Film Fest",
+      "dates": "2022-08-26 to 2022-08-28",
+      "city": "San Francisco",
+      "region": "California",
+      "country": "USA"
     },
-    { 
-      "category": "OTHER", 
-      "festival": "Social Justice Film Festival", 
-      "dates": "2022-09-22 to 2022-09-26", 
-      "city": "Seattle", 
-      "region": "Washington", 
-      "country": "USA" 
+    {
+      "category": "OTHER",
+      "festival": "Social Justice Film Festival",
+      "dates": "2022-09-22 to 2022-09-26",
+      "city": "Seattle",
+      "region": "Washington",
+      "country": "USA"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "India Film Festival of Alberta", 
-      "dates": "2022-09-01 to 2022-09-30", 
-      "city": "Sherwood Park", 
-      "region": "Alberta", 
-      "country": "Canada" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "India Film Festival of Alberta",
+      "dates": "2022-09-01 to 2022-09-30",
+      "city": "Sherwood Park",
+      "region": "Alberta",
+      "country": "Canada"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "San Antonio QFest – LGBT International Film Festival", 
-      "dates": "2022-10-08 to 2022-10-10", 
-      "city": "San Antonio", 
-      "region": "Texas", 
-      "country": "USA", 
-      "outcome": "Award Winner (Christopher Marlowe Award)" 
+    {
+      "category": "QUEER",
+      "festival": "San Antonio QFest – LGBT International Film Festival",
+      "dates": "2022-10-08 to 2022-10-10",
+      "city": "San Antonio",
+      "region": "Texas",
+      "country": "USA",
+      "outcome": "Award Winner (Christopher Marlowe Award)"
     },
-    { 
-      "category": "DOCUMENTARY", 
-      "festival": "DOCUTAH International Film Festival", 
-      "dates": "2022-11-03 to 2022-11-05", 
-      "city": "St. George", 
-      "region": "Utah", 
-      "country": "USA", 
-      "outcome": "Finalist (Enlightenment Award)" 
+    {
+      "category": "DOCUMENTARY",
+      "festival": "DOCUTAH International Film Festival",
+      "dates": "2022-11-03 to 2022-11-05",
+      "city": "St. George",
+      "region": "Utah",
+      "country": "USA",
+      "outcome": "Finalist (Enlightenment Award)"
     },
-    { 
-      "category": "SOUTH ASIAN", 
-      "festival": "Sikhlens: Sikh Arts and Film Festival", 
-      "dates": "2022-11-17 to 2022-11-20", 
-      "city": "Santa Ana", 
-      "region": "California", 
-      "country": "USA" 
+    {
+      "category": "SOUTH ASIAN",
+      "festival": "Sikhlens: Sikh Arts and Film Festival",
+      "dates": "2022-11-17 to 2022-11-20",
+      "city": "Santa Ana",
+      "region": "California",
+      "country": "USA"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "OMovies Film Festival", 
-      "dates": "2022-12-12 to 2022-12-18", 
-      "city": "Naples", 
-      "region": "", 
-      "country": "Italy", 
-      "outcome": "Finalist (Best Feature Documentary)" 
+    {
+      "category": "QUEER",
+      "festival": "OMovies Film Festival",
+      "dates": "2022-12-12 to 2022-12-18",
+      "city": "Naples",
+      "region": "",
+      "country": "Italy",
+      "outcome": "Finalist (Best Feature Documentary)"
     },
-    { 
-      "category": "QUEER", 
-      "festival": "Pride Film Fest", 
-      "dates": "2023-01-02 to 2023-01-13", 
-      "city": "Chicago", 
-      "region": "Illinois", 
-      "country": "USA" 
+    {
+      "category": "QUEER",
+      "festival": "Pride Film Fest",
+      "dates": "2023-01-02 to 2023-01-13",
+      "city": "Chicago",
+      "region": "Illinois",
+      "country": "USA"
     },
-    { 
-      "category": "WOMEN'S", 
-      "festival": "Women's International Film and Arts Festival", 
-      "dates": "2023-03-22", 
-      "city": "New York City", 
-      "region": "New York", 
-      "country": "USA", 
-      "outcome": "Opening Film" 
+    {
+      "category": "WOMEN'S",
+      "festival": "Women's International Film and Arts Festival",
+      "dates": "2023-03-22",
+      "city": "New York City",
+      "region": "New York",
+      "country": "USA",
+      "outcome": "Opening Film"
     },
-    { 
-      "category": "WOMEN'S", 
-      "festival": "Women Deliver Arts and Film Festival", 
-      "dates": "2023-07-17 to 2023-07-20", 
-      "city": "Kigali", 
-      "region": "", 
-      "country": "Rwanda", 
-      "outcome": "Finalist" 
+    {
+      "category": "WOMEN'S",
+      "festival": "Women Deliver Arts and Film Festival",
+      "dates": "2023-07-17 to 2023-07-20",
+      "city": "Kigali",
+      "region": "",
+      "country": "Rwanda",
+      "outcome": "Finalist"
     },
-    { 
-      "category": "OTHER", 
-      "festival": "Langley City Film Festival", 
-      "dates": "2023-10-21", 
-      "city": "Aldergrove", 
-      "region": "BC", 
-      "country": "Canada", 
-      "outcome": "Winner (Best Feature Film 19+)" 
+    {
+      "category": "OTHER",
+      "festival": "Langley City Film Festival",
+      "dates": "2023-10-21",
+      "city": "Aldergrove",
+      "region": "BC",
+      "country": "Canada",
+      "outcome": "Winner (Best Feature Film 19+)"
     },
-    { 
-      "category": "OTHER", 
-      "festival": "OUT Film Festival", 
-      "dates": "2023-11-16 to 2023-11-18", 
-      "city": "Nairobi", 
-      "region": "", 
-      "country": "Kenya" 
+    {
+      "category": "OTHER",
+      "festival": "OUT Film Festival",
+      "dates": "2023-11-16 to 2023-11-18",
+      "city": "Nairobi",
+      "region": "",
+      "country": "Kenya"
     }
   ],
   "stills": [],
