@@ -113,7 +113,6 @@
     }
   }
 
-  // Update scroll position for scroll-based image creation
   let lastScrollProgress = 0;
   export function updateScrollProgress(progress: number) {
     // Only create an image if scroll progress has changed enough (e.g., by 0.01)
@@ -123,19 +122,15 @@
     }
   }
 
-  // Track cursor position
   let lastCursorX = 0;
   let lastCursorY = 0;
 
-  // Create images automatically on scroll at cursor position
   let lastScrollImageTime = 0;
   const createScrollImages = () => {
     if (!imageContainer || lastCursorX === 0 || lastCursorY === 0) return;
 
     const now = Date.now();
     if (now - lastScrollImageTime > 200) {
-      // Throttle image creation on scroll
-      // Use last known cursor position
       addFloatingImage(lastCursorX, lastCursorY);
       lastScrollImageTime = now;
     }

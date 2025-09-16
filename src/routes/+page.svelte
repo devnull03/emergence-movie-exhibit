@@ -56,12 +56,6 @@
         onUpdate: (self) => {
           const progress = Math.min(self.progress, 0.99);
           const newIndex = Math.floor(progress * awards.length);
-          console.log(
-            "Main page ScrollTrigger - progress:",
-            self.progress,
-            "newIndex:",
-            newIndex
-          );
 
           // Update award index
           if (awardsComponent && awardsComponent.updateAwardIndex) {
