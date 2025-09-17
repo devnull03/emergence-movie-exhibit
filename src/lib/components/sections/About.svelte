@@ -48,7 +48,7 @@
 >
   <SectionTitle title="Synopsis" color="text-gray-900" />
 
-  <div class="max-w-4xl mx-auto text-center space-y-8">
+  <div class="text-center space-y-8 max-w-prose mx-auto">
     <!-- Logline -->
     <div class="">
       <!-- <h3 class="mb-2">Logline</h3> -->
@@ -68,7 +68,10 @@
     <!-- Language selector buttons -->
     <div class="flex flex-wrap justify-center gap-3 mt-8">
       {#each availableLanguages as [langCode, langData]}
-        <button class="px-4 py-2 underline italic text-xs underline-offset-2 cursor-pointer" onclick={() => selectLanguage(langCode)}>
+        <button
+          class="px-4 py-2 underline italic text-xs underline-offset-2 cursor-pointer"
+          onclick={() => selectLanguage(langCode)}
+        >
           {langData.name}
         </button>
       {/each}

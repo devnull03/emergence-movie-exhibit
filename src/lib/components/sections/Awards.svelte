@@ -1,5 +1,7 @@
 <script lang="ts">
   import { asset } from "$app/paths";
+  import { onMount } from "svelte";
+  import { browser } from "$app/environment";
   import Section from "$lib/components/Section.svelte";
   import SectionTitle from "$lib/components/SectionTitle.svelte";
   import emergence from "$lib/content/emergence.json";
@@ -32,9 +34,35 @@
     y: number; // dynamic y offset
     opacity: number;
     scale: number;
+    isLoaded?: boolean;
   }> = $state([]);
   let imageCounter = 0;
   let imageContainer: HTMLElement;
+
+  // Track which stills have finished loading
+  const loadedSrcs = new Set<string>();
+  let hasPreloaded = false;
+
+  const preloadAllStills = () => {
+    if (hasPreloaded || !browser) return;
+    hasPreloaded = true;
+    for (const src of stills) {
+      const img = new Image();
+      img.decoding = "async";
+      img.src = src;
+      img.onload = () => {
+        loadedSrcs.add(src);
+      };
+      img.onerror = () => {
+        // Keep going even if a particular image fails
+      };
+    }
+  };
+
+  // Preload on mount
+  onMount(() => {
+    preloadAllStills();
+  });
 
   const getRandomStill = () => {
     const idx = Math.floor(Math.random() * stills.length);
@@ -42,29 +70,33 @@
   };
 
   const addFloatingImage = (x: number, y: number) => {
+    const src = getRandomStill();
     const newImage = {
       id: imageCounter++,
-      src: getRandomStill(),
+      src,
       x: x - 100, // Center the image on cursor
       initialY: y - 100, // Store the initial Y position
       y: 0, // Start with no scroll offset
       opacity: 0,
       scale: 0.5, // Start smaller for more dramatic effect
+      isLoaded: loadedSrcs.has(src),
     };
 
     floatingImages = [...floatingImages, newImage];
     console.log("Created new image:", newImage, "at position:", x, y);
 
-    // Animate in immediately with faster timing
-    requestAnimationFrame(() => {
-      const index = floatingImages.findIndex((img) => img.id === newImage.id);
-      if (index !== -1) {
-        floatingImages[index].opacity = 1;
-        floatingImages[index].scale = 1;
-        floatingImages = [...floatingImages];
-        console.log("Animated in image:", floatingImages[index]);
-      }
-    });
+    // Animate in only if already loaded; otherwise wait for onload handler
+    if (newImage.isLoaded) {
+      requestAnimationFrame(() => {
+        const index = floatingImages.findIndex((img) => img.id === newImage.id);
+        if (index !== -1) {
+          floatingImages[index].opacity = 1;
+          floatingImages[index].scale = 1;
+          floatingImages = [...floatingImages];
+          console.log("Animated in image (preloaded):", floatingImages[index]);
+        }
+      });
+    }
 
     // Remove after delay
     setTimeout(
@@ -84,6 +116,18 @@
       setTimeout(() => {
         floatingImages = floatingImages.filter((img) => img.id !== id);
       }, 150);
+    }
+  };
+
+  const handleImageLoad = (id: number, src: string) => {
+    loadedSrcs.add(src);
+    const index = floatingImages.findIndex((img) => img.id === id);
+    if (index !== -1) {
+      floatingImages[index].isLoaded = true;
+      floatingImages[index].opacity = 1;
+      floatingImages[index].scale = 1;
+      floatingImages = [...floatingImages];
+      console.log("Animated in image (onload):", floatingImages[index]);
     }
   };
 
@@ -154,17 +198,27 @@
 <Section
   class="relative w-full h-screen bg-background text-foreground overflow-hidden"
 >
-  <!-- Two Column Layout -->
-  <div class="flex h-full flex-col md:flex-row max-w-5xl mx-auto">
-    <!-- Left Column: Awards Display -->
-    <div
-      class="w-full md:w-1/2 flex flex-col justify-center items-start py-[6vh] z-10 min-h-full"
-    >
-      {#if awards[currentAwardIndex]}
-        {@const award = awards[currentAwardIndex]}
-        <div
-          class="grid w-full"
-          style="
+  <!-- Global interactive area covering entire section -->
+  <div
+    bind:this={imageContainer}
+    class="relative w-full h-full"
+    onmousemove={handlePointerEvent}
+    onpointermove={handlePointerEvent}
+    role="presentation"
+    aria-hidden="true"
+    style="cursor: none;"
+  >
+    <!-- Two Column Layout (content above images) -->
+    <div class="relative z-10 flex h-full flex-col md:flex-row">
+      <!-- Left Column: Awards Display -->
+      <div
+        class="w-full md:w-1/2 flex flex-col justify-center items-start py-[6vh] z-10 min-h-full"
+      >
+        {#if awards[currentAwardIndex]}
+          {@const award = awards[currentAwardIndex]}
+          <div
+            class="grid w-full"
+            style="
             max-width:100%;
             grid-template-rows:
               3.2rem /* badge */
@@ -176,104 +230,98 @@
             row-gap: 1rem;
             min-height: 16.3rem;
           "
-        >
-          <!-- Award Result Badge -->
-          <div class="flex items-center h-full">
-            <span
-              class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold"
-              style="min-height:2.5rem;display:inline-flex;align-items:center;"
+          >
+            <!-- Award Result Badge -->
+            <div class="flex items-center h-full">
+              <span
+                class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold"
+                style="min-height:2.5rem;display:inline-flex;align-items:center;"
+              >
+                {award.result}
+              </span>
+            </div>
+
+            <!-- Award Title -->
+            <h3
+              class="text-2xl md:text-3xl font-bold leading-tight flex items-center h-full"
+              style="min-height:3.5rem;"
             >
-              {award.result}
-            </span>
-          </div>
+              {award.title}
+            </h3>
 
-          <!-- Award Title -->
-          <h3
-            class="text-2xl md:text-3xl font-bold leading-tight flex items-center h-full"
-            style="min-height:3.5rem;"
-          >
-            {award.title}
-          </h3>
+            <!-- Festival Name -->
+            <p
+              class="text-lg md:text-xl text-muted-foreground flex items-center h-full"
+              style="min-height:2.5rem;"
+            >
+              {award.festival}
+            </p>
 
-          <!-- Festival Name -->
-          <p
-            class="text-lg md:text-xl text-muted-foreground flex items-center h-full"
-            style="min-height:2.5rem;"
-          >
-            {award.festival}
-          </p>
+            <!-- Date -->
+            <p
+              class="text-sm text-muted-foreground flex items-center h-full"
+              style="min-height:1.5rem;"
+            >
+              {new Date(award.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
 
-          <!-- Date -->
-          <p
-            class="text-sm text-muted-foreground flex items-center h-full"
-            style="min-height:1.5rem;"
-          >
-            {new Date(award.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
-
-          <!-- Progress Indicator -->
-          <div
-            class="flex items-center gap-2 w-full h-full"
-            style="min-width:16rem;max-width:100%;min-height:2.5rem;"
-          >
-            <span class="text-sm text-muted-foreground whitespace-nowrap">
-              {currentAwardIndex + 1} of {awards.length}
-            </span>
+            <!-- Progress Indicator -->
             <div
-              class="relative grow h-1 bg-muted rounded min-w-[8rem] max-w-[16rem]"
+              class="flex items-center gap-2 w-full h-full"
+              style="min-width:16rem;max-width:100%;min-height:2.5rem;"
             >
+              <span class="text-sm text-muted-foreground whitespace-nowrap">
+                {currentAwardIndex + 1} of {awards.length}
+              </span>
               <div
-                class="h-full bg-primary rounded transition-all duration-300 absolute left-0 top-0"
-                style="width: {((currentAwardIndex + 1) / awards.length) *
-                  100}%"
-              ></div>
+                class="relative grow h-1 bg-muted rounded min-w-[8rem] max-w-[16rem]"
+              >
+                <div
+                  class="h-full bg-primary rounded transition-all duration-300 absolute left-0 top-0"
+                  style="width: {((currentAwardIndex + 1) / awards.length) *
+                    100}%"
+                ></div>
+              </div>
             </div>
           </div>
-        </div>
-      {/if}
+        {/if}
+      </div>
+      <!-- Right column spacer to keep layout -->
+      <div class="w-full md:w-1/2 h-1/2 md:h-full rounded-sm"></div>
     </div>
 
-    <!-- Right Column: Interactive Image Area -->
-    <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div
-      bind:this={imageContainer}
-      class="relative w-full md:w-1/2 h-1/2 md:h-full rounded-sm"
-      onmousemove={handlePointerEvent}
-      onpointermove={handlePointerEvent}
-      style="cursor: none;"
-    >
-      <!-- Floating Images -->
-      {#each floatingImages as image (image.id)}
-        <img
-          src={image.src}
-          alt="Movie still"
-          class="absolute aspect-video w-[50vw] md:w-[22vw] object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out"
-          style="
-              left: {image.x}px;
-              top: {image.initialY + image.y}px;
-              opacity: {image.opacity};
-              transform: scale({image.scale});
-              z-index: 1000;
-            "
-        />
-      {/each}
+    <!-- Floating Images (cover entire section) -->
+    {#each floatingImages as image (image.id)}
+      <img
+        src={image.src}
+        alt="Movie still"
+        decoding="async"
+        class="absolute aspect-video w-[50vw] md:w-[22vw] object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out z-0"
+        style="
+            left: {image.x}px;
+            top: {image.initialY + image.y}px;
+            opacity: {image.opacity};
+            transform: scale({image.scale});
+          "
+        onload={() => handleImageLoad(image.id, image.src)}
+        onerror={() => removeImage(image.id)}
+      />
+    {/each}
 
-      <!-- Subtle instruction text -->
-      <div
-        class="absolute inset-0 flex items-center justify-center pointer-events-none"
+    <!-- Subtle instruction text -->
+    <div
+      class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+    >
+      <p
+        class="text-muted-foreground/30 text-base md:text-lg font-light tracking-wide text-center px-4"
       >
-        <p
-          class="text-muted-foreground/30 text-base md:text-lg font-light tracking-wide text-center px-4"
-        >
-          <span class="hidden md:inline">Move your cursor to reveal stills</span
-          >
-          <span class="md:hidden">Tap to reveal stills</span>
-        </p>
-      </div>
+        <span class="hidden md:inline">Move your cursor to reveal stills</span>
+        <span class="md:hidden">Tap to reveal stills</span>
+      </p>
     </div>
   </div>
 </Section>

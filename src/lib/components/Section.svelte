@@ -43,5 +43,7 @@
   class="pl-[9vw] lg:pl-0 {className}"
   class:rounded-t-2xl={hasRoundedTop && !isAtTop}
 >
-  {@render children?.()}
+  <div class="max-w-5xl md:max-w-6xl mx-auto w-full px-[4vw] md:px-[3vw]">
+    {@render children?.()}
+  </div>
 </div>

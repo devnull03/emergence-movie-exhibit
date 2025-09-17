@@ -8,4 +8,3 @@
 >
   <SectionTitle title="watch now" color="text-background" />
 </Section>
-

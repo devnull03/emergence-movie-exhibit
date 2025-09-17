@@ -27,11 +27,9 @@
   <SectionTitle title="Cast & Crew" color="text-background" />
 
   <!-- Main Showcase Section -->
-  <div
-    class="h-[30%] sm:h-[35%] md:h-[40%] flex items-center justify-center px-4 sm:px-6"
-  >
+  <div class="h-[30%] sm:h-[35%] md:h-[40%] flex items-center justify-center">
     <div
-      class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-4 items-center"
+      class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-5 gap-4 items-center"
     >
       <div class="overflow-hidden flex justify-center md:col-span-3">
         {#key selectedMember}
@@ -82,11 +80,9 @@
 
   <!-- Cast Grid Section -->
   <div
-    class="max-w-6xl mx-auto h-[30%] sm:h-[35%] md:h-[40%] flex flex-col justify-center pt-4 sm:pt-6 px-4"
+    class="h-[30%] sm:h-[35%] md:h-[40%] flex flex-col justify-center pt-4 sm:pt-6"
   >
-    <div
-      class="grid grid-cols-5 gap-2 sm:gap-3 max-w-4xl mx-auto"
-    >
+    <div class="grid grid-cols-5 gap-2 sm:gap-3 max-w-4xl mx-auto">
       {#each castMembers as member, idx}
         <button
           onmouseenter={() => selectMember(idx)}
