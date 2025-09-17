@@ -194,102 +194,58 @@
   };
 </script>
 
-<!-- Wrapper for Awards section with full-width image interaction -->
 <div
   class="relative w-full h-screen bg-background text-foreground overflow-hidden"
 >
   <SectionTitle title="Awards" color="text-foreground" />
 
-  <!-- Content Section (constrained by Section wrapper) -->
-  <Section class="relative w-full h-screen bg-transparent">
-    <!-- Two Column Layout -->
-    <div class="flex h-full flex-col md:flex-row">
-      <!-- Left Column: Awards Display -->
+  <Section class="relative w-full h-screen bg-transparent flex items-center">
+    <div class="flex h-full w-full flex-col md:flex-row">
       <div
-        class="w-full md:w-1/2 flex flex-col justify-center items-start py-[6vh] z-10 min-h-full"
+        class="w-full md:w-1/2 flex flex-col justify-center items-start z-10 space-y-4"
       >
         {#if awards[currentAwardIndex]}
           {@const award = awards[currentAwardIndex]}
-          <div
-            class="grid w-full"
-            style="
-            max-width:100%;
-            grid-template-rows:
-              3.2rem /* badge */
-              4.5rem /* title */
-              3.2rem /* festival */
-              2.2rem /* date */
-              3.2rem /* progress */
-            ;
-            row-gap: 1rem;
-            min-height: 16.3rem;
-          "
+
+          <span
+            class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold inline-flex items-center w-fit"
           >
-            <!-- Award Result Badge -->
-            <div class="flex items-center h-full">
-              <span
-                class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold"
-                style="min-height:2.5rem;display:inline-flex;align-items:center;"
-              >
-                {award.result}
-              </span>
-            </div>
+            {award.result}
+          </span>
 
-            <!-- Award Title -->
-            <h3
-              class="text-2xl md:text-3xl font-bold leading-tight flex items-center h-full"
-              style="min-height:3.5rem;"
-            >
-              {award.title}
-            </h3>
+          <h3 class="text-2xl md:text-3xl font-bold leading-tight">
+            {award.title}
+          </h3>
 
-            <!-- Festival Name -->
-            <p
-              class="text-lg md:text-xl text-muted-foreground flex items-center h-full"
-              style="min-height:2.5rem;"
-            >
-              {award.festival}
-            </p>
+          <p class="text-lg md:text-xl text-muted-foreground">
+            {award.festival}
+          </p>
 
-            <!-- Date -->
-            <p
-              class="text-sm text-muted-foreground flex items-center h-full"
-              style="min-height:1.5rem;"
-            >
-              {new Date(award.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </p>
+          <p class="text-sm text-muted-foreground">
+            {new Date(award.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
 
-            <!-- Progress Indicator -->
-            <div
-              class="flex items-center gap-2 w-full h-full"
-              style="min-width:16rem;max-width:100%;min-height:2.5rem;"
-            >
-              <span class="text-sm text-muted-foreground whitespace-nowrap">
-                {currentAwardIndex + 1} of {awards.length}
-              </span>
+          <div class="flex items-center gap-2 w-full max-w-md">
+            <span class="text-sm text-muted-foreground whitespace-nowrap">
+              {currentAwardIndex + 1} of {awards.length}
+            </span>
+            <div class="relative flex-1 h-1 bg-muted rounded">
               <div
-                class="relative grow h-1 bg-muted rounded min-w-[8rem] max-w-[16rem]"
-              >
-                <div
-                  class="h-full bg-primary rounded transition-all duration-300 absolute left-0 top-0"
-                  style="width: {((currentAwardIndex + 1) / awards.length) *
-                    100}%"
-                ></div>
-              </div>
+                class="h-full bg-primary rounded transition-all duration-300"
+                style="width: {((currentAwardIndex + 1) / awards.length) *
+                  100}%"
+              ></div>
             </div>
           </div>
         {/if}
       </div>
-      <!-- Right column spacer to keep layout -->
-      <div class="w-full md:w-1/2 h-1/2 md:h-full rounded-sm"></div>
     </div>
   </Section>
 
-  <!-- Full-width interactive area for image popup (outside Section constraints) -->
   <div
     bind:this={imageContainer}
     class="absolute inset-0 w-full h-full"
@@ -299,7 +255,6 @@
     aria-hidden="true"
     style="cursor: none;"
   >
-    <!-- Floating Images (cover entire viewport area) -->
     {#each floatingImages as image (image.id)}
       <img
         src={image.src}
@@ -317,7 +272,6 @@
       />
     {/each}
 
-    <!-- Subtle instruction text -->
     <div
       class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
     >
