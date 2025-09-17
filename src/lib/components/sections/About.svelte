@@ -49,7 +49,7 @@
 >
   <SectionTitle title="Synopsis" color="text-gray-900" />
 
-  <div class="text-center space-y-8 max-w-prose mx-auto">
+  <div class="text-center space-y-8 mx-auto">
     <!-- Logline -->
     <div class="">
       <div class="text-lg leading-tight">
@@ -77,8 +77,9 @@
       {/each}
     </div>
 
+
     <!-- Additional Information -->
-    <div class="border-t border-gray-200 pt-6 space-y-6">
+    <div class="border-t border-gray-200 pt-6 space-y-6 hidden">
       <!-- Quick Actions -->
       <div class="flex flex-wrap justify-center gap-4">
         <Button

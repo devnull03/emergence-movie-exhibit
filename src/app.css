@@ -147,8 +147,9 @@
   /* Custom share-this popover styles */
   .custom-share-popover {
     @apply max-w-32 pointer-events-none;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 4px 12px rgba(5, 102, 141, 0.25));
     animation: share-this-intro 0.3s;
+    border-radius: 4px !important; /* Force subtle radius */
   }
 
   .custom-share-popover::before {
@@ -160,16 +161,16 @@
     margin: 0.25em -0.5em;
     border-width: 0.5em 0.5em 0;
     border-style: solid;
-    border-color: var(--primary) transparent;
-    /* primary-blue */
+    @apply border-t-emerald-900;
+    border-left-color: transparent;
+    border-right-color: transparent;
   }
 
   .custom-share-popover>ul {
-    @apply pointer-events-auto list-none p-0 whitespace-nowrap bg-primary text-white rounded-lg absolute left-1/2 border-2;
+    @apply pointer-events-auto list-none p-0 whitespace-nowrap bg-emerald-900 text-white absolute left-1/2 border-2 border-foreground;
     margin: -0.75em 0 0;
     transform: translate(-50%, -100%);
-    border-color: var(--primary);
-    /* secondary-teal */
+    border-radius: 6px !important; /* Force larger radius for container */
   }
 
   .custom-share-popover>ul>li {
@@ -179,13 +180,13 @@
   .custom-share-popover>ul>li>a {
     @apply inline-block w-full h-full text-inherit box-border transition-all duration-200;
     padding: 0.35em;
+    border-radius: 2px !important; /* Force subtle radius for items */
   }
 
   .custom-share-popover>ul>li>a:focus,
   .custom-share-popover>ul>li>a:hover {
-    @apply text-white rounded;
-    background: var(--primary);
-    /* secondary-teal */
+    @apply text-white bg-emerald-800;
+    border-radius: 3px !important; /* Force slightly more radius on hover */
   }
 
   /* Mobile styles */
@@ -221,13 +222,13 @@
     }
 
     .custom-share-popover>ul {
-      @apply top-full left-0 w-full rounded-none text-center;
+      @apply top-full left-0 w-full text-center;
       transform: none;
       margin: 0.5em 0 0;
+      border-radius: 8px !important; /* Force larger radius for mobile */
     }
   }
 }
-
 /* Flat 2D Design - No rounded corners, minimal shadows */
 /* Following SACDA exhibit design patterns */
 
