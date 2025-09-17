@@ -5,6 +5,9 @@
   import { MorphSVGPlugin } from "gsap/all";
   import { CursorState } from "$lib/interfaces/sys.interface";
   import { currentCursorState } from "$lib/stores";
+  import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
+
+  const isMobile = new IsMobile();
 
   // Props interface for cursor configuration
   interface Props {
@@ -283,7 +286,7 @@
 
 <svelte:window onmousemove={handleMouseMove} onwheel={handleMouseMove} />
 
-{#if mounted}
+{#if mounted && !isMobile.current}
   <div
     class="hidden sm:block fixed top-0 left-0 rounded-full pointer-events-none z-[99999] mix-blend-difference bg-white/[0.02] will-change-transform"
     style="transform: translate3d(calc({distortionPosition.current

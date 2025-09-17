@@ -125,7 +125,7 @@
   <SubHeader />
 
   <div
-    class="-mt-16 mb-[400px] overflow-x-clip overflow-y-clip"
+    class="-mt-32 sm:-mt-16 mb-[400px] overflow-x-clip overflow-y-clip"
     id="smooth-wrapper"
   >
     {@render children?.()}

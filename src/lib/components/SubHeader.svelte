@@ -4,6 +4,9 @@
   import { gsap } from "gsap";
   import { ScrollToPlugin } from "gsap/all";
   import logo from "$lib/assets/logo.png";
+  import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
+
+  const isMobile = new IsMobile();
 
   let lastScrollY = $state(0);
   let isHidden = $state(false);
@@ -112,11 +115,18 @@
   id="subheader"
   class="sticky top-0 w-full z-40 -mt-2 text-white mix-blend-difference"
 >
-  <div class="flex items-center justify-between w-full px-8 py-2">
+  <div
+    class="flex flex-row items-start justify-between w-full px-4 md:px-8 py-2"
+  >
     <!-- Left Section: Film Credit -->
     <div class="flex-1 flex justify-start">
       <div
-        class="font-[Bebas_Neue] text-sm md:text-lg tracking-wide uppercase font-semibold select-none flex items-center gap-2"
+        class="font-[Bebas_Neue] text-sm text-left md:text-lg tracking-wide uppercase font-bold select-none flex items-center gap-2 {isMobile.current
+          ? 'text-center'
+          : ''}"
+        style={isMobile.current
+          ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
+          : ""}
       >
         A FILM BY VINAY GIRIDHAR
       </div>
@@ -124,19 +134,26 @@
 
     <!-- Middle Section: Logo -->
     <div class="flex-1 flex justify-center mix-blend-normal">
-      <img src={logo} alt="Logo" class="h-8 md:h-12 w-auto object-contain" />
+      <img src={logo} alt="Logo" class="h-6 md:h-12 w-auto object-contain" />
     </div>
 
     <!-- Right Section: Navigation Menu -->
     <div class="flex-1 flex justify-end">
-      <nav class="flex items-center gap-3">
+      <nav
+        class="flex text-right {isMobile.current
+          ? 'flex-col gap-1'
+          : 'gap-3'}"
+      >
         {#each navigationItems as item}
           <div class="flex flex-col items-center overflow-hidden">
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <span
               onclick={() => handleNavigation(item.target)}
-              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer"
+              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer font-bold text-right"
+              style={isMobile.current
+                ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
+                : ""}
             >
               <span class="block">{item.label}</span>
               <span

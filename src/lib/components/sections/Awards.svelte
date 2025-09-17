@@ -5,6 +5,9 @@
   import Section from "$lib/components/Section.svelte";
   import SectionTitle from "$lib/components/SectionTitle.svelte";
   import emergence from "$lib/content/emergence.json";
+  import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
+
+  const isMobile = new IsMobile();
 
   const stills = [
     asset("/stills/Alex Still Photo (1).jpg"),
@@ -195,34 +198,61 @@
 </script>
 
 <div
-  class="relative w-full h-screen overflow-hidden rounded-t-2xl!"
+  class="relative w-full {isMobile.current
+    ? 'min-h-screen'
+    : 'h-screen'} overflow-hidden rounded-t-2xl!"
 >
   <SectionTitle title="Awards" color="text-foreground" />
 
-  <Section class="relative w-full h-screen bg-background flex items-center rounded-t-2xl">
-
-    <div class="flex h-full w-full flex-col md:flex-row rounded-t-2xl">
+  <Section
+    class="relative w-full {isMobile.current
+      ? 'min-h-screen'
+      : 'h-screen'} bg-background flex items-center rounded-t-2xl {isMobile.current
+      ? 'overflow-y-auto py-8'
+      : ''}"
+  >
+    <div
+      class="flex h-full w-full {isMobile.current
+        ? 'flex-col'
+        : 'flex-col md:flex-row'} rounded-t-2xl px-4"
+    >
       <div
-        class="w-full md:w-1/2 flex flex-col justify-center items-start z-10 space-y-4"
+        class="w-full {isMobile.current
+          ? ''
+          : 'md:w-1/2'} flex flex-col justify-center items-start z-10 space-y-4"
       >
         {#if awards[currentAwardIndex]}
           {@const award = awards[currentAwardIndex]}
 
           <span
-            class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs md:text-sm font-semibold inline-flex items-center w-fit"
+            class="px-3 md:px-4 py-2 bg-primary text-primary-foreground rounded-full {isMobile.current
+              ? 'text-xs'
+              : 'text-xs md:text-sm'} font-semibold inline-flex items-center w-fit"
           >
             {award.result}
           </span>
 
-          <h3 class="text-2xl md:text-3xl font-bold leading-tight">
+          <h3
+            class="{isMobile.current
+              ? 'text-xl'
+              : 'text-2xl md:text-3xl'} font-bold leading-tight"
+          >
             {award.title}
           </h3>
 
-          <p class="text-lg md:text-xl text-muted-foreground">
+          <p
+            class="{isMobile.current
+              ? 'text-base'
+              : 'text-lg md:text-xl'} text-muted-foreground"
+          >
             {award.festival}
           </p>
 
-          <p class="text-sm text-muted-foreground">
+          <p
+            class="{isMobile.current
+              ? 'text-xs'
+              : 'text-sm'} text-muted-foreground"
+          >
             {new Date(award.date).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
@@ -249,19 +279,23 @@
 
   <div
     bind:this={imageContainer}
-    class="absolute inset-0 w-full h-full rounded-t-2xl"
+    class="absolute inset-0 w-full h-full rounded-t-2xl {isMobile.current
+      ? 'pointer-events-none'
+      : ''}"
     onmousemove={handlePointerEvent}
     onpointermove={handlePointerEvent}
     role="presentation"
     aria-hidden="true"
-    style="cursor: none;"
+    style="cursor: {isMobile.current ? 'default' : 'none'};"
   >
     {#each floatingImages as image (image.id)}
       <img
         src={image.src}
         alt="Movie still"
         decoding="async"
-        class="absolute aspect-video w-[50vw] md:w-[22vw] object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out z-0"
+        class="absolute aspect-video {isMobile.current
+          ? 'w-[40vw]'
+          : 'w-[50vw] md:w-[22vw]'} object-cover shadow-lg pointer-events-none transition-all duration-150 ease-out z-0"
         style="
             left: {image.x}px;
             top: {image.initialY + image.y}px;
@@ -277,7 +311,11 @@
       class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none rounded-t-2xl"
     >
       <p
-        class="text-muted-foreground/30 text-base md:text-lg font-light tracking-wide text-right px-4 rounded-t-2xl pl-[50vw]"
+        class="text-muted-foreground/30 {isMobile.current
+          ? 'text-sm'
+          : 'text-base md:text-lg'} font-light tracking-wide text-right px-4 rounded-t-2xl {isMobile.current
+          ? 'pl-4'
+          : 'pl-[50vw]'}"
       >
         <span class="hidden md:inline">Move your cursor to reveal stills</span>
         <span class="md:hidden">Tap to reveal stills</span>
