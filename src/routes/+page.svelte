@@ -17,7 +17,7 @@
     gsap.to(window, {
       duration: 0.5,
       scrollTo: {
-        y: "#main-content-start",
+        y: "#about",
         autoKill: false,
       },
       ease: "power2.inOut",
@@ -135,16 +135,15 @@
     </div>
   </section>
 
-  <!-- Content Sections -->
-  <section id="main-content-start" class="w-full h-screen">
+  <section id="about" class="w-full h-screen">
     <About />
   </section>
 
-  <section class="w-full h-screen">
+  <section id="cast" class="w-full h-screen">
     <CastSection />
   </section>
 
-  <section bind:this={awardsSection} class="w-full rounded-t-2xl ">
+  <section id="awards" bind:this={awardsSection} class="w-full rounded-t-2xl">
     <Awards bind:this={awardsComponent} />
   </section>
 

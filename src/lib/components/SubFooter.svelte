@@ -1,12 +1,35 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import { browser } from "$app/environment";
+  import { gsap } from "gsap";
+  import { ScrollToPlugin } from "gsap/all";
   import emergenceData from "$lib/content/emergence.json";
 
   const quickLinks = [
-    { label: "Film", href: "/film" },
-    { label: "Cast", href: "/cast" },
-    { label: "Awards", href: "/awards" },
-    { label: "Sources", href: "/sources" },
+    { label: "About", target: "#about" },
+    { label: "Cast & Crew", target: "#cast" },
+    { label: "Awards", target: "#awards" },
+    { label: "Watch Now", target: "#watch-now" },
   ];
+
+  function handleNavigation(target: string) {
+    // Use GSAP ScrollTo for section navigation
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: target,
+        autoKill: false,
+        // offsetY: 80, // Account for sticky header
+      },
+      ease: "power2.inOut",
+    });
+  }
+
+  onMount(() => {
+    if (browser) {
+      gsap.registerPlugin(ScrollToPlugin);
+    }
+  });
 </script>
 
 <div class="bg-gray-50 border-t border-gray-200 py-6 px-6 mt-auto relative">
@@ -39,12 +62,14 @@
     <!-- Quick Links -->
     <div class="flex flex-wrap justify-center gap-6 mb-4">
       {#each quickLinks as link}
-        <a
-          href={link.href}
-          class="text-sm text-gray-600 hover:text-emerald-600 font-medium transition-colors"
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <span
+          onclick={() => handleNavigation(link.target)}
+          class="text-sm text-gray-600 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
         >
           {link.label}
-        </a>
+        </span>
       {/each}
     </div>
 

@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
   import { gsap } from "gsap";
+  import { ScrollToPlugin } from "gsap/all";
   import logo from "$lib/assets/logo.png";
 
   let lastScrollY = $state(0);
@@ -9,11 +10,31 @@
   let tween: gsap.core.Tween | undefined;
 
   const navigationItems = [
-    { label: "Home", href: "/" },
-    { label: "Awards", href: "#awards" },
-    { label: "Cast & Crew", href: "#cast" },
-    { label: "Sources", href: "#sources" },
+    { label: "Home", target: "/" },
+    { label: "About", target: "#about" },
+    { label: "Cast & Crew", target: "#cast" },
+    { label: "Awards", target: "#awards" },
+    { label: "Watch Now", target: "#watch-now" },
   ];
+
+  function handleNavigation(target: string) {
+    if (target === "/") {
+      // Navigate to home page
+      window.location.href = "/";
+      return;
+    }
+
+    // Use GSAP ScrollTo for section navigation
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: {
+        y: target,
+        autoKill: false,
+        // offsetY: 80, // Account for sticky header
+      },
+      ease: "power2.inOut",
+    });
+  }
 
   function handleScroll() {
     if (!browser) return;
@@ -74,6 +95,7 @@
 
   onMount(() => {
     if (browser) {
+      gsap.registerPlugin(ScrollToPlugin);
       window.addEventListener("scroll", handleScroll, { passive: true });
     }
   });
@@ -86,7 +108,10 @@
   });
 </script>
 
-<div id="subheader" class="sticky top-0 w-full z-40 -mt-2 text-white mix-blend-difference">
+<div
+  id="subheader"
+  class="sticky top-0 w-full z-40 -mt-2 text-white mix-blend-difference"
+>
   <div class="flex items-center justify-between w-full px-8 py-2">
     <!-- Left Section: Film Credit -->
     <div class="flex-1 flex justify-start">
@@ -107,15 +132,17 @@
       <nav class="flex items-center gap-3">
         {#each navigationItems as item}
           <div class="flex flex-col items-center overflow-hidden">
-            <a
-              href={item.href}
-              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full"
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <span
+              onclick={() => handleNavigation(item.target)}
+              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer"
             >
               <span class="block">{item.label}</span>
               <span
                 class="block h-0.5 bg-white rounded transition-all duration-200 ease-in-out w-0 group-hover:w-full"
               ></span>
-            </a>
+            </span>
           </div>
         {/each}
       </nav>
