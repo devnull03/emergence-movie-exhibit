@@ -195,12 +195,13 @@
 </script>
 
 <div
-  class="relative w-full h-screen bg-background text-foreground overflow-hidden"
+  class="relative w-full h-screen overflow-hidden rounded-t-2xl!"
 >
   <SectionTitle title="Awards" color="text-foreground" />
 
-  <Section class="relative w-full h-screen bg-transparent flex items-center">
-    <div class="flex h-full w-full flex-col md:flex-row">
+  <Section class="relative w-full h-screen bg-background flex items-center rounded-t-2xl">
+
+    <div class="flex h-full w-full flex-col md:flex-row rounded-t-2xl">
       <div
         class="w-full md:w-1/2 flex flex-col justify-center items-start z-10 space-y-4"
       >
@@ -248,7 +249,7 @@
 
   <div
     bind:this={imageContainer}
-    class="absolute inset-0 w-full h-full"
+    class="absolute inset-0 w-full h-full rounded-t-2xl"
     onmousemove={handlePointerEvent}
     onpointermove={handlePointerEvent}
     role="presentation"
@@ -273,10 +274,10 @@
     {/each}
 
     <div
-      class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+      class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none rounded-t-2xl"
     >
       <p
-        class="text-muted-foreground/30 text-base md:text-lg font-light tracking-wide text-center px-4"
+        class="text-muted-foreground/30 text-base md:text-lg font-light tracking-wide text-right px-4 rounded-t-2xl pl-[50vw]"
       >
         <span class="hidden md:inline">Move your cursor to reveal stills</span>
         <span class="md:hidden">Tap to reveal stills</span>

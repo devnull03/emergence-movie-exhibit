@@ -68,7 +68,7 @@
   </div>
 
   <!-- Production Company Section -->
-  <p class="text-xs sm:text-sm text-background text-center">
+  <p class="text-xs sm:text-sm text-background text-center my-4">
     <span class="font-medium">Production Company –</span>
     <span class="font-semibold text-white">Sher Films</span>
     <span class=""
@@ -77,13 +77,13 @@
   </p>
 
   <!-- Cast Grid Section -->
-  <div class="flex-1 flex flex-col justify-center pt-4 sm:pt-6 min-h-0">
+  <div class="flex-1 flex flex-col justify-center min-h-0">
     <div class="grid grid-cols-5 gap-2 sm:gap-3 max-w-4xl mx-auto max-h-[30vh]">
       {#each castMembers as member, idx}
         <button
           onmouseenter={() => selectMember(idx)}
           onclick={() => selectMember(idx)}
-          class="group relative w-full aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 max-h-full"
+          class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 max-h-full"
         >
           {#if member.photo}
             <img

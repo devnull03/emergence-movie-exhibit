@@ -144,7 +144,7 @@
     <CastSection />
   </section>
 
-  <section bind:this={awardsSection} class="w-full">
+  <section bind:this={awardsSection} class="w-full rounded-t-2xl ">
     <Awards bind:this={awardsComponent} />
   </section>
 

@@ -124,7 +124,7 @@
 
   <SubHeader />
 
-  <div class="-mt-16 mb-[400px]">
+  <div class="-mt-16 mb-[400px]  overflow-x-clip overflow-y-clip">
     {@render children?.()}
   </div>
 
