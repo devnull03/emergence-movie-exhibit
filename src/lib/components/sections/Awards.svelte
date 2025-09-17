@@ -194,22 +194,16 @@
   };
 </script>
 
-<SectionTitle title="Awards" color="text-foreground" />
-<Section
+<!-- Wrapper for Awards section with full-width image interaction -->
+<div
   class="relative w-full h-screen bg-background text-foreground overflow-hidden"
 >
-  <!-- Global interactive area covering entire section -->
-  <div
-    bind:this={imageContainer}
-    class="relative w-full h-full"
-    onmousemove={handlePointerEvent}
-    onpointermove={handlePointerEvent}
-    role="presentation"
-    aria-hidden="true"
-    style="cursor: none;"
-  >
-    <!-- Two Column Layout (content above images) -->
-    <div class="relative z-10 flex h-full flex-col md:flex-row">
+  <SectionTitle title="Awards" color="text-foreground" />
+
+  <!-- Content Section (constrained by Section wrapper) -->
+  <Section class="relative w-full h-screen bg-transparent">
+    <!-- Two Column Layout -->
+    <div class="flex h-full flex-col md:flex-row">
       <!-- Left Column: Awards Display -->
       <div
         class="w-full md:w-1/2 flex flex-col justify-center items-start py-[6vh] z-10 min-h-full"
@@ -293,8 +287,19 @@
       <!-- Right column spacer to keep layout -->
       <div class="w-full md:w-1/2 h-1/2 md:h-full rounded-sm"></div>
     </div>
+  </Section>
 
-    <!-- Floating Images (cover entire section) -->
+  <!-- Full-width interactive area for image popup (outside Section constraints) -->
+  <div
+    bind:this={imageContainer}
+    class="absolute inset-0 w-full h-full"
+    onmousemove={handlePointerEvent}
+    onpointermove={handlePointerEvent}
+    role="presentation"
+    aria-hidden="true"
+    style="cursor: none;"
+  >
+    <!-- Floating Images (cover entire viewport area) -->
     {#each floatingImages as image (image.id)}
       <img
         src={image.src}
@@ -324,4 +329,4 @@
       </p>
     </div>
   </div>
-</Section>
+</div>

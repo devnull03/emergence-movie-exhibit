@@ -40,7 +40,7 @@
 
 <div
   bind:this={sectionElement}
-  class="pl-[9vw] lg:pl-0 {className}"
+  class="pl-[12vw] {className}"
   class:rounded-t-2xl={hasRoundedTop && !isAtTop}
 >
   <div class="max-w-5xl md:max-w-6xl mx-auto w-full px-[4vw] md:px-[3vw]">

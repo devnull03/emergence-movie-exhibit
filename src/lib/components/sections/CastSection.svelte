@@ -27,7 +27,7 @@
   <SectionTitle title="Cast & Crew" color="text-background" />
 
   <!-- Main Showcase Section -->
-  <div class="h-[30%] sm:h-[35%] md:h-[40%] flex items-center justify-center">
+  <div class="flex-1 flex items-center justify-center min-h-0">
     <div
       class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-5 gap-4 items-center"
     >
@@ -37,11 +37,11 @@
             <img
               src={castMembers[selectedMember].photo}
               alt={castMembers[selectedMember].name}
-              class="w-full h-48 sm:h-56 md:h-64 lg:h-72 object-cover aspect-video transition-transform duration-500 ease-out starting:scale-125"
+              class="w-full max-h-[40vh] object-cover aspect-video transition-transform duration-500 ease-out starting:scale-125"
             />
           {:else}
             <div
-              class="w-full h-48 sm:h-56 md:h-64 lg:h-72 aspect-video bg-gray-200 flex items-center justify-center transition-transform duration-500 ease-out starting:scale-125"
+              class="w-full max-h-[40vh] aspect-video bg-gray-200 flex items-center justify-center transition-transform duration-500 ease-out starting:scale-125"
             >
               <User
                 class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-gray-400"
@@ -68,26 +68,22 @@
   </div>
 
   <!-- Production Company Section -->
-  <!-- <div class="text-center"> -->
-  <p class="text-xs sm:text-sm text-background text-center px-4">
+  <p class="text-xs sm:text-sm text-background text-center">
     <span class="font-medium">Production Company –</span>
     <span class="font-semibold text-white">Sher Films</span>
     <span class=""
       >(A Division of the Sher Vancouver LGBTQ Friends Society)</span
     >
   </p>
-  <!-- </div> -->
 
   <!-- Cast Grid Section -->
-  <div
-    class="h-[30%] sm:h-[35%] md:h-[40%] flex flex-col justify-center pt-4 sm:pt-6"
-  >
-    <div class="grid grid-cols-5 gap-2 sm:gap-3 max-w-4xl mx-auto">
+  <div class="flex-1 flex flex-col justify-center pt-4 sm:pt-6 min-h-0">
+    <div class="grid grid-cols-5 gap-2 sm:gap-3 max-w-4xl mx-auto max-h-[30vh]">
       {#each castMembers as member, idx}
         <button
           onmouseenter={() => selectMember(idx)}
           onclick={() => selectMember(idx)}
-          class="group relative w-full aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-gray-800"
+          class="group relative w-full aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 max-h-full"
         >
           {#if member.photo}
             <img
