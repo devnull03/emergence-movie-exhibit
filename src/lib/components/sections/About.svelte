@@ -52,6 +52,7 @@
 </script>
 
 <Section
+  fillHeight={true}
   class="w-full {isMobile.current
     ? 'min-h-screen'
     : 'h-screen'} text-justify font-[Poppins] tracking-tight leading-relaxed bg-background {isMobile.current
@@ -61,7 +62,7 @@
   <div
     class="flex flex-col items-center justify-center gap-4 h-full {isMobile.current
       ? 'py-8 px-4'
-      : ''} min-h-0"
+      : ''}"
   >
     <SectionTitle title="Synopsis" color="text-gray-900" />
 

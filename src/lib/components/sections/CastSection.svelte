@@ -22,136 +22,131 @@
     if (idx === selectedMember) return;
     selectedMember = idx;
   }
+
+  // Derive responsive classes once
+  const textSizes = $derived({
+    xs: isMobile.current ? "text-2xs" : "text-xs",
+    sm: isMobile.current ? "text-xs" : "text-sm",
+    base: isMobile.current ? "text-sm" : "text-base sm:text-lg md:text-xl",
+    lg: isMobile.current ? "text-lg" : "text-xl",
+  });
 </script>
 
 <Section
+  fillHeight={true}
   class="w-full {isMobile.current
-    ? 'min-h-screen py-8'
-    : 'h-screen'} text-background! flex flex-col items-center justify-center gap-4 bg-gray-900 overflow-y-auto"
+    ? 'min-h-screen'
+    : 'h-screen'} text-background! bg-gray-900 {isMobile.current
+    ? 'overflow-y-auto py-8'
+    : ''}"
 >
-  <SectionTitle title="Cast & Crew" color="text-background" />
+  <div class="h-full flex flex-col gap-4 items-center justify-center">
+    <SectionTitle title="Cast & Crew" color="text-background" />
 
-  <!-- Main Showcase Section -->
-  <div class="flex-1 flex items-center justify-center min-h-0 px-4">
-    <div
-      class="w-full max-w-4xl grid grid-cols-1 {isMobile.current
-        ? 'gap-6'
-        : 'md:grid-cols-5 gap-4'} items-center"
-    >
+    <!-- Main Showcase Section -->
+    <div class="w-full max-w-4xl px-4">
       <div
-        class="overflow-hidden flex justify-center {isMobile.current
-          ? ''
-          : 'md:col-span-3'}"
+        class="grid grid-cols-1 {isMobile.current
+          ? 'gap-6'
+          : 'md:grid-cols-5 gap-4'} items-center"
       >
-        {#key selectedMember}
-          {#if castMembers[selectedMember].photo}
-            <img
-              src={castMembers[selectedMember].photo}
-              alt={castMembers[selectedMember].name}
-              class="w-full {isMobile.current
-                ? 'max-h-[30vh]'
-                : 'max-h-[40vh]'} object-cover aspect-video transition-transform duration-500 ease-out starting:scale-125"
-            />
-          {:else}
-            <div
-              class="w-full {isMobile.current
-                ? 'max-h-[30vh]'
-                : 'max-h-[40vh]'} aspect-video bg-gray-200 flex items-center justify-center transition-transform duration-500 ease-out starting:scale-125"
-            >
-              <User
-                class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-gray-400"
+        <div
+          class="overflow-hidden flex justify-center {isMobile.current
+            ? ''
+            : 'md:col-span-3'}"
+        >
+          {#key selectedMember}
+            {#if castMembers[selectedMember].photo}
+              <img
+                src={castMembers[selectedMember].photo}
+                alt={castMembers[selectedMember].name}
+                class="w-full {isMobile.current
+                  ? 'max-h-[30vh]'
+                  : 'max-h-[40vh]'} object-cover aspect-video transition-transform duration-500 ease-out starting:scale-125"
               />
-            </div>
-          {/if}
-        {/key}
-      </div>
+            {:else}
+              <div
+                class="w-full {isMobile.current
+                  ? 'max-h-[30vh]'
+                  : 'max-h-[40vh]'} aspect-video bg-gray-200 flex items-center justify-center transition-transform duration-500 ease-out starting:scale-125"
+              >
+                <User
+                  class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-gray-400"
+                />
+              </div>
+            {/if}
+          {/key}
+        </div>
 
-      <!-- {#key selectedMember} -->
-      <div
-        class="space-y-2 sm:space-y-3 md:space-y-4 h-full flex flex-col justify-end {isMobile.current
-          ? ''
-          : 'md:col-span-2'} ml-2 sm:ml-3 md:ml-4 text-pretty transition-all duration-300 ease-out *:font-[Poppins] *:tracking-wider *:leading-tight"
-      >
-        <h2
-          class={isMobile.current
-            ? "text-lg"
-            : "text-base sm:text-lg md:text-xl"}
+        <div
+          class="space-y-2 sm:space-y-3 md:space-y-4 {isMobile.current
+            ? ''
+            : 'md:col-span-2'} ml-2 sm:ml-3 md:ml-4 text-pretty *:font-[Poppins] *:tracking-wider *:leading-tight"
         >
-          {castMembers[selectedMember].name}
-        </h2>
-
-        <p
-          class="leading-relaxed {isMobile.current
-            ? 'text-sm'
-            : 'text-xs sm:text-sm'}"
-        >
-          {castMembers[selectedMember].bio}
-        </p>
+          <h2 class={textSizes.base}>
+            {castMembers[selectedMember].name}
+          </h2>
+          <p class="leading-relaxed {textSizes.sm}">
+            {castMembers[selectedMember].bio}
+          </p>
+        </div>
       </div>
-      <!-- {/key} -->
     </div>
-  </div>
 
-  <!-- Production Company Section -->
-  <p
-    class="{isMobile.current
-      ? 'text-sm'
-      : 'text-xs sm:text-sm'} text-background text-center my-4 px-4"
-  >
-    <span class="font-medium">Production Company –</span>
-    <span class="font-semibold text-white">Sher Films</span>
-    <span class=""
-      >(A Division of the Sher Vancouver LGBTQ Friends Society)</span
-    >
-  </p>
+    <!-- Production Company Section -->
+    <p class="{textSizes.sm} text-background text-center px-4">
+      <span class="font-medium">Production Company –</span>
+      <span class="font-semibold text-white">Sher Films</span>
+      <span>(A Division of the Sher Vancouver LGBTQ Friends Society)</span>
+    </p>
 
-  <!-- Cast Grid Section -->
-  <div class="flex-1 flex flex-col justify-center min-h-0 px-4">
-    <div
-      class="grid {isMobile.current
-        ? 'grid-cols-3 gap-3 max-h-[25vh]'
-        : 'grid-cols-5 gap-2 sm:gap-3 max-h-[30vh]'} max-w-4xl mx-auto"
-    >
-      {#each castMembers as member, idx}
-        <button
-          onmouseenter={() => selectMember(idx)}
-          onclick={() => selectMember(idx)}
-          class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 max-h-full {isMobile.current
-            ? 'min-h-[12vh]'
-            : ''}"
-        >
-          {#if member.photo}
-            <img
-              src={member.photo}
-              alt={member.name}
-              class="w-full h-full object-cover"
-            />
-          {:else}
-            <div
-              class="w-full h-full bg-gray-200 flex items-center justify-center"
-            >
-              <User
-                class="{isMobile.current
-                  ? 'w-8 h-8'
-                  : 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8'} text-gray-400"
-              />
-            </div>
-          {/if}
-
-          <!-- Single overlay for both cases -->
-          <div
-            class="absolute inset-0 bg-black/40 backdrop-blur backdrop-sepia-65 flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 group-hover:opacity-0"
+    <!-- Cast Grid Section -->
+    <div class="w-full max-w-4xl px-4">
+      <div
+        class="grid {isMobile.current
+          ? 'grid-cols-3 gap-3 max-h-[25vh]'
+          : 'grid-cols-5 gap-2 sm:gap-3 max-h-[30vh]'}"
+      >
+        {#each castMembers as member, idx}
+          <button
+            onmouseenter={() => selectMember(idx)}
+            onclick={() => selectMember(idx)}
+            class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 {isMobile.current
+              ? 'min-h-[12vh]'
+              : ''}"
           >
-            <p
-              class="{isMobile.current
-                ? 'text-sm'
-                : 'text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl'} font-bold text-gray-100 drop-shadow-lg font-[Bebas_Neue] uppercase leading-none"
+            {#if member.photo}
+              <img
+                src={member.photo}
+                alt={member.name}
+                class="w-full h-full object-cover"
+              />
+            {:else}
+              <div
+                class="w-full h-full bg-gray-200 flex items-center justify-center"
+              >
+                <User
+                  class="{isMobile.current
+                    ? 'w-8 h-8'
+                    : 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8'} text-gray-400"
+                />
+              </div>
+            {/if}
+
+            <div
+              class="absolute inset-0 bg-black/40 backdrop-blur backdrop-sepia-65 flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 group-hover:opacity-0"
             >
-              {member.name}
-            </p>
-          </div>
-        </button>
-      {/each}
+              <p
+                class="{isMobile.current
+                  ? 'text-sm'
+                  : 'text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl'} font-bold text-gray-100 drop-shadow-lg font-[Bebas_Neue] uppercase leading-none"
+              >
+                {member.name}
+              </p>
+            </div>
+          </button>
+        {/each}
+      </div>
     </div>
   </div>
 </Section>

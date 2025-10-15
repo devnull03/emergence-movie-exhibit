@@ -5,12 +5,14 @@
     children?: Snippet;
     class?: string;
     hasRoundedTop?: boolean;
+    fillHeight?: boolean;
   }
 
   let {
     children,
     class: className = "",
     hasRoundedTop = true,
+    fillHeight = false,
   }: Props = $props();
 
   let isAtTop = $state(false);
@@ -43,7 +45,10 @@
   class="pl-[12vw] {className}"
   class:rounded-t-2xl={hasRoundedTop && !isAtTop}
 >
-  <div class="max-w-5xl md:max-w-6xl mx-auto w-full px-[4vw] md:px-[3vw]">
+  <div
+    class="max-w-5xl md:max-w-6xl mx-auto w-full px-[4vw] md:px-[3vw]"
+    class:h-full={fillHeight}
+  >
     {@render children?.()}
   </div>
 </div>
