@@ -72,6 +72,9 @@
     return stills[idx];
   };
 
+  // Image creation throttle delay in milliseconds
+  const IMAGE_CREATION_DELAY = 300;
+
   const addFloatingImage = (x: number, y: number) => {
     const src = getRandomStill();
     const newImage = {
@@ -148,8 +151,7 @@
     lastCursorY = clientY - rect.top;
 
     const now = Date.now();
-    if (now - lastImageTime > 150) {
-      // Reduced throttle for faster response
+    if (now - lastImageTime > IMAGE_CREATION_DELAY) {
       addFloatingImage(lastCursorX, lastCursorY);
       lastImageTime = now;
     }
@@ -190,7 +192,7 @@
     if (!imageContainer || lastCursorX === 0 || lastCursorY === 0) return;
 
     const now = Date.now();
-    if (now - lastScrollImageTime > 200) {
+    if (now - lastScrollImageTime > IMAGE_CREATION_DELAY) {
       addFloatingImage(lastCursorX, lastCursorY);
       lastScrollImageTime = now;
     }

@@ -111,6 +111,7 @@
           <button
             onmouseenter={() => selectMember(idx)}
             onclick={() => selectMember(idx)}
+            style="cursor: pointer;"
             class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 {isMobile.current
               ? 'min-h-[12vh]'
               : ''}"
