@@ -9,6 +9,7 @@
   import Awards from "$lib/components/sections/Awards.svelte";
   import WatchNow from "$lib/components/sections/WatchNow.svelte";
   import emergence from "$lib/content/emergence.json";
+  import MediaSection from "$lib/components/sections/MediaSection.svelte";
 
   let coverElm: HTMLElement;
   let awardsSection: HTMLElement;
@@ -143,21 +144,29 @@
     </div>
   </section>
 
-  <section id="about" class="w-full h-screen">
+  <section id="about" class="w-full h-screen bg-background text-gray-900">
     <About />
   </section>
 
-  <section id="cast" class="w-full h-screen">
+  <section id="watch-now" class="w-full h-screen bg-gray-900 text-background">
+    <MediaSection />
+  </section>
+
+  <section id="cast" class="w-full h-screen bg-background text-gray-900">
     <CastSection />
   </section>
 
-  <section id="awards" bind:this={awardsSection} class="w-full rounded-t-2xl">
+  <section
+    id="awards"
+    bind:this={awardsSection}
+    class="w-full rounded-t-2xl bg-gray-900 text-background"
+  >
     <Awards bind:this={awardsComponent} />
   </section>
 
   <section
-    id="watch-now"
-    class="w-full min-h-screen flex items-center justify-center bg-gray-900 text-white"
+    id="other-links"
+    class="w-full min-h-screen flex items-center justify-center bg-background text-gray-900"
   >
     <WatchNow />
   </section>
