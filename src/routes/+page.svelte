@@ -10,6 +10,7 @@
   import WatchNow from "$lib/components/sections/WatchNow.svelte";
   import emergence from "$lib/content/emergence.json";
 
+  let coverElm: HTMLElement;
   let awardsSection: HTMLElement;
   let awardsComponent: Awards;
 
@@ -71,6 +72,12 @@
 
       console.log("Awards ScrollTrigger created:", pinTrigger);
     }
+
+    setTimeout(() => {
+      if (coverElm) {
+        coverElm.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 1000);
   });
 </script>
 
@@ -94,6 +101,7 @@
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
   <section
+    bind:this={coverElm}
     class="relative w-full min-h-screen flex items-center justify-center overflow-hidden rounded-none! *:rounded-none!"
     data-cursor-state="indicate-scroll-down"
     aria-label="Click to scroll to main content"

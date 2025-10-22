@@ -115,7 +115,15 @@
           rel="noopener noreferrer"
           class="mt-4"
         >
-          Order
+          More Info
+        </Button>
+        <Button
+          href="https://movingimages.ca/products/emergence-out-of-the-shadows"
+          target="_blank"
+          variant="secondary"
+          class="mt-2"
+        >
+          Order Film
         </Button>
       </div>
 
