@@ -1,6 +1,6 @@
 <script lang="ts">
   import castData from "$lib/content/cast.json";
-  import { User } from "@lucide/svelte";
+  import { Link, User } from "@lucide/svelte";
   import SectionTitle from "../SectionTitle.svelte";
   import Section from "../Section.svelte";
   import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
@@ -13,6 +13,7 @@
     photo: string | null;
     photo_credits?: string;
     position: string;
+    video?: string;
   }
 
   const castMembers: CastMember[] = castData.people;
@@ -36,12 +37,12 @@
   fillHeight={true}
   class="w-full {isMobile.current
     ? 'min-h-screen'
-    : 'h-screen'} text-background! bg-gray-900 {isMobile.current
+    : 'h-screen'} bg-background text-gray-900 {isMobile.current
     ? 'overflow-y-auto py-8'
     : ''}"
 >
   <div class="h-full flex flex-col gap-4 items-center justify-center">
-    <SectionTitle title="Cast & Crew" color="text-background" />
+    <SectionTitle title="Cast & Crew" color="text-gray-900" />
 
     <!-- Main Showcase Section -->
     <div class="w-full max-w-4xl px-4">
@@ -89,14 +90,19 @@
           <p class="leading-relaxed {textSizes.sm}">
             {castMembers[selectedMember].bio}
           </p>
+          {#if castMembers[selectedMember].video}
+            <a href={castMembers[selectedMember].video} class=" leading-tight flex items-center gap-1 {textSizes.xs} underline italic">
+              Meet {castMembers[selectedMember].name} in this video interview <Link size={12} />
+            </a>
+          {/if}
         </div>
       </div>
     </div>
 
     <!-- Production Company Section -->
-    <p class="{textSizes.sm} text-background text-center px-4">
+    <p class="{textSizes.sm} text-gray-700 text-center px-4">
       <span class="font-medium">Production Company –</span>
-      <span class="font-semibold text-white">Sher Films</span>
+      <span class="font-semibold text-gray-900">Sher Films</span>
       <span>(A Division of the Sher Vancouver LGBTQ Friends Society)</span>
     </p>
 
@@ -112,7 +118,7 @@
             onmouseenter={() => selectMember(idx)}
             onclick={() => selectMember(idx)}
             style="cursor: pointer;"
-            class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-800 {isMobile.current
+            class="group relative w-full rounded-lg sm:rounded-xl overflow-hidden bg-gray-100 {isMobile.current
               ? 'min-h-[12vh]'
               : ''}"
           >
@@ -129,18 +135,18 @@
                 <User
                   class="{isMobile.current
                     ? 'w-8 h-8'
-                    : 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8'} text-gray-400"
+                    : 'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8'} text-gray-500"
                 />
               </div>
             {/if}
 
             <div
-              class="absolute inset-0 bg-black/40 backdrop-blur backdrop-sepia-65 flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 group-hover:opacity-0"
+              class="absolute inset-0 bg-black/30 backdrop-blur flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 group-hover:opacity-0"
             >
               <p
                 class="{isMobile.current
                   ? 'text-sm'
-                  : 'text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl'} font-bold text-gray-100 drop-shadow-lg font-[Bebas_Neue] uppercase leading-none"
+                  : 'text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl'} font-bold text-white drop-shadow font-[Bebas_Neue] uppercase leading-none"
               >
                 {member.name}
               </p>
