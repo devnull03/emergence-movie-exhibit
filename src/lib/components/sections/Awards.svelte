@@ -204,12 +204,12 @@
     ? 'min-h-screen'
     : 'h-screen'} overflow-hidden rounded-t-2xl!"
 >
-  <SectionTitle title="Awards" color="text-foreground" />
+  <SectionTitle title="Awards" color="text-background" />
 
   <Section
     class="relative w-full {isMobile.current
       ? 'min-h-screen'
-      : 'h-screen'} bg-background flex items-center rounded-t-2xl {isMobile.current
+      : 'h-screen'} bg-gray-900 text-background flex items-center rounded-t-2xl {isMobile.current
       ? 'overflow-y-auto py-8'
       : ''}"
   >
@@ -245,16 +245,12 @@
           <p
             class="{isMobile.current
               ? 'text-base'
-              : 'text-lg md:text-xl'} text-muted-foreground"
+              : 'text-lg md:text-xl'} text-gray-300"
           >
             {award.festival}
           </p>
 
-          <p
-            class="{isMobile.current
-              ? 'text-xs'
-              : 'text-sm'} text-muted-foreground"
-          >
+          <p class="{isMobile.current ? 'text-xs' : 'text-sm'} text-gray-400">
             {new Date(award.date).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
@@ -263,7 +259,7 @@
           </p>
 
           <div class="flex items-center gap-2 w-full max-w-md">
-            <span class="text-sm text-muted-foreground whitespace-nowrap">
+            <span class="text-sm text-gray-400 whitespace-nowrap">
               {currentAwardIndex + 1} of {awards.length}
             </span>
             <div class="relative flex-1 h-1 bg-muted rounded">
@@ -281,9 +277,7 @@
 
   <div
     bind:this={imageContainer}
-    class="absolute inset-0 w-full h-full rounded-t-2xl {isMobile.current
-      ? 'pointer-events-none'
-      : ''}"
+    class="absolute inset-0 w-full h-full rounded-t-2xl pointer-events-none"
     onmousemove={handlePointerEvent}
     onpointermove={handlePointerEvent}
     role="presentation"
@@ -313,7 +307,7 @@
       class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none rounded-t-2xl"
     >
       <p
-        class="text-muted-foreground/30 {isMobile.current
+        class="text-background/30 {isMobile.current
           ? 'text-sm'
           : 'text-base md:text-lg'} font-light tracking-wide text-right px-4 rounded-t-2xl {isMobile.current
           ? 'pl-4'

@@ -15,9 +15,10 @@
   const navigationItems = [
     { label: "Home", target: "/" },
     { label: "About", target: "#about" },
+    { label: "Watch", target: "#watch-now" },
     { label: "Cast & Crew", target: "#cast" },
     { label: "Awards", target: "#awards" },
-    { label: "Watch Now", target: "#watch-now" },
+    { label: "More", target: "#other-links" },
   ];
 
   function handleNavigation(target: string) {
@@ -140,9 +141,7 @@
     <!-- Right Section: Navigation Menu -->
     <div class="flex-1 flex justify-end">
       <nav
-        class="flex text-right {isMobile.current
-          ? 'flex-col gap-1'
-          : 'gap-3'}"
+        class="flex text-right {isMobile.current ? 'flex-col gap-1' : 'gap-3'}"
       >
         {#each navigationItems as item}
           <div class="flex flex-col items-center overflow-hidden">

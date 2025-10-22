@@ -10,9 +10,9 @@
 <Section
   class="w-full {isMobile.current
     ? 'min-h-screen py-8'
-    : 'h-screen'} text-background! bg-gray-900 *:h-full overflow-y-auto"
+    : 'h-screen'} bg-background text-gray-900 *:h-full overflow-y-auto"
 >
-  <SectionTitle title="watch now" color="text-background" />
+  <SectionTitle title="more links" color="text-gray-900" />
 
   <div
     class="max-w-6xl mx-auto px-4 h-full flex flex-col justify-center items-center gap-6"
@@ -22,14 +22,14 @@
       <h2
         class="{isMobile.current
           ? 'text-xl'
-          : 'text-2xl md:text-3xl'} font-bold text-background leading-tight font-[Bebas_Neue]"
+          : 'text-2xl md:text-3xl'} font-bold text-gray-900 leading-tight font-[Bebas_Neue]"
       >
         Experience the Full Documentary
       </h2>
       <p
         class="{isMobile.current
           ? 'text-sm'
-          : 'text-base md:text-lg'} text-background/80 leading-relaxed font-[Poppins]"
+          : 'text-base md:text-lg'} text-gray-600 leading-relaxed font-[Poppins]"
       >
         A powerful story of courage, family, and acceptance in the South Asian
         community
@@ -46,25 +46,23 @@
       <div
         class="{isMobile.current
           ? ''
-          : 'md:col-span-2 lg:col-span-2'} bg-background/10 rounded-xl p-6 flex flex-col justify-between hover:bg-background/15 transition-colors"
+          : 'md:col-span-2 lg:col-span-2'} bg-gray-900/5 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-900/10 transition-colors"
       >
         <div>
           <h3
             class="{isMobile.current
               ? 'text-xl'
-              : 'text-2xl'} font-bold text-background mb-2 font-[Bebas_Neue]"
+              : 'text-2xl'} font-bold text-gray-900 mb-2 font-[Bebas_Neue]"
           >
             Watch Full Movie
           </h3>
-          <p
-            class="text-background/70 mb-4 {isMobile.current ? 'text-sm' : ''}"
-          >
+          <p class="text-gray-600 mb-4 {isMobile.current ? 'text-sm' : ''}">
             Stream the complete documentary on the official website
           </p>
           <div
             class="space-y-2 {isMobile.current
               ? 'text-xs'
-              : 'text-sm'} text-background/60"
+              : 'text-sm'} text-gray-500"
           >
             <p>• Available via Vimeo VOD</p>
             <p>• $20 CAD streaming price</p>
@@ -83,18 +81,18 @@
 
       <!-- Order Film - Medium Card -->
       <div
-        class="bg-background/8 rounded-xl p-6 flex flex-col justify-between hover:bg-background/12 transition-colors"
+        class="bg-gray-900/5 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-900/10 transition-colors"
       >
         <div>
           <h3
             class="{isMobile.current
               ? 'text-lg'
-              : 'text-xl'} font-bold text-background mb-2 font-[Bebas_Neue]"
+              : 'text-xl'} font-bold text-gray-900 mb-2 font-[Bebas_Neue]"
           >
             Order Film
           </h3>
           <p
-            class="text-background/70 {isMobile.current
+            class="text-gray-600 {isMobile.current
               ? 'text-xs'
               : 'text-sm'} mb-3"
           >
@@ -103,7 +101,7 @@
           <div
             class="{isMobile.current
               ? 'text-2xs'
-              : 'text-xs'} text-background/60 space-y-1"
+              : 'text-xs'} text-gray-500 space-y-1"
           >
             <p>• Educational licensing</p>
             <p>• Bulk orders available</p>
@@ -131,18 +129,18 @@
       <div
         class="{isMobile.current
           ? ''
-          : 'lg:row-span-2'} bg-background/6 rounded-xl p-6 flex flex-col justify-between hover:bg-background/10 transition-colors"
+          : 'lg:row-span-2'} bg-gray-900/5 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-900/10 transition-colors"
       >
         <div>
           <h3
             class="{isMobile.current
               ? 'text-lg'
-              : 'text-xl'} font-bold text-background mb-2 font-[Bebas_Neue]"
+              : 'text-xl'} font-bold text-gray-900 mb-2 font-[Bebas_Neue]"
           >
             Trailer & Videos
           </h3>
           <p
-            class="text-background/70 {isMobile.current
+            class="text-gray-600 {isMobile.current
               ? 'text-xs'
               : 'text-sm'} mb-4"
           >
@@ -151,7 +149,7 @@
           <div
             class="space-y-2 {isMobile.current
               ? 'text-2xs'
-              : 'text-xs'} text-background/60"
+              : 'text-xs'} text-gray-500"
           >
             <p>• Official trailer</p>
             <p>• Behind-the-scenes footage</p>
@@ -174,18 +172,18 @@
       <div
         class="{isMobile.current
           ? ''
-          : 'md:col-span-2 lg:col-span-1'} bg-background/8 rounded-xl p-6 flex flex-col justify-between hover:bg-background/12 transition-colors"
+          : 'md:col-span-2 lg:col-span-1'} bg-gray-900/5 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-900/10 transition-colors"
       >
         <div>
           <h3
             class="{isMobile.current
               ? 'text-lg'
-              : 'text-xl'} font-bold text-background mb-2 font-[Bebas_Neue]"
+              : 'text-xl'} font-bold text-gray-900 mb-2 font-[Bebas_Neue]"
           >
             Request Screening
           </h3>
           <p
-            class="text-background/70 {isMobile.current
+            class="text-gray-600 {isMobile.current
               ? 'text-xs'
               : 'text-sm'} mb-3"
           >
@@ -194,7 +192,7 @@
           <div
             class="{isMobile.current
               ? 'text-2xs'
-              : 'text-xs'} text-background/60 space-y-1"
+              : 'text-xs'} text-gray-500 space-y-1"
           >
             <p>• Educational institutions</p>
             <p>• Community centers</p>
@@ -215,13 +213,13 @@
       <div
         class="{isMobile.current
           ? ''
-          : 'md:col-span-2 lg:col-span-2'} bg-background/5 rounded-xl p-6 flex flex-col justify-between hover:bg-background/8 transition-colors"
+          : 'md:col-span-2 lg:col-span-2'} bg-gray-900/5 rounded-xl p-6 flex flex-col justify-between hover:bg-gray-900/10 transition-colors"
       >
         <div>
           <h3
             class="{isMobile.current
               ? 'text-base'
-              : 'text-lg'} font-bold text-background mb-2 font-[Bebas_Neue]"
+              : 'text-lg'} font-bold text-gray-900 mb-2 font-[Bebas_Neue]"
           >
             Additional Resources
           </h3>
@@ -230,19 +228,19 @@
               ? 'gap-2'
               : 'md:grid-cols-3 gap-3'} {isMobile.current
               ? 'text-2xs'
-              : 'text-xs'} text-background/70"
+              : 'text-xs'} text-gray-600"
           >
             <div>
-              <p class="font-medium text-background/80">Discussion Guide</p>
-              <p>Free educational resource</p>
+              <p class="font-medium text-gray-700">Discussion Guide</p>
+              <p class="text-gray-500">Free educational resource</p>
             </div>
             <div>
-              <p class="font-medium text-background/80">Awards & Recognition</p>
-              <p>Film festival selections</p>
+              <p class="font-medium text-gray-700">Awards & Recognition</p>
+              <p class="text-gray-500">Film festival selections</p>
             </div>
             <div>
-              <p class="font-medium text-background/80">Press Kit</p>
-              <p>Media resources available</p>
+              <p class="font-medium text-gray-700">Press Kit</p>
+              <p class="text-gray-500">Media resources available</p>
             </div>
           </div>
         </div>
