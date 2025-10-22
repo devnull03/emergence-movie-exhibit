@@ -277,12 +277,14 @@
 
   <div
     bind:this={imageContainer}
-    class="absolute inset-0 w-full h-full rounded-t-2xl pointer-events-none"
+    class="absolute inset-0 w-full h-full rounded-t-2xl"
     onmousemove={handlePointerEvent}
     onpointermove={handlePointerEvent}
     role="presentation"
     aria-hidden="true"
-    style="cursor: {isMobile.current ? 'default' : 'none'};"
+    style="cursor: {isMobile.current
+      ? 'default'
+      : 'none'}; pointer-events: auto;"
   >
     {#each floatingImages as image (image.id)}
       <img
