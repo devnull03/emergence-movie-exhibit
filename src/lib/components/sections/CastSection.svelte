@@ -37,9 +37,7 @@
   fillHeight={true}
   class="w-full {isMobile.current
     ? 'min-h-screen'
-    : 'h-screen'} bg-background text-gray-900 {isMobile.current
-    ? 'overflow-y-auto py-8'
-    : ''}"
+    : 'h-screen'} py-12 bg-background text-gray-900"
 >
   <div class="h-full flex flex-col gap-4 items-center justify-center">
     <SectionTitle title="Cast & Crew" color="text-gray-900" />
@@ -110,7 +108,7 @@
     <div class="w-full max-w-4xl px-4">
       <div
         class="grid {isMobile.current
-          ? 'grid-cols-3 gap-3 max-h-[25vh]'
+          ? 'grid-cols-3 gap-3'
           : 'grid-cols-5 gap-2 sm:gap-3 max-h-[30vh]'}"
       >
         {#each castMembers as member, idx}

@@ -7,9 +7,12 @@
   import trailer from "$lib/assets/trailer.mp4";
   import { asset } from "$app/paths";
   import Awards from "$lib/components/sections/Awards.svelte";
-  import WatchNow from "$lib/components/sections/WatchNow.svelte";
+  import WatchNow from "$lib/components/sections/MoreLinksSection.svelte";
   import emergence from "$lib/content/emergence.json";
-  import MediaSection from "$lib/components/sections/MediaSection.svelte";
+  import MediaSection from "$lib/components/sections/WatchNowSection.svelte";
+  import { IsMobile } from "$lib/hooks/is-mobile.svelte.ts";
+
+  const isMobile = new IsMobile();
 
   let coverElm: HTMLElement;
   let awardsSection: HTMLElement;
@@ -125,9 +128,11 @@
     <!-- Dark Overlay  box-border shadow-[inset_0_0_10px_10px_black] -->
     <div class="absolute inset-0 blur-sm bg-black/20"></div>
 
-    <div class="relative z-10 text-center px-4 w-[80vw] overflow-x-hidden">
+    <div
+      class="relative z-10 text-center px-4 w-[80vw] h-[60vh] md:h-full overflow-x-hidden"
+    >
       <video
-        class="w-full max-w-2xl mx-auto"
+        class="w-full max-w-2xl mx-auto h-full object-cover"
         autoplay
         muted
         loop
@@ -144,15 +149,18 @@
     </div>
   </section>
 
-  <section id="about" class="w-full h-screen bg-background text-gray-900">
+  <section id="about" class="w-full md:h-screen bg-background text-gray-900">
     <About />
   </section>
 
-  <section id="watch-now" class="w-full h-screen bg-gray-900 text-background">
+  <section
+    id="watch-now"
+    class="w-full md:h-screen bg-gray-900 text-background"
+  >
     <MediaSection />
   </section>
 
-  <section id="cast" class="w-full h-screen bg-background text-gray-900">
+  <section id="cast" class="w-full md:h-screen bg-background text-gray-900">
     <CastSection />
   </section>
 
@@ -178,5 +186,11 @@
     top: 0;
     width: 100%;
     min-height: 100vh;
+  }
+
+  @media (max-width: 767px) {
+    section:not(:first-child):not(#awards) {
+      position: relative;
+    }
   }
 </style>

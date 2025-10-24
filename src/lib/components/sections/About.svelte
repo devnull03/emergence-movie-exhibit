@@ -69,7 +69,7 @@
     <div
       class="flex {isMobile.current
         ? 'flex-col'
-        : 'flex-row'} items-start max-w-4xl mx-auto px-4"
+        : 'flex-row px-4'} items-start max-w-4xl mx-auto"
     >
       <div
         class="flex-shrink-0 {isMobile.current
@@ -99,7 +99,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="flex {isMobile.current ? 'flex-col gap-2' : 'gap-4'}">
+        <div class="flex flex-wrap {isMobile.current ? 'gap-2' : 'gap-4'}">
           <a
             href="https://emergencefilm.net/"
             target="_blank"
@@ -136,7 +136,7 @@
         </div>
 
         <!-- Social Links -->
-        <div class="flex {isMobile.current ? 'flex-col gap-2' : 'gap-4'}">
+        <div class="flex flex-wrap {isMobile.current ? 'gap-2' : 'gap-4'}">
           <a
             href="https://www.instagram.com/emergencefilm/"
             target="_blank"
@@ -179,14 +179,14 @@
 
     <!-- <div class="text-center space-y-8 mx-auto"> -->
     <!-- Logline -->
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto md:px-4">
       <div class="{isMobile.current ? 'text-sm' : 'text-lg'} leading-tight">
         {currentLogline}
       </div>
     </div>
 
     <!-- Long Synopsis -->
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto md:px-4">
       <h3
         class="mb-2 italic {isMobile.current
           ? 'text-lg'

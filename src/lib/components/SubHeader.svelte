@@ -135,7 +135,7 @@
 
     <!-- Middle Section: Logo -->
     <div class="flex-1 flex justify-center mix-blend-normal">
-      <img src={logo} alt="Logo" class="h-6 md:h-12 w-auto object-contain" />
+      <img src={logo} alt="Logo" class="h-12 w-auto object-contain" />
     </div>
 
     <!-- Right Section: Navigation Menu -->
