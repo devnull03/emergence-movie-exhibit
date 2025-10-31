@@ -126,7 +126,7 @@
   <SubHeader />
 
   <div
-    class="-mt-37 sm:-mt-16 mb-[400px] overflow-x-clip overflow-y-clip"
+    class="-mt-16 mb-[400px] overflow-x-clip overflow-y-clip"
     id="smooth-wrapper"
   >
     {@render children?.()}
@@ -140,7 +140,7 @@
 
 <!-- Floating Play Button -->
 <button
-  class="group fixed left-2 md:right-6 z-[9999] rounded-full bg-red-500 object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-red-700"
+  class="group w-fit fixed left-2 md:left-auto md:right-6 z-[9999] rounded-full bg-red-500 object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:bg-red-700"
   class:bottom-6={scrollY === 0}
   class:bottom-22={scrollY !== 0}
   aria-label="Watch Now"
@@ -167,7 +167,7 @@
 {#if scrollY !== 0}
   <button
     transition:fly={{ y: 10, duration: 500 }}
-    class="group fixed bottom-6 left-2 md:right-6 z-[9999] rounded-full bg-[#f49d2d] object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1"
+    class="group w-fit fixed bottom-6 left-2 md:left-auto md:right-6 z-[9999] rounded-full bg-[#f49d2d] object-cover py-0.5 shadow-lg transition-all duration-500 hover:-translate-y-1"
     aria-label="yuh"
     onclick={() => {
       window.scrollTo({ top: 0, behavior: "smooth" });

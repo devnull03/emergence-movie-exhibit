@@ -139,7 +139,9 @@
             {/if}
 
             <div
-              class="absolute inset-0 bg-black/30 backdrop-blur flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 group-hover:opacity-0"
+              class="absolute inset-0 bg-black/30 backdrop-blur flex items-end justify-end *:text-right p-1 sm:p-2 transition-opacity duration-300 {isMobile.current
+                ? (idx === selectedMember ? 'opacity-0' : 'opacity-100')
+                : 'group-hover:opacity-0'}"
             >
               <p
                 class="{isMobile.current

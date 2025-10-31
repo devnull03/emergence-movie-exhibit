@@ -10,6 +10,7 @@
 
   let lastScrollY = $state(0);
   let isHidden = $state(false);
+  let menuOpen = $state(false);
   let tween: gsap.core.Tween | undefined;
 
   const navigationItems = [
@@ -77,6 +78,7 @@
     if (tween) tween.kill();
 
     isHidden = true;
+    menuOpen = false;
     tween = gsap.to("#subheader", {
       y: "-100%",
       duration: 0.3,
@@ -122,14 +124,14 @@
     <!-- Left Section: Film Credit -->
     <div class="flex-1 flex justify-start">
       <div
-        class="font-[Bebas_Neue] text-sm text-left md:text-lg tracking-wide uppercase font-bold select-none flex items-center gap-2 {isMobile.current
+        class="font-[Bebas_Neue] text-sm text-left md:text-lg tracking-wide uppercase font-bold select-none flex items-center gap-2 bg-black bg-opacity-90 backdrop-blur-lg {isMobile.current
           ? 'text-center'
           : ''}"
         style={isMobile.current
           ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
           : ""}
       >
-        A FILM BY VINAY GIRIDHAR
+        A FILM BY{#if isMobile.current}<br />{/if} VINAY GIRIDHAR
       </div>
     </div>
 
@@ -139,29 +141,71 @@
     </div>
 
     <!-- Right Section: Navigation Menu -->
-    <div class="flex-1 flex justify-end">
-      <nav
-        class="flex text-right {isMobile.current ? 'flex-col gap-1' : 'gap-3'}"
-      >
-        {#each navigationItems as item}
-          <div class="flex flex-col items-center overflow-hidden">
-            <!-- svelte-ignore a11y_click_events_have_key_events -->
-            <!-- svelte-ignore a11y_no_static_element_interactions -->
-            <span
-              onclick={() => handleNavigation(item.target)}
-              class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer font-bold text-right"
-              style={isMobile.current
-                ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
-                : ""}
-            >
-              <span class="block">{item.label}</span>
+    <div class="flex-1 flex justify-end relative">
+      {#if isMobile.current}
+        <button
+          onclick={() => (menuOpen = !menuOpen)}
+          class="flex flex-col justify-center items-center w-8 h-8 space-y-1"
+          aria-label="Toggle menu"
+        >
+          <span
+            class="block w-6 h-0.5 bg-white transition-transform duration-200 {menuOpen
+              ? 'rotate-45 translate-y-1.5'
+              : ''}"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-white transition-opacity duration-200 {menuOpen
+              ? 'opacity-0'
+              : ''}"
+          ></span>
+          <span
+            class="block w-6 h-0.5 bg-white transition-transform duration-200 {menuOpen
+              ? '-rotate-45 -translate-y-1.5'
+              : ''}"
+          ></span>
+        </button>
+        <div
+          class="absolute top-full right-0 mt-2 bg-black bg-opacity-90 text-white p-4 rounded shadow-lg z-50 backdrop-blur-lg transition-all duration-300 {menuOpen
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-2'}"
+        >
+          <nav class="flex flex-col gap-2 text-right">
+            {#each navigationItems as item}
               <span
-                class="block h-0.5 bg-white rounded transition-all duration-200 ease-in-out w-0 group-hover:w-full"
-              ></span>
-            </span>
-          </div>
-        {/each}
-      </nav>
+                onclick={() => {
+                  handleNavigation(item.target);
+                  menuOpen = false;
+                }}
+                class="text-sm font-[Poppins] uppercase cursor-pointer hover:text-gray-300 transition-colors text-right"
+                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
+              >
+                {item.label}
+              </span>
+            {/each}
+          </nav>
+        </div>
+      {:else}
+        <nav class="flex text-right gap-3">
+          {#each navigationItems as item}
+            <div class="flex flex-col items-center overflow-hidden">
+              <!-- svelte-ignore a11y_click_events_have_key_events -->
+              <!-- svelte-ignore a11y_no_static_element_interactions -->
+              <span
+                onclick={() => handleNavigation(item.target)}
+                class="group text-xs md:text-sm tracking-tight font-[Poppins] uppercase transition-all duration-200 w-full cursor-pointer font-bold text-right"
+                style={isMobile.current
+                  ? "text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
+                  : ""}
+              >
+                <span class="block">{item.label}</span>
+                <span
+                  class="block h-0.5 bg-white rounded transition-all duration-200 ease-in-out w-0 group-hover:w-full"
+                ></span>
+              </span>
+            </div>
+          {/each}
+        </nav>
+      {/if}
     </div>
   </div>
 </div>
