@@ -171,7 +171,7 @@
         >
           <nav class="flex flex-col gap-2 text-right">
             {#each navigationItems as item}
-              <span
+              <button
                 onclick={() => {
                   handleNavigation(item.target);
                   menuOpen = false;
@@ -180,7 +180,7 @@
                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);"
               >
                 {item.label}
-              </span>
+              </button>
             {/each}
           </nav>
         </div>
